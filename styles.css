@@ -298,6 +298,11 @@ body{
   letter-spacing: .14em;
   text-transform: none;
 }
+.runes-left,
+.runes-right{
+  font-size: clamp(18px, 2.4vw, 28px); /* tweak these 3 numbers */
+  line-height: 1.1;                     /* keeps it tight */
+}
 .subname{
   text-align:center;
   margin-top: 8px;

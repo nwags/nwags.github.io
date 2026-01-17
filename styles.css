@@ -109,6 +109,9 @@ body{
   letter-spacing: .34em;
   color: rgba(243,245,255,.84);
   white-space: nowrap;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .isotipo{

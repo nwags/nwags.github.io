@@ -108,6 +108,7 @@ body{
   font-size: clamp(14px, 1.7vw, 22px);
   letter-spacing: .34em;
   color: rgba(243,245,255,.84);
+  white-space: nowrap;
 }
 
 .isotipo{

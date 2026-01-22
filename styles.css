@@ -227,7 +227,7 @@ body{
   --badgeOffset: 14px;         /* how far it hangs past the border (outer + top) */
   position:absolute;
   top: calc(-1 * var(--badgeOffset));
-  inset-inline-start: calc(-1 * var(--badgeOffset)); /* left badge */
+  inset-inline-start: calc(-2 * var(--badgeOffset)); /* left badge */
   width: 100px;
   height: 100px;
   border-radius: 999px;
@@ -238,15 +238,15 @@ body{
 }
 
 .platformBadge img{
-  width: 100px;
-  height: 100px;
+  width: 120px;
+  height: 120px;
   object-fit: contain;
 }
 
 /* right badge: same magnitude offset, mirrored */
 .platformBadge--right{
   inset-inline-start: auto;
-  inset-inline-end: calc(-1 * var(--badgeOffset));
+  inset-inline-end: calc(-1 * var(--badgeOffset)/2);
 }
 
 
@@ -744,7 +744,10 @@ body{
 
 
 
-
+.timelineText {
+  margin-top: 12px;
+  text-align: center;
+}
 
 
 
@@ -963,7 +966,9 @@ body{
 
 
 
-.orgWrap{ padding: 10px 10px 6px; }
+.orgWrap{
+  padding: 10px 10px 6px; 
+}
 
 .orgBox{
   background: rgba(10,30,110,.55);
@@ -1105,7 +1110,7 @@ body{
 
 .orgFoot{
   margin-top: 12px;
-  text-align:center;
+  text-align:left;
   color: rgba(243,245,255,.82);
   line-height: 1.35;
 }
@@ -1129,14 +1134,20 @@ body{
   border-radius: var(--radius);
   padding: 18px;
   box-shadow: var(--shadow);
+  text-align: center;
 }
 .ctaCard .btn{
   align-self: center;
   margin-left: auto;
   margin-right: auto;
 }
+
+.ctaTitle{ 
+  margin:0; 
+  font-size: 
+  clamp(22px, 2.6vw, 34px); 
+  font-weight: 800; 
 }
-.ctaTitle{ margin:0; font-size: clamp(22px, 2.6vw, 34px); font-weight: 800; }
 .ctaSub{ margin-top: 6px; color: rgba(243,245,255,.70); }
 
 .qr{ width: clamp(120px, 14vw, 160px); max-width: 160px; }

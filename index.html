@@ -3,456 +3,206 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>The Wagner Valkyries Project</title>
-  <meta name="description" content="Investor one-pager — static web twin." />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css" />
+  <title>Nicholas Wagner | Financial Engineering & AI-Native Research Systems</title>
+  <meta name="description" content="Personal website of Nicholas Wagner: financial engineering, AI-native research infrastructure, SEC/Fed data systems, LLM pipelines, event-driven investing, and technical prototyping." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,400;0,500;0,600;1,400&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="personal.css" />
 </head>
-<body>
+<body class="personal-site">
+  <a class="skip-link" href="#main">Skip to content</a>
 
-  <!-- Smoky background (matches the PDF) -->
-  <div class="bg" aria-hidden="true"></div>
-
-<main class="doc" aria-label="The Wagner Valkyries Project – Investor One-Pager">
-
-  <!-- PAGE 1 -->
-  <section class="page" id="page1">
-    <header class="pageHeader">
-      <div class="pageTitleWrap">
-        <img class="isotipo isotipo--l" src="assets/logos/Isotipo-White.png" alt="" aria-hidden="true" />
-        <div>
-          <h1 class="pageTitle">THE WAGNER VALKYRIES PROJECT</h1>
-          <div class="pageTagline">Engineering. Passion. Total Art.</div>
-        </div>
-        <img class="isotipo isotipo--r" src="assets/logos/Isotipo-White.png" alt="" aria-hidden="true" />
-      </div>
-    </header>
-
-    <div class="panelLabelAboveRow">
-      <div class="panelLabel panelLabelAbove" id="programLabel">PROJECT DESCRIPTION</div>
+  <header class="site-header" id="home">
+    <div class="container nav-shell">
+      <a class="brand" href="#home">Nicholas Wagner</a>
+      <nav aria-label="Primary">
+        <ul class="nav-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#documents">Documents</a></li>
+          <li><a href="valkyries.html">Valkyries</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
     </div>
+  </header>
 
-    <section class="panel program programPanel" id="program">
-      <div class="prose">
-        <p>
-          A fan-augmented ground-effect vehicle project developed as a physical platform for generating, validating, and 
-          demonstrating proprietary IP in next-generation downforce, active chassis control, and force-aware vehicle 
-          systems.
-        </p>
-        <p>
-          Two prototype platforms—<strong>Brynhildr</strong> and <strong>Sigrún</strong>—serve as engineering demonstrators and validation assets.
-          Select investors may optionally acquire a vehicle through separate commercial transactions, independent of any 
-          project investment.
-        </p>
-        <p>
-          The project is designed so that the driver, the vehicle, and the engineering team share a common understanding
-          of what the car is experiencing—where it is loaded, how forces are being carried, and how the system responds
-          at the limit. Performance is not only achieved, but felt, interpreted, and refined through a unified language of forces.
-        </p>
-        <p>
-          The vehicles are authored as complete systems, where performance emerges from the orchestration of forces
-          rather than from isolated components.
-        </p>
-      </div>
-      
-    </section>
-    <p class="note">
-      “Valkyries exists to validate controllable, speed-independent downforce and force-aware vehicle control in real-world conditions—not simulations.”
-    </p>
-
-    <section class="platformRow">
-      <div class="platform">
-        <div class="platformHead">
-          <div class="platformPill">E84 (1st-gen X1) Platform</div>
-        </div>
-        <div class="platformCard">
-          <img src="assets/brynhildr.png" alt="E84 platform render (Brynhildr)" />
-          <div class="platformBadge" aria-hidden="true">
-            <img src="assets/icons/Valkirie-rubia.png" alt="" />
+  <main id="main">
+    <section class="hero section-pad">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">Financial Engineering · AI-Native Data Systems · Event-Driven Research</p>
+          <h1>Nicholas Wagner</h1>
+          <p class="lede">
+            I build research infrastructure for turning messy public information—filings, central-bank communications,
+            market data, and technical documents—into structured signals, dashboards, and decision-support systems.
+          </p>
+          <div class="cta-row" aria-label="Primary links">
+            <a class="button button-primary" href="docs/NickWagner_Resume.pdf">View Resume</a>
+            <a class="button" href="docs/FedGPT_Sponsor_Technical_Report.pdf">Read FedGPT Technical Report</a>
+            <a class="button" href="valkyries.html">Explore Valkyries Project</a>
+          </div>
+          <div class="link-row" aria-label="Professional profiles">
+            <a href="resume.html">View Web Resume</a>
+            <a href="https://github.com/nwags" target="_blank" rel="noopener">GitHub</a>
+            <a href="https://www.linkedin.com/in/nicholashwagner/" target="_blank" rel="noopener">LinkedIn</a>
           </div>
         </div>
+        <figure class="hero-image-wrap">
+          <img
+            class="hero-image"
+            src="assets/personal/nicholas-wagner-headshot.jpeg"
+            alt="Nicholas Wagner professional headshot"
+            width="400"
+            height="400"
+          />
+        </figure>
       </div>
+    </section>
 
-      <div class="platform">
-        <div class="platformHead">
-          <div class="platformPill">E91 (3 Series Touring) Platform</div>
+    <section class="projects section-pad" id="projects" aria-label="Featured work">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">Selected Work</p>
+          <h2>Featured Projects</h2>
         </div>
-        <div class="platformCard">
-          <img src="assets/sigrun.png" alt="E91 platform render (Sigrún)" />
-          <div class="platformBadge platformBadge--right" aria-hidden="true">
-            <img src="assets/icons/Valkirie-peliroja.png" alt="" />
-          </div>
+        <div class="project-grid">
+          <article class="project-card">
+            <h3>FedGPT — Federal Reserve Communication Scoring</h3>
+            <p>
+              LLM-assisted pipeline for acquiring Federal Reserve communications, generating structured monetary-policy
+              sentiment scores, and visualizing sparse, irregular central-bank communication signals for portfolio research.
+            </p>
+            <ul>
+              <li>FOMC release scraping and normalization</li>
+              <li>OpenAI Batch API scoring jobs</li>
+              <li>Structured score families for rates, inflation, employment, credit, growth, surprise, and policy phase</li>
+              <li>SolidJS/ECharts dashboard for sponsor-facing analysis</li>
+            </ul>
+            <a class="text-link" href="docs/FedGPT_Sponsor_Technical_Report.pdf">Read Technical Report</a>
+          </article>
+
+          <article class="project-card">
+            <h3>SEC / EDGAR Event Intelligence</h3>
+            <p>
+              Local-first SEC filing infrastructure for turning filings, exhibits, and event disclosures into reproducible
+              research artifacts and structured event signals.
+            </p>
+            <ul>
+              <li>py-sec-edgar-m and SEC/EDGAR ingestion workflows</li>
+              <li>Deterministic document identities</li>
+              <li>Raw and parsed artifact tracking</li>
+              <li>Event extraction and downstream research workflows</li>
+            </ul>
+          </article>
+
+          <article class="project-card">
+            <h3>AI-Native Event-Driven Hedge Fund Research OS</h3>
+            <p>
+              Prototype architecture for agent-assisted investment research: ingest documents, extract structured events,
+              generate trade hypotheses, run backtests, and write experiment postmortems.
+            </p>
+            <ul>
+              <li>Filing-to-event extraction</li>
+              <li>Trade-candidate generation</li>
+              <li>Backtest and attribution workflow</li>
+              <li>Reflection/postmortem agent design</li>
+            </ul>
+          </article>
+
+          <article class="project-card project-card-featured">
+            <h3>The Wagner Valkyries Project</h3>
+            <p>
+              Fan-augmented ground-effect vehicle concept designed as a physical platform for validating controllable
+              downforce, active chassis control, and force-aware vehicle-system IP.
+            </p>
+            <ul>
+              <li>Speed-independent downforce concept</li>
+              <li>Active chassis and force-aware control</li>
+              <li>Prototype demonstrator framing</li>
+              <li>IP validation and technical exhibition strategy</li>
+            </ul>
+            <a class="text-link" href="valkyries.html">View Valkyries Page</a>
+          </article>
         </div>
       </div>
     </section>
 
-    <div class="note">
-      “Renders shown represent design intent; final vehicle details will evolve during development.”
-    </div>
-
-    <section class="platformTextRow">
-      <div class="platformText">
-        <div class="runebar"><span class="runes-left" aria-label="Brynhildr in runes">ᛒᚱᛁᚾᚺᛁᛚᛞᚱ</span></div>
-        <div class="subname">Brynhildr</div>
-        <p>
-          A compact-bodied platform with upright packaging and an expanded ride-height envelope, enabling aggressive
-          experimentation in underbody aerodynamics, fan duct routing, and suction plenum control.
-        </p>
-        <p>
-          Optimized as a high-observability grip demonstrator, Brynhildr emphasizes extreme downforce, traction-limited launches,
-          and short-format exhibitions where system behavior, load paths, and control responses are intentionally legible, instrumented, and repeatable.
-        </p>
-      </div>
-
-      <div class="platformText">
-        <div class="runebar"><span class="runes-right" aria-label="Sigrún in runes">ᛋᛁᚷᚱᚢᚾ</span></div>
-        <div class="subname">Sigrún</div>
-        <p>
-          A lower-roofline touring-derived platform optimized for high-speed stability, sustained operation, and Nordschleife-relevant validation,
-          prioritizing thermal robustness, aero consistency, and long-duration controllability.
-        </p>
-        <p>
-          Sigrún focuses on aerodynamic balance, inertial management, and force continuity across extended operating windows—serving as the project’s
-          primary endurance and real-venue validation asset.
-        </p>
-      </div>
-    </section>
-
-  </section>
-
-  <!-- PAGE 2 -->
-  <section class="page" id="page2">
-    <div class="pageCenterTitle">ENGINEERING HIGHLIGHTS</div>
-
-    <section class="panel stack">
-      <div class="panelLabelAboveRow">
-        <div class="stackLabel">AERODYNAMICS &amp; DOWNFORCE SYSTEMS</div>
-      </div>
-      <div class="stackBody">
-        <div class="item"><div class="itemTitle">Adaptive Skirt &amp; Suction Plenum System</div>
-          <div class="itemText">Adaptive skirt modules manage ground clearance and leakage across real track surfaces, improving plenum stability and suction consistency versus fixed-skirt designs.</div>
-        </div>
-        <div class="item"><div class="itemTitle">Fan-Augmented Underbody Aerodynamics</div>
-          <div class="itemText">High-volume electric fans generate controllable, speed independent underbody suction, supporting extreme low-speed grip and repeatable demonstrations.</div>
-        </div>
-        <div class="item"><div class="itemTitle">Adaptive Aerodynamic Control</div>
-          <div class="itemText">Plenum ΔP, ride height, and IMU data enable closed-loop suction control and real-time estimation of aerodynamic state for coordinated fan, chassis, and suspension response.</div>
+    <section class="about section-pad" aria-label="Builder background">
+      <div class="container about-grid">
+        <figure class="about-image-wrap">
+          <img
+            class="about-image"
+            src="assets/personal/opentrons-shenzhen-lab.jpeg"
+            alt="Nicholas Wagner working in a lab on an early Opentrons prototype in Shenzhen, China."
+            width="743"
+            height="185"
+          />
+        </figure>
+        <div class="about-copy">
+          <p class="eyebrow">Builder Background</p>
+          <h2>Engineering Mindset Across Software and Physical Systems</h2>
+          <p>
+            My work sits at the intersection of financial engineering, software systems, and physical prototyping. Before
+            focusing on AI-native finance and data infrastructure, I co-founded Opentrons Labworks and helped build early
+            liquid-handling robotics systems, including firmware and Python API work for the OT-1.
+          </p>
+          <p>
+            That builder background now informs my approach to research systems: make the pipeline observable,
+            reproducible, and useful enough that others can test and extend it.
+          </p>
         </div>
       </div>
     </section>
 
-    <section class="panel stack">
-      <div class="panelLabelAboveRow">
-        <div class="stackLabel">CHASSIS, SUSPENSION &amp; VEHICLE DYNAMICS</div>
-      </div>
-      <div class="stackBody">
-        <div class="item"><div class="itemTitle">Tilting Chassis System (TCS)</div>
-          <div class="itemText">Actively tilts the chassis into corners while preserving suspension pickup geometry relative to the wheels, minimizing unintended camber or toe change.</div>
+    <section class="documents section-pad" id="documents" aria-label="Documents">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">Published Materials</p>
+          <h2>Documents</h2>
         </div>
-        <div class="item"><div class="itemTitle">Double-Wishbone Conversion (Front &amp; Rear)</div>
-          <div class="itemText">Motorsport-grade geometry enables robust heave/roll separation and precise ride-height control—critical for maintaining stable plenum gap and aero balance.</div>
-        </div>
-        <div class="item"><div class="itemTitle">Electromechanical Inertial Elements</div>
-          <div class="itemText">Actively manage high-frequency vertical and pitch response, reducing sensitivity to bumps, curbs, and transient load transfer events.</div>
-        </div>
-        <div class="item"><div class="itemTitle">Instrumented Load Paths</div>
-          <div class="itemText">Key suspension members are designed to accept in-line force measurement, providing real-time insight into how vertical and lateral loads are carried through the chassis during operation.</div>
-        </div>
-      </div>
-    </section>
-
-    <section class="panel stack">
-      <div class="panelLabelAboveRow">
-        <div class="stackLabel">INTAKE, BOOST &amp; THERMAL SYSTEMS</div>
-      </div>
-      <div class="stackBody">
-        <div class="item"><div class="itemTitle">Integrated Boost &amp; Charge-Conditioning Architecture</div>
-          <div class="itemText">Naturally aspirated baseline operation is supported for validation. In boosted operation, an electronically clutched supercharger provides low-RPM response while electric turbos supply high-RPM airflow.</div>
-        </div>
-        <div class="item"><div class="itemTitle">Liquid-Cooled A2W Merge-Hat</div>
-          <div class="itemText">Charge conditioning and gas exchange are actively managed across operating modes to stabilize response, efficiency, and cylinder balance under transient load.</div>
-        </div>
-        <div class="item"><div class="itemTitle">Zoned Thermal Management &amp; Wake Control</div>
-          <div class="itemText">Front low-temperature circuits support charge conditioning and turbo intercooling, while rear thermal modules handle heat rejection and auxiliary loads.</div>
-        </div>
-      </div>
-    </section>
-
-    <section class="panel stack">
-      <div class="panelLabelAboveRow">
-        <div class="stackLabel">POWERTRAIN &amp; ENERGY ARCHITECTURE</div>
-      </div>
-      <div class="stackBody">
-        <div class="item"><div class="itemTitle">Primary + Auxiliary Engine Architecture</div>
-          <div class="itemText">An endurance-optimized V8 architecture provides primary propulsion, with engine configuration tailored to each platform’s operating envelope. A secondary billet Boxer-6 drives a generator supplying electrical power for fan systems, chassis actuation, control electronics, hybrid assist, and regenerative braking.</div>
-        </div>
-        <div class="item"><div class="itemTitle">Hybridized Electrical Backbone</div>
-          <div class="itemText">Generator and buffer battery smooth electrical transients and ensure consistent control authority independent of engine RPM.</div>
-        </div>
-        <div class="item"><div class="itemTitle">Adaptive AWD Driveline</div>
-          <div class="itemText">A mechanically robust AWD architecture enables real-time torque redistribution between axles in response to vehicle state.</div>
-        </div>
-      </div>
-    </section>
-
-    <div class="note">
-      “Architected for steady-state duty, deterministic control authority, and endurance operation rather than peak transient output.”
-    </div>
-  </section>
-
-  <!-- PAGE 3 -->
-  <section class="page" id="page3">
-    <!--<div class="page3Top">-->
-    <div class="pageCenterTitle">FORCE HUD PREVIEW</div>
-      <!--<div class="page3Title">FORCE HUD PREVIEW</div>-->
-      <!--<div class="page3Title">VEHICLE SYSTEMS DIAGRAM</div>-->
-    <!--</div>-->
-
-    <div class="page3Grid">
-      <section class="panel hudPanel">
-        <div class="hudFrame" role="img" aria-label="Force HUD preview">
-          <img class="hudBg" src="assets/hud_bg.png" alt="Force HUD preview" />
-          <!-- Overlay elements (separated) for future animation: chevrons, ring bars, yaw markers -->
-          <div class="hudQuote">“The driver sees the forces on the car — in real time”</div>
-          <svg class="hudOverlay" viewBox="0 0 1000 1400" aria-hidden="true">
-            <g id="yaw">
-              <rect id="yawCurrent" x="294" y="167" width="18" height="46" rx="4" fill="#00c8ff" opacity="0" />
-              <rect id="yawExpected" x="264" y="167" width="18" height="46" rx="4" fill="#6cf" opacity="0" />
-            </g>
-            <g id="forceChevrons" opacity="0">
-              <g id="fl_chevrons"></g>
-              <g id="fr_chevrons"></g>
-              <g id="rl_chevrons"></g>
-              <g id="rr_chevrons"></g>
-            </g>
-            <g id="effortRings" opacity="0">
-              <g id="eff_ring_1"></g>
-              <g id="eff_ring_2"></g>
-              <g id="eff_ring_3"></g>
-              <g id="eff_ring_4"></g>
-              <g id="eff_ring_5"></g>
-              <g id="eff_ring_6"></g>
-              <g id="eff_ring_7"></g>
-              <g id="eff_ring_8"></g>
-            </g>
-          </svg>
-        </div>
-        <!--<div class="hudCaption">“The driver sees the forces on the car — in real time”</div>-->
-        <div class="small caption">HUD visuals shown are illustrative and will evolve during development.</div>
-      </section>
-  </section>
-  <!-- PAGE 4 -->
-  <section class="page" id="page4">
-    <div class="pageCenterTitle">VEHICLE SYSTEMS DIAGRAM</div>
-      <section class="panel diagramPanel" aria-label="Vehicle Systems Diagram">
-        <div class="vsDiagram" role="img" aria-label="Vehicle systems flow diagram">
-          <div class="vsTop">
-            <div class="vsCol">
-              <div class="vsBox vsRed">
-                <div class="vsTitle">Endurance V8 — Primary Propulsion</div>
-                <div class="vsSub">Mechanical AWD torque source</div>
-              </div>
-              <div class="vsArrow"></div>
-              <div class="vsBox vsRed">
-                <div class="vsTitle">Live 2-Speed Dog Splitter + Sequential Dogbox</div>
-                <div class="vsSub">Front + Rear outputs</div>
-              </div>
-
-              <div class="vsSplit">
-                <div class="vsBranch">
-                  <div class="vsArrow"></div>
-                  <div class="vsBox vsRed">Front Output</div>
-                  <div class="vsArrow"></div>
-                  <div class="vsBox vsRed">Front QC Differential</div>
-                </div>
-                <div class="vsBranch">
-                  <div class="vsArrow"></div>
-                  <div class="vsBox vsRed">Rear Output</div>
-                  <div class="vsArrow"></div>
-                  <div class="vsBox vsRed">Hybrid Assist Motor</div>
-                  <div class="vsArrow"></div>
-                  <div class="vsBox vsRed">Rear QC Differential</div>
-                </div>
-              </div>
+        <div class="document-grid">
+          <article class="document-card">
+            <h3>Resume</h3>
+            <p>Canonical web resume with cleaned public-facing content.</p>
+            <div class="doc-links">
+              <a class="text-link" href="docs/NickWagner_Resume.pdf">Download PDF Resume</a>
+              <a class="text-link" href="resume.html">View Web Resume</a>
             </div>
-
-            <div class="vsCol">
-              <div class="vsBox vsRed">
-                <div class="vsTitle">Billet Boxer-6 + Generator</div>
-                <div class="vsSub">Dedicated electrical power source</div>
-              </div>
-              <div class="vsArrow vsArrowGold"></div>
-              <div class="vsBox vsRed">
-                <div class="vsTitle">DC Bus + Buffer Battery</div>
-                <ul class="vsList">
-                  <li>Transient smoothing</li>
-                  <li>Regen capture</li>
-                  <li>Electrical stability</li>
-                </ul>
-              </div>
-              <div class="vsArrow vsArrowGold"></div>
-              <div class="vsBox vsRed">
-                <div class="vsTitle">Electrical Loads &amp; Actuation</div>
-                <ul class="vsList">
-                  <li>Electric fan motors (suction)</li>
-                  <li>Hybrid assist &amp; regenerative braking</li>
-                  <li>Tilt actuation</li>
-                  <li>Heave actuation</li>
-                  <li>Electromechanical inertial elements</li>
-                  <li>Vehicle control electronics</li>
-                </ul>
-              </div>
+          </article>
+          <article class="document-card">
+            <h3>FedGPT Sponsor Technical Report</h3>
+            <p>
+              A sponsor-facing technical report covering Federal Reserve communication scoring, FOMC ingestion, OpenAI
+              Batch API processing, score materialization, visualization, limitations, and continuation recommendations.
+            </p>
+            <div class="doc-links">
+              <a class="text-link" href="docs/FedGPT_Sponsor_Technical_Report.pdf">Open PDF</a>
             </div>
-          </div>
-          <!-- SENSING + CONTROL + ACTUATION (PDF-style loop; isolated so top arrows stay intact) -->
-<div class="vsSenseLoop" aria-label="Sensing, control, and actuation loop">
-  <div class="vsBox sensing">
-    <h4>Sensing Inputs</h4>
-    <ul>
-      <li>Plenum ΔP</li>
-      <li>Ride height</li>
-      <li>IMU</li>
-      <li>Load-path instrumentation</li>
-      <li>Actuator feedback (pressure / load)</li>
-    </ul>
-  </div>
+          </article>
+        </div>
+      </div>
+    </section>
 
-  <div class="vsSenseArrowTop" aria-hidden="true"></div>
+    <section class="contact section-pad" id="contact" aria-label="Contact">
+      <div class="container contact-shell">
+        <p class="eyebrow">Contact</p>
+        <h2>Reach Out</h2>
+        <ul class="contact-list">
+          <li>Email: <a href="mailto:nicholashwagner@gmail.com">nicholashwagner@gmail.com</a></li>
+          <li>GitHub: <a href="https://github.com/nwags" target="_blank" rel="noopener">https://github.com/nwags</a></li>
+          <li>LinkedIn: <a href="https://www.linkedin.com/in/nicholashwagner/" target="_blank" rel="noopener">https://www.linkedin.com/in/nicholashwagner/</a></li>
+          <li>Location: Orefield / Lehigh Valley, Pennsylvania</li>
+        </ul>
+      </div>
+    </section>
+  </main>
 
-  <div class="vsBox control">
-    <h4>Control Logic</h4>
-    <p>Aero + chassis + force distribution control</p>
-  </div>
-
-  <div class="vsSenseArrowBottom" aria-hidden="true"></div>
-
-  <div class="vsSenseArrowDown" aria-hidden="true"></div>
-
-  <div class="vsBox fan">
-    <p>Fan motors / tilt / heave / inertial elements</p>
-  </div>
-</div>
-
-
-        <div class="note">“Force, energy, and control flow through the vehicle as a unified system.”</div>
-      </section>
+  <footer class="site-footer">
+    <div class="container">
+      <p>© 2026 Nicholas Wagner. Built as a technical portfolio and project archive.</p>
     </div>
-
-    <section class="panel econPanel">
-      <div class="panelLabelAboveRow">
-        <div class="panelLabel">Project Economics & Returns</div>
-      </div>
-      <div class="econGrid">
-        <div class="econBox">
-          <div class="econHdr">LIST PRICE: <span class="econAccent">~$900K–$1.1M</span></div>
-          <div class="econBody">(varies with spec/COGS)</div>
-          <div class="econBody">Target gross margin: <span class="econAccent">30–35%</span></div>
-        </div>
-        <div class="econBox">
-          <div class="econHdr">INITIAL HALO RUN</div>
-          <div class="econBody">3 builds (option to expand 4–8 based on demand, facilities, sponsor activations)</div>
-        </div>
-        <div class="econBox">
-          <div class="econHdr">RAISE (Project SPV)</div>
-          <div class="econBody">Target Size: <span class="econAccent">$4.0–$5.0M</span> into Project SPV (base case for 3 builds + NRE/tooling/testing/contingency)</div>
-        </div>
-      </div>
-      <div class="econText">
-        Participation in the Project SPV does not require vehicle purchase, and vehicle purchase does not require SPV investment.
-        Some anchor investors may elect to acquire a vehicle as a separate, arm’s-length transaction.
-      </div>
-      <div class="econText">
-        Funds prototype construction, non-recurring engineering, tooling, testing, and contingency, while creating a licensable IP base and exhibition asset platform.
-      </div>
-      <div class="econText">
-        Top-tier motorsport and advanced vehicle programs routinely spend tens to hundreds of millions annually on 
-        external engineering, simulation, aero development, controls, and specialized technology partners. The project 
-        targets this existing spend by creating validated, transferable system architectures that can be licensed or 
-        adopted without customers bearing the cost and risk of full-platform exploration.
-      </div>
-    </section>
-
-    <div class="note">
-      “Returns are driven by IP licensing, strategic technology partnerships, sponsored demonstrations, and selective asset sales—not vehicle production volume.”
-    </div>
-  </section>
-
-  <!-- PAGE 5 -->
-  <section class="page" id="page5">
-    <section class="panel timelinePanel">
-      <div class="panelLabelAboveRow">
-        <div class="panelLabel">TIMELINE</div>
-      </div>
-      <div class="timelineText">Project phases are structured around asset creation, validation, and commercialization readiness.</div>
-      <ul class="timelineList">
-        
-        <li><strong>Q1 2026</strong> — Capital formation, supplier engagement, detailed engineering, and long-lead component procurement</li>
-        <li><strong>Q3 2026 – Q3 2027</strong> — Prototype fabrication, integration, instrumentation, and validation testing</li>
-        <li><strong>Q3 2027</strong> — Public reveal and exhibition launch <strong>Preferred venue: America On Wheels Museum (Allentown, PA)</strong> Optional timing alignment: <strong>SEMA 2027</strong></li>
-        <li><strong>2027–2028</strong> — Demonstrations, events, record attempts, and licensing discussions</li>
-      </ul>
-    </section>
-
-    <section class="panel orgPanel">
-      <div class="panelLabelAboveRow">
-        <div class="panelLabel">Org Diagram</div>
-      </div>
-      <div class="orgWrap">
-        <div class="orgBox">
-          <div class="orgTitle">WAGNER ADVANCED GROUP SYSTEMS IP HOLDINGS, LLC</div>
-          <div class="orgSub">Long-lived IP holdco owner of patents, proprietary architectures, control algorithms, and selective technical publications.</div>
-        </div>
-        <div class="orgArrow"><span>IP license / royalty</span></div>
-        <div class="orgRow">
-          <div class="orgBox orgBox--spv">
-            <div class="orgTitle">WAGNER VALKYRIES SPV LLC</div>
-            <div class="orgSub">Project-specific entity funding prototype builds, testing, and demonstrations.</div>
-          </div>
-          <div class="orgSide">
-            <div class="orgSideLabel">Capital (calls) / Returns</div>
-            <div class="orgSideArrow" aria-hidden="true"></div>
-          </div>
-        </div>
-        <div class="orgArrow"><span>MSA / SOW / Milestones</span></div>
-        <div class="orgBox">
-          <div class="orgTitle">NICK WAGNER AUTOMOTIVE GROUP SYSTEMS LLC (NWAGS)</div>
-          <div class="orgSub">Operations, manufacturing coordination, and project execution.</div>
-        </div>
-        <div class="orgFoot">
-          Corporate entities are intentionally separated to isolate prototype and operational risk, protect core intellectual property,
-          enable selective publication of research and technical white papers, and maintain a clean and transparent capital structure
-          for investors and strategic partners. This structure separates three roles:
-          <ol>
-            <li>Investors fund a finite, asset-creation project via the SPV,</li>
-            <li>NWAGS executes engineering under arm's-length service agreements, and</li>
-            <li>Downstream customers/licensees engage with validated IP and architectures without owning or operating the platform.</li>
-          </ol>
-        </div>
-      </div>
-    </section>
-
-    <section class="ctaRow">
-      <div class="ctaCard">
-        <div class="ctaTitle">Book a 30-Minute Diligence Call</div>
-        <div class="ctaSub">Discuss technical specifications, project structure, and investment terms</div>
-        <a class="btn" href="https://calendar.app.google/SWfZb5DQ8t94SB3y5" target="_blank" rel="noopener">Schedule Now <span aria-hidden="true">→</span></a>
-      </div>
-
-      <a class="qr" href="https://calendar.app.google/SWfZb5DQ8t94SB3y5" target="_blank" rel="noopener" aria-label="Open booking link (same as QR)">
-        <img src="assets/qr_clean2.png" alt="QR code to schedule diligence call" />
-      </a>
-    </section>
-
-    <footer class="footer">
-      Copyright 2026 Nick Wagner Automotive Group Systems, LLC (NWAGS) • Wagner Advanced Group Systems IP Holdings, LLC<br/>
-      Informational only; not an offer to sell securities.
-    </footer>
-  </section>
-
-</main>
-
-<script src="hud.js" defer></script>
+  </footer>
 </body>
 </html>

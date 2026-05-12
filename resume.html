@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Nicholas Wagner | Resume</title>
+  <meta name="description" content="Resume of Nicholas Wagner: financial engineering, AI-native research infrastructure, SEC/Fed data systems, and event-driven investing workflows." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,400;0,500;0,600;1,400&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="personal.css" />
+</head>
+<body class="resume-page">
+  <header class="site-header">
+    <div class="container nav-shell">
+      <a class="brand" href="index.html">Nicholas Wagner</a>
+      <nav aria-label="Resume navigation">
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="index.html#projects">Projects</a></li>
+          <li><a href="docs/NickWagner_Resume.pdf">Download PDF Resume</a></li>
+          <li><a href="valkyries.html">Valkyries</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="resume-main" id="main">
+    <article class="resume-sheet" aria-label="Nicholas Wagner resume">
+      <header class="resume-header">
+        <h1>Nicholas Wagner</h1>
+        <p class="resume-meta">Orefield, PA · (610) 428-9482 · nicholashwagner@gmail.com</p>
+        <p class="resume-links">
+          Website: <a href="https://nwags.com">https://nwags.com</a> ·
+          GitHub: <a href="https://github.com/nwags">https://github.com/nwags</a> ·
+          LinkedIn: <a href="https://www.linkedin.com/in/nicholashwagner/">https://www.linkedin.com/in/nicholashwagner/</a>
+        </p>
+      </header>
+
+      <section class="resume-section">
+        <h2>Professional Summary</h2>
+        <p>
+          Financial engineering and AI/data systems builder focused on local-first research infrastructure, NLP/LLM
+          pipelines, event-driven investing workflows, and quantitative dashboards. Experience spans Federal Reserve
+          communication scoring, SEC filing/event extraction, portfolio-signal research, API/data quality engineering,
+          and robotics/control software from the early Opentrons liquid-handling platform.
+        </p>
+      </section>
+
+      <section class="resume-section">
+        <h2>Education</h2>
+        <div class="entry">
+          <h3>Lehigh University — M.S., Financial Engineering</h3>
+          <p class="entry-meta">May 2026</p>
+        </div>
+        <div class="entry">
+          <h3>University of Wisconsin–Madison — MBA, Finance</h3>
+          <p class="entry-meta">May 2012</p>
+        </div>
+        <div class="entry">
+          <h3>Lehigh University — B.A., Mathematics</h3>
+          <p class="entry-meta">September 2005</p>
+        </div>
+      </section>
+
+      <section class="resume-section">
+        <h2>Selected Projects</h2>
+
+        <div class="entry">
+          <h3>AI-Native Financial Research Infrastructure / m-cache Projects</h3>
+          <p class="entry-meta">2025 – Present</p>
+          <ul>
+            <li>Building local-first Python research infrastructure for SEC filings, Federal Reserve communications, earnings calls, and news using normalized Parquet authorities, deterministic document identities, raw/parsed artifact tracking, and reproducible ingestion workflows.</li>
+            <li>Designing shared CLI/API conventions across py-sec-edgar-m, py-fed-m, py-earnings-calls-m, and py-news-m to support event extraction, augmentation, provenance tracking, and offline research.</li>
+            <li>Prototyping an AI-native event-driven investment workflow in which agents ingest public documents, extract structured events, generate trade candidates, run backtests, and produce experiment postmortems.</li>
+          </ul>
+        </div>
+
+        <div class="entry">
+          <h3>Federal Reserve Communication Scoring — "FedGPT"</h3>
+          <p class="entry-meta">Sponsor: Mikhail Samonov, Two Centuries Investments · 2026</p>
+          <ul>
+            <li>Built an acquisition and scoring pipeline for Federal Reserve/FOMC communication materials, including scraping, normalization, OpenAI Batch API job construction, model-output parsing, and score materialization.</li>
+            <li>Produced structured policy-communication score families covering short-rate sentiment, long-rate sentiment, inflation, employment, credit conditions, economic growth, surprise, and policy phase.</li>
+            <li>Connected scored communication series to a SolidJS/ECharts dashboard for sponsor-facing analysis of static-versus-dynamic portfolio explanations.</li>
+            <li>Wrote a sponsor-facing technical report documenting the system architecture, scoring methodology, limitations from sparsity/serial correlation, and a staged continuation plan.</li>
+          </ul>
+        </div>
+
+        <div class="entry">
+          <h3>SEC 8-K Event Classification / Corporate Event Forecasting</h3>
+          <p class="entry-meta">Sponsor: Hariom Tatsat, Barclays · 2023 – 2024</p>
+          <ul>
+            <li>Parsed 15 years of S&amp;P 500 8-K filings using SEC EDGAR tooling and custom parsing workflows; labeled filings into 14 material corporate-event classes including M&amp;A and share repurchase.</li>
+            <li>Trained a BERT-based classifier and backtested event portfolios against an equal-weight benchmark.</li>
+            <li>Built filing-to-event research workflows connecting document parsing, labeled datasets, model training, and portfolio testing.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="resume-section">
+        <h2>Relevant Work Experience</h2>
+
+        <div class="entry">
+          <h3>Lehigh University — Teaching Assistant, Introduction to Finance</h3>
+          <p class="entry-meta">Bethlehem, PA · September 2023 – May 2024</p>
+          <ul>
+            <li>Conducted weekly recitations for approximately 30 students, reinforcing foundational finance concepts and quantitative problem-solving methods.</li>
+          </ul>
+        </div>
+
+        <div class="entry">
+          <h3>Infosys Limited — Quality Assurance Engineer, American Express Contract</h3>
+          <p class="entry-meta">Tempe, AZ · September 2021 – September 2023</p>
+          <ul>
+            <li>Designed and executed functional and regression tests for Java-based APIs; authored Postman suites and SQL validation queries to verify service behavior and data flows.</li>
+            <li>Investigated API defects across request/response contracts, persistence behavior, and integration environments; contributed code-level review feedback and test-harness improvements.</li>
+          </ul>
+        </div>
+
+        <div class="entry">
+          <h3>Opentrons Labworks — Technical Co-Founder / Software Engineer</h3>
+          <p class="entry-meta">New York, NY · August 2013 – September 2016</p>
+          <ul>
+            <li>Designed and implemented firmware and a Python API for the OT-1 liquid-handling robot, helping ship the product to more than 300 labs in 30 countries.</li>
+            <li>Managed a small development team while integrating CI/CD and Agile practices into early product development.</li>
+            <li>Helped secure a $7.2M seed investment by delivering a functioning prototype during HAX and Y Combinator Demo Day.</li>
+          </ul>
+        </div>
+
+        <div class="entry">
+          <h3>State of Wisconsin Investment Board — Fixed Income Analyst Intern</h3>
+          <p class="entry-meta">Madison, WI · May 2011 – May 2012</p>
+          <ul>
+            <li>Developed Excel/VBA tools for modeling Treasury spot rates.</li>
+            <li>Assessed bond valuations and ratings by analyzing company financial statements, bond covenants, and fixed-income risk factors.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="resume-section">
+        <h2>Additional Experience</h2>
+
+        <div class="entry">
+          <h3>Sweet Magnolia Churros — Co-Founder</h3>
+          <p class="entry-meta">April 2024 – Present</p>
+          <ul>
+            <li>Co-founded a catering and farmers-market food business; handled licensing, vendor agreements, compliance, logistics, and event operations.</li>
+          </ul>
+        </div>
+
+        <div class="entry">
+          <h3>Energy Engineering and Controls — Project Associate</h3>
+          <p class="entry-meta">2017 – 2022</p>
+          <ul>
+            <li>Managed static-display aircraft restoration projects, including scope, schedule, vendor coordination, documentation, and safety-conscious field workflows.</li>
+          </ul>
+        </div>
+
+        <div class="entry">
+          <h3>Mathnasium — Math Tutor</h3>
+          <p class="entry-meta">October 2021 – July 2022</p>
+          <ul>
+            <li>Delivered individualized mathematics instruction using the Mathnasium method.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="resume-section">
+        <h2>Core Competencies</h2>
+        <div class="entry">
+          <h3>Programming &amp; Data</h3>
+          <p>Python, SQL, Java, C/C++, JavaScript/TypeScript, pandas, NumPy, scikit-learn, PyTorch, DuckDB, Parquet</p>
+        </div>
+        <div class="entry">
+          <h3>ML / NLP / LLM Systems</h3>
+          <p>LLM batch scoring, structured extraction, embeddings, prompt/version control, BERT classifiers, model evaluation, time-series signal research</p>
+        </div>
+        <div class="entry">
+          <h3>Financial Analytics</h3>
+          <p>Fixed income term structure, event-driven alpha research, factor models, portfolio attribution, Monte Carlo, backtesting</p>
+        </div>
+        <div class="entry">
+          <h3>Cloud / DevOps / Tooling</h3>
+          <p>AWS Lambda, S3, AWS Batch, Docker, GitHub Actions, Jenkins, Terraform, Linux</p>
+        </div>
+        <div class="entry">
+          <h3>Visualization &amp; Reporting</h3>
+          <p>SolidJS, ECharts, Streamlit, technical writing, sponsor-facing reports, dashboards</p>
+        </div>
+      </section>
+
+      <!-- TODO: If docs/NickWagner_Resume.pdf is a temporary fallback copy, replace it with a cleaned export generated from this resume.html source. -->
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p><a href="index.html">Back to portfolio homepage</a></p>
+    </div>
+  </footer>
+</body>
+</html>

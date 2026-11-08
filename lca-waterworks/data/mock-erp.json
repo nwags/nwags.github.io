@@ -1,0 +1,15 @@
+{
+  "schemaVersion": "1.0",
+  "synthetic": true,
+  "asOf": "2026-11-07",
+  "description": "Entirely fictional 2027 budget cash extract. This is a generic integration fixture, not a Munis API response or an LCA dataset.",
+  "records": [
+    {"recordId":"MOCK-001","fund":"SUBURBAN_WATER","fiscalYear":2027,"metric":"customer_receipts","amount":19000000,"currency":"USD","basis":"cash","sourceSystem":"GENERIC_ERP_DEMO","sourceBatch":"MOCK-2027-BUDGET","synthetic":true},
+    {"recordId":"MOCK-002","fund":"SUBURBAN_WATER","fiscalYear":2027,"metric":"other_receipts","amount":1000000,"currency":"USD","basis":"cash","sourceSystem":"GENERIC_ERP_DEMO","sourceBatch":"MOCK-2027-BUDGET","synthetic":true},
+    {"recordId":"MOCK-003","fund":"SUBURBAN_WATER","fiscalYear":2027,"metric":"operating_expense","amount":14000000,"currency":"USD","basis":"cash","sourceSystem":"GENERIC_ERP_DEMO","sourceBatch":"MOCK-2027-BUDGET","synthetic":true},
+    {"recordId":"MOCK-004","fund":"SUBURBAN_WATER","fiscalYear":2027,"metric":"debt_service","amount":3200000,"currency":"USD","basis":"cash","sourceSystem":"GENERIC_ERP_DEMO","sourceBatch":"MOCK-2027-BUDGET","synthetic":true},
+    {"recordId":"MOCK-005","fund":"SUBURBAN_WATER","fiscalYear":2027,"metric":"capital_spending","amount":10000000,"currency":"USD","basis":"cash","sourceSystem":"GENERIC_ERP_DEMO","sourceBatch":"MOCK-2027-BUDGET","synthetic":true},
+    {"recordId":"MOCK-006","fund":"SUBURBAN_WATER","fiscalYear":2027,"metric":"borrowing","amount":4000000,"currency":"USD","basis":"cash","sourceSystem":"GENERIC_ERP_DEMO","sourceBatch":"MOCK-2027-BUDGET","synthetic":true}
+  ],
+  "controlTotals": {"customer_receipts":19000000,"other_receipts":1000000,"operating_expense":14000000,"debt_service":3200000,"capital_spending":10000000,"borrowing":4000000}
+}

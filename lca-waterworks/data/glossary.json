@@ -1,0 +1,558 @@
+{
+  "schemaVersion": "1.0",
+  "modelVersion": "0.2.0",
+  "title": "WaterWorks financial and model glossary",
+  "scope": "Plain-English definitions for this independent planning model; model-specific conventions are explicit.",
+  "references": [
+    "model.mjs",
+    "model.html",
+    "docs/METHODOLOGY.md",
+    "docs/CONSTRAINTS.md",
+    "docs/DATA_GUIDE.md"
+  ],
+  "terms": [
+    {
+      "id": "revenue-vs-cash",
+      "term": "Revenue versus cash receipts",
+      "definition": "Revenue is income recognized under an accounting basis. A cash receipt is money actually received. Recognition and collection can happen in different periods. Borrowing and selling an investment can bring in cash without creating operating revenue.",
+      "modelUse": "The annual planning ledger uses cash receipts and payments. Historical service-charge revenue and operating expense are accounting evidence with different timing and scope; do not assume they equal the cash ledger.",
+      "seeAlso": [
+        "customer-receipts",
+        "borrowing",
+        "investment-conversions"
+      ]
+    },
+    {
+      "id": "customer-receipts",
+      "term": "Customer receipts",
+      "definition": "Cash collected from customers for the division’s services, including modeled retail and residual contract or other customer amounts.",
+      "modelUse": "customer = fixedReceipts + usageReceipts + addonReceipts + contractReceipts. The illustrated household bill does not determine these total receipts.",
+      "seeAlso": [
+        "retail-exposure",
+        "fixed-charge",
+        "variable-charge"
+      ]
+    },
+    {
+      "id": "operating-receipts",
+      "term": "Operating receipts",
+      "definition": "Cash from service operations plus other operating receipts and investment income under this model’s planning convention. This grouping is a model definition, not a statement of formal accounting classification.",
+      "modelUse": "operatingReceipts = customer + otherOperating + investment. Grants, capital fees, borrowing and investment conversions are outside this grouping.",
+      "seeAlso": [
+        "coverage-proxy",
+        "investment-income",
+        "revenue-vs-cash"
+      ]
+    },
+    {
+      "id": "investment-income",
+      "term": "Investment income",
+      "definition": "Cash interest or other investment earnings. Earning interest is different from converting the underlying investment into cash.",
+      "modelUse": "investment is a separate receipt series. The investment-retention control changes the 2028–2031 nominal baseline; 2027 remains anchored. No balance-and-yield forecast is reconstructed.",
+      "seeAlso": [
+        "investment-conversions",
+        "operating-receipts"
+      ]
+    },
+    {
+      "id": "investment-conversions",
+      "term": "Investment conversions",
+      "definition": "Moving an existing investment into cash releases an asset already held. The amount converted is not new income.",
+      "modelUse": "investmentConversions is included in cash sources but excluded from operating receipts and the coverage numerator. It does not automatically make restricted investments spendable.",
+      "seeAlso": [
+        "investment-income",
+        "restricted-cash",
+        "cash-sources"
+      ]
+    },
+    {
+      "id": "cash-sources",
+      "term": "Annual cash sources",
+      "definition": "All modeled inflows during a year: customer and other operating receipts, investment income, capital receipts, grants, borrowing and investment conversions.",
+      "modelUse": "cashSources equals receipts + baseBorrowing + extraBorrowing + investmentConversions. Opening cash is a starting stock, not a receipt during the year.",
+      "seeAlso": [
+        "cash-uses",
+        "opening-cash",
+        "borrowing"
+      ]
+    },
+    {
+      "id": "cash-uses",
+      "term": "Annual cash uses",
+      "definition": "All modeled outflows during a year: operating payments, lease payments, other capital payments, debt service and capital spending.",
+      "modelUse": "cashUses = operatingExpense + lease + otherCapitalPayments + baseDebtService + extraDebtService + capex. Positive uses are plotted upward; the cash bridge subtracts them.",
+      "seeAlso": [
+        "cash-sources",
+        "net-cash-movement",
+        "capex"
+      ]
+    },
+    {
+      "id": "borrowing",
+      "term": "Borrowing / debt draw",
+      "definition": "Cash received from a lender that creates an obligation to repay principal, normally with interest. A loan can improve today’s cash while adding future payments.",
+      "modelUse": "Planned and additional borrowing stay separate. Incremental borrowing is capped after existing capital funding; additional loans begin payments the next year. Borrowing is excluded from operating income and the coverage numerator.",
+      "seeAlso": [
+        "debt-service",
+        "principal",
+        "interest",
+        "terminal-debt"
+      ]
+    },
+    {
+      "id": "grants",
+      "term": "Grants / contributions",
+      "definition": "Funding or contributions expected from outside parties. A grant is distinct from a repayable loan, but its award, eligibility, timing and conditions still matter.",
+      "modelUse": "Planned and additional grants are separate receipts. Retention and delay controls are assumptions; receipts delayed beyond 2031 do not support cash inside the horizon. No selected amount establishes an award.",
+      "seeAlso": [
+        "borrowing",
+        "identified-capital-funding",
+        "scenario-assumption"
+      ]
+    },
+    {
+      "id": "capital-receipts",
+      "term": "Capital receipts / fees",
+      "definition": "Cash receipts associated with capital, such as capacity or capital-related fees, kept separate from customer operating receipts.",
+      "modelUse": "capitalReceipts remains a distinct baseline series and is deducted before capping hypothetical additional grants and borrowing. It is excluded from the coverage numerator.",
+      "seeAlso": [
+        "identified-capital-funding",
+        "customer-receipts",
+        "coverage-proxy"
+      ]
+    },
+    {
+      "id": "identified-capital-funding",
+      "term": "Identified capital funding",
+      "definition": "The chart’s sum of planned borrowing, additional borrowing, planned grants, additional grants and capital receipts during the year.",
+      "modelUse": "This aggregate timing comparison does not allocate a source to a specific project or certify eligibility, earmarking or approval. Operating surplus and unrestricted reserves can also support capital cash needs.",
+      "seeAlso": [
+        "capital-residual",
+        "grants",
+        "borrowing",
+        "capex"
+      ]
+    },
+    {
+      "id": "capital-residual",
+      "term": "Capital less identified funding",
+      "definition": "The positive difference between capital spending and the identified borrowing, grants and capital receipts in that year.",
+      "modelUse": "capitalResidual = max(0, capex − identifiedCapitalFunding). It is not a cash deficit or a required new loan. The separate excess measure is max(0, identifiedCapitalFunding − capex). Inspect all cash sources, uses and ending cash.",
+      "seeAlso": [
+        "identified-capital-funding",
+        "net-cash-movement",
+        "unrestricted-cash"
+      ]
+    },
+    {
+      "id": "debt-service",
+      "term": "Debt service",
+      "definition": "Payments on debt, generally principal plus interest. Debt service is an outflow; a new debt draw is an inflow.",
+      "modelUse": "debtService = baseDebtService + extraDebtService. The cash ledger and coverage denominator include both. The published baseline schedule does not supply a complete principal/interest split or remaining-liability rollforward.",
+      "seeAlso": [
+        "principal",
+        "interest",
+        "coverage-proxy",
+        "borrowing"
+      ]
+    },
+    {
+      "id": "principal",
+      "term": "Principal",
+      "definition": "The amount borrowed that remains to be repaid, excluding interest. Paying principal reduces the outstanding loan balance.",
+      "modelUse": "Additional-loan balances are rolled forward to estimate outstanding incremental principal after 2031. Remaining baseline principal is not estimated from the published service schedule.",
+      "seeAlso": [
+        "interest",
+        "debt-service",
+        "terminal-debt"
+      ]
+    },
+    {
+      "id": "interest",
+      "term": "Interest",
+      "definition": "The charge for using borrowed money, usually calculated as a rate applied to outstanding principal over time.",
+      "modelUse": "Incremental loans use the selected fixed annual interest rate and term with level annuity payments. Changing that rate does not reprice the published base debt-service schedule.",
+      "seeAlso": [
+        "principal",
+        "annuity",
+        "debt-service"
+      ]
+    },
+    {
+      "id": "annuity",
+      "term": "Level annuity payment",
+      "definition": "A loan structure with a generally constant periodic payment; the shares of interest and principal change as the balance is repaid.",
+      "modelUse": "Annual payment = P × r / (1 − (1+r)^−n), with r as a decimal annual rate and n as years. At zero interest it is P/n. Payments start the year after each additional draw.",
+      "seeAlso": [
+        "interest",
+        "principal",
+        "terminal-debt"
+      ]
+    },
+    {
+      "id": "terminal-debt",
+      "term": "Remaining incremental debt / terminal obligations",
+      "definition": "The additional loan principal still outstanding at the end of the model horizon, plus the continuing payment obligations beyond it.",
+      "modelUse": "The dashboard reports extra principal after 2031 and estimated additional annual payment in 2032. These are incremental loans only; they are not the division’s full debt balance.",
+      "seeAlso": [
+        "principal",
+        "borrowing",
+        "annuity"
+      ]
+    },
+    {
+      "id": "capex",
+      "term": "Capex / capital spending",
+      "definition": "Cash spent on long-lived assets or improvements, such as treatment facilities, mains and major rehabilitation. Capital cash spending differs from annual depreciation expense or a bill’s capital charge.",
+      "modelUse": "capex follows the selected project or condensed cash schedule, adjusted for the overrun assumption. Required project scope is retained. Separate other capital payments are not silently folded into this series.",
+      "seeAlso": [
+        "cip",
+        "opex",
+        "other-capital-payments"
+      ]
+    },
+    {
+      "id": "opex",
+      "term": "Opex / O&M / operating cash payments",
+      "definition": "The recurring cash costs of running the system, such as labor, energy, chemicals and maintenance. O&M means operations and maintenance.",
+      "modelUse": "operatingExpense is the cash-payment path anchored to 2027, with later growth blended from plan drivers and historical expense growth. It is the sole cash-days denominator and excludes debt, lease and capital payments.",
+      "seeAlso": [
+        "capex",
+        "cash-days",
+        "historical-trend"
+      ]
+    },
+    {
+      "id": "other-capital-payments",
+      "term": "Other capital payments",
+      "definition": "Cash outflows in the source bridge that are distinct from modeled project capital spending, operating expense, lease payments and debt service.",
+      "modelUse": "otherCapitalPayments is a separate uses series to preserve source classification and avoid counting it twice. It affects cash but is excluded from the coverage numerator.",
+      "seeAlso": [
+        "capex",
+        "cash-uses",
+        "coverage-proxy"
+      ]
+    },
+    {
+      "id": "lease-payments",
+      "term": "Lease payments",
+      "definition": "Cash paid under a lease or concession arrangement, shown separately from operating payments and debt service.",
+      "modelUse": "lease reduces both annual cash and the planning coverage numerator. Its inclusion here does not establish a legal covenant definition or agreement interpretation.",
+      "seeAlso": [
+        "cash-uses",
+        "coverage-proxy"
+      ]
+    },
+    {
+      "id": "restricted-cash",
+      "term": "Restricted cash",
+      "definition": "Cash whose use is limited by law, contract, covenant or another binding condition. A positive balance does not automatically make it available for ordinary operations or any capital project.",
+      "modelUse": "Restricted balances are excluded from modeled spendable cash. The dashboard does not release restrictions or infer permitted uses from an aggregate report.",
+      "seeAlso": [
+        "unrestricted-cash",
+        "opening-cash",
+        "identified-capital-funding"
+      ]
+    },
+    {
+      "id": "unrestricted-cash",
+      "term": "Unrestricted cash / liquidity",
+      "definition": "Cash available within the modeled division boundary without the specific restrictions excluded by the source bridge. Liquidity describes capacity to make payments when due.",
+      "modelUse": "Ending unrestricted cash rolls forward from opening cash plus net cash movement. Other divisions’ cash and unconverted investments are not silently added. A positive balance can still miss a chosen cash-days target.",
+      "seeAlso": [
+        "restricted-cash",
+        "cash-days",
+        "net-cash-movement"
+      ]
+    },
+    {
+      "id": "opening-cash",
+      "term": "Opening and ending cash",
+      "definition": "Opening cash is the balance at the start of the year. Ending cash is the balance after the year’s inflows and outflows. These are stocks measured at a point in time.",
+      "modelUse": "cash = openingCash + netFlow. Each next year starts with the previous closing balance. Opening cash is excluded from annual sources to distinguish reserves from new inflows.",
+      "seeAlso": [
+        "cash-sources",
+        "net-cash-movement",
+        "unrestricted-cash"
+      ]
+    },
+    {
+      "id": "net-cash-movement",
+      "term": "Net cash movement / cash surplus or shortfall",
+      "definition": "Annual inflows less annual outflows. Positive movement adds to reserves; negative movement draws reserves down. Negative movement does not by itself mean the ending balance is below zero.",
+      "modelUse": "netFlow = cashSources − cashUses. Check ending cash and targets as well as the movement. Capital residual is a separate, narrower comparison.",
+      "seeAlso": [
+        "opening-cash",
+        "capital-residual",
+        "cash-days"
+      ]
+    },
+    {
+      "id": "coverage-proxy",
+      "term": "Coverage proxy / DSCR",
+      "definition": "A planning ratio comparing cash available before debt service with the debt payments due. DSCR means debt-service coverage ratio; an actual covenant can use different permitted adjustments and definitions.",
+      "modelUse": "coverage = (customer + otherOperating + investment − operatingExpense − lease) / debtService. Capital fees, grants, debt draws and investment conversions are excluded from the numerator. If debt service is zero the ratio is not applicable. The selected floor is not a verified covenant.",
+      "seeAlso": [
+        "debt-service",
+        "operating-receipts",
+        "planning-feasibility"
+      ]
+    },
+    {
+      "id": "cash-days",
+      "term": "Cash days / days of operating cash",
+      "definition": "The number of days of operating payments that the ending unrestricted balance could cover at that year’s average daily operating cost.",
+      "modelUse": "cashDays = cash / operatingExpense × 365. requiredCash = operatingExpense / 365 × selected minimum days. Debt service, lease and capital are outside this denominator; a target is a planning assumption.",
+      "seeAlso": [
+        "unrestricted-cash",
+        "opex",
+        "planning-feasibility"
+      ]
+    },
+    {
+      "id": "tariff",
+      "term": "Tariff / rate schedule",
+      "definition": "The rules and unit prices used to calculate a customer’s charge for a defined service, class, meter and billing period.",
+      "modelUse": "Use the relevant service scope and period. 2027 component tariffs are proposed at the evidence cutoff; later reference growth and incremental uplifts are explicit scenario assumptions.",
+      "seeAlso": [
+        "fixed-charge",
+        "variable-charge",
+        "uplift"
+      ]
+    },
+    {
+      "id": "fixed-charge",
+      "term": "Fixed charge / fixed receipts",
+      "definition": "A customer charge that does not vary directly with the illustrated gallons in the billing period, often linked to meter size or service availability.",
+      "modelUse": "The bill’s fixed line is calculated from tariff components. The fund’s fixedReceipts uses an assumed share of exposed customer receipts and a separate account-growth factor; one household’s bill is not that allocation.",
+      "seeAlso": [
+        "variable-charge",
+        "retail-exposure",
+        "customer-receipts"
+      ]
+    },
+    {
+      "id": "variable-charge",
+      "term": "Variable / usage charge",
+      "definition": "A charge that varies with billable usage, such as dollars per 1,000 gallons. Marginal blocks apply each block’s rate only to usage inside that block.",
+      "modelUse": "usageReceipts responds to the assumed usage share, tariff ratio, volume growth, industrial shock and optional elasticity. Common wastewater alternatives can have different billable-usage rules.",
+      "seeAlso": [
+        "fixed-charge",
+        "elasticity",
+        "retail-exposure"
+      ]
+    },
+    {
+      "id": "edu",
+      "term": "EDU — equivalent dwelling unit",
+      "definition": "A standardized unit representing a dwelling-equivalent level of service or capacity. It is not necessarily the number of people, meters or actual gallons.",
+      "modelUse": "Applicable wastewater fixed components use the selected EDU count. Other agreements can define allocation differently; this household example does not reconstruct all commercial or industrial EDU determinations.",
+      "seeAlso": [
+        "tariff",
+        "variable-charge"
+      ]
+    },
+    {
+      "id": "ccrc",
+      "term": "CCRC — capital cost recovery charge",
+      "definition": "A separately identified capital-related charge collected from the applicable City customer through the tariff. It is customer money, distinct from an outside grant or a repayable loan. Collection is also distinct from a project’s cash spending in that year.",
+      "modelUse": "City bill components include water and sewer capital recovery. Forward add-on shares and growth are assumptions; the model does not certify eligible-project allocation or duplicate pass-throughs already embedded in published prices.",
+      "seeAlso": [
+        "capex",
+        "ao",
+        "retail-exposure"
+      ]
+    },
+    {
+      "id": "ao",
+      "term": "AO — administrative order",
+      "definition": "A regulatory order; in the City bill context, AO refers to the separately identified administrative-order fee.",
+      "modelUse": "The City calculator shows its applicable fee component. Forward add-on receipt share and growth are assumptions. The fee does not itself establish the cost, timing or eligibility of every compliance project.",
+      "seeAlso": [
+        "ccrc",
+        "capex",
+        "tariff"
+      ]
+    },
+    {
+      "id": "cpi",
+      "term": "CPI — consumer price index",
+      "definition": "An index of consumer prices. An annual CPI percentage measures change in the index; the chosen geography, period and seasonal convention matter.",
+      "modelUse": "The City core-ceiling proxy uses max(0, selected CPI + 2.5 percentage points). The documented agreement convention is Northeast CPI-U, not seasonally adjusted, annual change through the prior June. Future CPI inputs are assumptions.",
+      "seeAlso": [
+        "percentage-points",
+        "uplift",
+        "scenario-assumption"
+      ]
+    },
+    {
+      "id": "cagr",
+      "term": "CAGR — compound annual growth rate",
+      "definition": "The constant yearly rate that would turn a starting value into an ending value over a stated number of intervals. It does not say that every intervening year grew at that rate.",
+      "modelUse": "CAGR = ((end / start)^(1 / number of years) − 1) × 100%. Historical expense CAGR is one scenario growth input, not pure inflation or a causal forecast.",
+      "seeAlso": [
+        "historical-trend",
+        "cpi"
+      ]
+    },
+    {
+      "id": "historical-trend",
+      "term": "Historical cost-trend blend",
+      "definition": "A selected mix of published annual expense-growth drivers and observed historical operating-expense growth.",
+      "modelUse": "From 2028, growth = plan growth × (1 − historyWeight/100) + historical growth × historyWeight/100 + extra O&M drift/100. The 25% central weight is judgment, not a calibrated probability.",
+      "seeAlso": [
+        "cagr",
+        "scenario-prior",
+        "opex"
+      ]
+    },
+    {
+      "id": "retail-exposure",
+      "term": "Retail exposure / receipt allocation",
+      "definition": "The assumed fraction of customer receipts that responds to the modeled retail tariff components. It is different from the residential share of accounts or all division cash sources.",
+      "modelUse": "Within exposed receipts, fixed, usage and applicable City add-on shares are modeled separately. Residual contract/other customer receipts use a different drift. Grants, borrowing and investment income are not scaled as retail sales.",
+      "seeAlso": [
+        "customer-receipts",
+        "fixed-charge",
+        "scenario-assumption"
+      ]
+    },
+    {
+      "id": "elasticity",
+      "term": "Price elasticity / demand response",
+      "definition": "A sensitivity describing how usage changes relative to a price change. A negative value represents lower modeled demand when the relevant usage price rises.",
+      "modelUse": "Zero means no modeled price response. The selected value affects exposed variable and City add-on receipts using a relative price index; it does not change the illustrative household gallons. This is an assumption, not a measured response.",
+      "seeAlso": [
+        "variable-charge",
+        "retail-exposure"
+      ]
+    },
+    {
+      "id": "uplift",
+      "term": "Incremental tariff uplift",
+      "definition": "A scenario percentage applied on top of the selected reference tariff path. Zero uplift keeps that reference path, which can already include annual growth.",
+      "modelUse": "Fixed, usage and City add-on uplifts compound separately. Freeze 2026 tariffs is a distinct starting path. Maximum uplift bounds the implemented search/policy control, not necessarily total bill growth or legal authority.",
+      "seeAlso": [
+        "tariff",
+        "percentage-points",
+        "planning-feasibility"
+      ]
+    },
+    {
+      "id": "percentage-points",
+      "term": "Percent versus percentage points",
+      "definition": "A percentage is a proportional change or share. A percentage point is an absolute difference between two percentages: growth increasing from 3% to 5% is an increase of 2 percentage points.",
+      "modelUse": "O&M drift and CPI-plus-margin use additive percentage points. Tariff uplifts multiply a reference price path; combining 5% growth and a 2% uplift gives 7.1%, not 7%.",
+      "seeAlso": [
+        "cpi",
+        "uplift"
+      ]
+    },
+    {
+      "id": "scenario-prior",
+      "term": "Scenario prior / judgmental weight",
+      "definition": "A starting belief or judgment used to frame a scenario. A weight becomes a calibrated probability only when supported by an appropriate evidence-based estimation method.",
+      "modelUse": "The named scenarios have no measured likelihoods. The 25% historical-cost blend is a formula weight, not a 25% probability. A central planning estimate is a starting scenario, not a statistically proven most likely outcome.",
+      "seeAlso": [
+        "scenario-assumption",
+        "historical-trend"
+      ]
+    },
+    {
+      "id": "scenario-assumption",
+      "term": "Scenario assumption / evidence status",
+      "definition": "A declared input used to explore a conditional result. Verified source amounts, derived calculations, assumptions and unresolved items describe different levels and kinds of evidence.",
+      "modelUse": "Changing a grant, debt, exposure, CPI or agreement control creates an analytical case. It does not establish an award, executed agreement, approved rate or observed customer behavior. Export settings and the data fingerprint to preserve the case.",
+      "seeAlso": [
+        "planning-feasibility",
+        "scenario-prior"
+      ]
+    },
+    {
+      "id": "planning-feasibility",
+      "term": "Planning feasibility / constraint",
+      "definition": "A result passes the numerical checks actually implemented under its selected assumptions. A constraint is one of those tests, such as a cash-days floor or bill ceiling.",
+      "modelUse": "Every modeled year is checked. Financial-target status and City rule flags are distinct; neither certifies legal compliance or approval. A failed finite search rules out its tested candidate family, not every possible policy.",
+      "seeAlso": [
+        "coverage-proxy",
+        "cash-days",
+        "optimizer"
+      ]
+    },
+    {
+      "id": "optimizer",
+      "term": "Finite optimizer / feasible rate path",
+      "definition": "A search that compares a specified set of candidate rate paths and keeps a passing candidate according to the selected objective.",
+      "modelUse": "The model checks level, earlier and later shapes on a 0.1-percentage-point grid. It does not establish a global continuous optimum. Costs, financing and other selected assumptions remain in force.",
+      "seeAlso": [
+        "planning-feasibility",
+        "uplift",
+        "scenario-assumption"
+      ]
+    },
+    {
+      "id": "cip",
+      "term": "CIP — capital improvement plan",
+      "definition": "A multiyear schedule of planned capital projects and associated estimates. A plan can identify expected funding without proving each future receipt or approval.",
+      "modelUse": "The 2027–2031 detailed project basis and original condensed cash basis remain selectable. The City 2029 source difference is disclosed; the optimizer does not remove required projects.",
+      "seeAlso": [
+        "capex",
+        "identified-capital-funding"
+      ]
+    },
+    {
+      "id": "nominal-dollars",
+      "term": "Nominal dollars / model horizon",
+      "definition": "Nominal amounts are dollars of the year shown, without removing inflation. The horizon is the span of years explicitly simulated.",
+      "modelUse": "Amounts are nominal USD for 2027–2031. Five-year sums are not discounted present values. Delayed grants and outstanding additional debt beyond 2031 are reported separately.",
+      "seeAlso": [
+        "terminal-debt",
+        "cpi",
+        "grants"
+      ]
+    },
+    {
+      "id": "fund-boundary",
+      "term": "Division / fund boundary",
+      "definition": "The reporting and modeling boundary within which receipts, expenses, cash and financing are kept.",
+      "modelUse": "Suburban Water, Suburban Wastewater and City Division each run independently. A combined reporting total does not authorize moving cash between divisions. City includes water and sewer within its own reporting scope.",
+      "seeAlso": [
+        "unrestricted-cash",
+        "customer-receipts"
+      ]
+    },
+    {
+      "id": "capital-coverage",
+      "term": "Capital coverage / planned capital requirement",
+      "definition": "A capital-coverage measure compares available funding or internally generated resources with a defined capital requirement. The precise numerator, denominator and policy meaning depend on the source document. It is different from coverage of debt payments.",
+      "modelUse": "The dashboard does not reconstruct or certify an LCA capital-coverage ratio. Its identified-funding comparison displays cash amounts against capex. Its separate coverage proxy divides operating cash available by debt service; that proxy must not be relabeled capital coverage.",
+      "seeAlso": [
+        "coverage-proxy",
+        "identified-capital-funding",
+        "capex"
+      ]
+    },
+    {
+      "id": "cash-generated",
+      "term": "Cash generated after recurring and other capital payments",
+      "definition": "Cash from customer, other operating and investment receipts remaining after operating payments, lease, all debt service and separate other capital payments. It can support project capital or add to reserves.",
+      "modelUse": "The five-year bridge calculates customer + otherOperating + investment − operatingExpense − lease − debtService − otherCapitalPayments. This is a disclosed whole-division cash bridge convention, not an approved project-funding allocation or accounting income.",
+      "seeAlso": [
+        "net-cash-movement",
+        "capital-residual",
+        "coverage-proxy"
+      ]
+    },
+    {
+      "id": "reserve-draw",
+      "term": "Reserve draw / reserve build",
+      "definition": "Using cash held at the beginning of a period to support payments reduces reserves. Receiving more cash than is spent builds reserves.",
+      "modelUse": "The five-year financing bridge shows opening unrestricted cash minus final unrestricted cash. A positive value is a reserve draw; a negative value is a reserve build. It reconciles the entire selected division and does not earmark reserves to projects.",
+      "seeAlso": [
+        "opening-cash",
+        "unrestricted-cash",
+        "cash-generated"
+      ]
+    }
+  ]
+}

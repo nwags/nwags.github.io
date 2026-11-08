@@ -1,0 +1,80 @@
+{
+  "schemaVersion": "2.0",
+  "cutoff": "2026-11-07",
+  "allDivisionsEnabled": true,
+  "legalComplianceCertified": false,
+  "rules": [
+    {
+      "name": "PA authority rate power",
+      "scope": "Applies to authority services",
+      "evidence": "53 Pa.C.S. §5607(d)(9): reasonable and uniform rates within the applicable service/class framework; sufficient revenues and lawful charges.",
+      "implementation": "No invented statewide annual percentage cap. Class allocation is a planning assumption; cost-of-service support remains needed.",
+      "status": "Verified framework",
+      "source": "https://www.legis.state.pa.us/WU01/LI/LI/CT/HTM/53/00.056.007.000..HTM"
+    },
+    {
+      "name": "PUC jurisdiction",
+      "scope": "Municipal authority service",
+      "evidence": "Municipal-authority systems are not generally regulated as investor-owned PUC water utilities. Particular statutory/contract exceptions require their own analysis.",
+      "implementation": "No imported investor-owned rate-case, allowed-return or automatic PUC approval rule.",
+      "status": "Resolved scope",
+      "source": "https://www.puc.beta.pa.gov/water-wastewater/"
+    },
+    {
+      "name": "City core annual adjustment",
+      "scope": "City retail core charges",
+      "evidence": "Prior June annual Northeast CPI-U, not seasonally adjusted, plus 2.5 points through 2032; nonnegative. Municipal contracts and permitted add-ons are separate.",
+      "implementation": "2027 CPI 4.3% implied by published proposal; 2028–2031 CPI 3.3% assumed. Check ceiling; an explicit amendment assumption allows above-ceiling scenarios.",
+      "status": "Rule + editable future input",
+      "source": "https://www.lcawaterworks.org/wp-content/uploads/Allentown-Water-and-Sewer-Concession.-Lease-Agreement-May-1-2013.pdf"
+    },
+    {
+      "name": "City capital recovery and AO fees",
+      "scope": "City eligible costs / separate add-ons",
+      "evidence": "Published 2027 water/sewer CCRC and administrative-order rates are explicit invoice lines; eligible cost and approval treatment is separate from core rates.",
+      "implementation": "Existing component rates are verified. Future growth uses a 5.8% proxy; any selected uplift assumes eligibility and required approvals, without certifying them.",
+      "status": "Verified current / assumed future",
+      "source": "https://allentownpa.legistar.com/View.ashx?GUID=947959AF-3F70-4D50-992E-34ADED223689&ID=8716538&M=F"
+    },
+    {
+      "name": "2020 concession amendments",
+      "scope": "City lease and rate-relief mechanism",
+      "evidence": "Council approval and later implementation history support operation of the amendment. The reviewed execution-copy PDF contains blank signatures.",
+      "implementation": "Use published operating regime for analysis. Conditional 1.70× rate relief is not imposed as a generic debt covenant or a Suburban fund floor.",
+      "status": "Applicability resolved; execution-copy limit",
+      "source": "https://allentownpa.legistar.com/LegislationDetail.aspx?GUID=0252BB7A-E462-4BDB-9350-02C85E2EAD8E&ID=4590278&Options=&Search="
+    },
+    {
+      "name": "Municipal / interceptor agreements",
+      "scope": "Suburban Wastewater and City counterparties",
+      "evidence": "Cost allocations, debt, reserved capacity and treatment terms differ by system. WLI / LLRI 2027 rates had preliminary approval in reviewed October minutes.",
+      "implementation": "Keep published customer-receipt profile. Editable residual-receipt uplift assumes contractual approval; do not apply household CPI or tariff increases to the full fund.",
+      "status": "Explicit contract scenario",
+      "source": "https://www.lcawaterworks.org/meetings-minutes/"
+    },
+    {
+      "name": "Industrial wastewater strength",
+      "scope": "Applicable permitted dischargers",
+      "evidence": "Flow, BOD, TSS, TKN, reserved capacity, sampling and permits can be separate charge drivers. Applicability depends on the service and permit.",
+      "implementation": "Industrial usage sensitivity remains available. No blanket strength surcharge is added to all industry; detailed fees and source thresholds are in tariff research JSON.",
+      "status": "Resolved conditional scope",
+      "source": "https://www.lcawaterworks.org/wp-content/uploads/2026/09/LCA-SewerRulesRegs.pdf"
+    },
+    {
+      "name": "Capital scope and grants",
+      "scope": "All three divisions",
+      "evidence": "Adopted plans require later annual/project and borrowing approvals; future projected grants are not automatically secured.",
+      "implementation": "Full detailed project schedule retained. Incremental financing is capped after planned debt, grants and existing capital receipts; timing and award sensitivities stay enabled.",
+      "status": "Plan + assumptions",
+      "source": "https://www.lcawaterworks.org/lca-finances/"
+    },
+    {
+      "name": "Cash, debt and covenant tests",
+      "scope": "Fund-specific financial structure",
+      "evidence": "Restricted balances are excluded. Reported coverage definitions differ by fund and covenant. Published debt-service schedules do not provide a complete future principal ledger.",
+      "implementation": "180 cash days and 1.20× conservative coverage are editable planning targets. Additional debt amortizes explicitly; remaining baseline debt is disclosed as not estimated.",
+      "status": "Planning tests; no legal certification",
+      "source": "https://www.lcawaterworks.org/wp-content/uploads/2026/10/LCA-ACFR-2025.pdf"
+    }
+  ]
+}

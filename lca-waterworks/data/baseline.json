@@ -1,0 +1,389 @@
+{
+  "schemaVersion": "1.0",
+  "modelVersion": "0.1.0",
+  "cutoff": "2026-11-07",
+  "scope": "Suburban Water fund sensitivity model; 5/8-inch common residential water bill illustration",
+  "years": [
+    2027,
+    2028,
+    2029,
+    2030,
+    2031
+  ],
+  "referenceRatePct": [
+    3.5,
+    3,
+    3,
+    3,
+    3
+  ],
+  "referenceGrowthPct": 1,
+  "budget2027": {
+    "status": "approved_budget_with_proposed_rates",
+    "sourceIds": [
+      "lca-final-budget",
+      "lca-oct26-packet",
+      "lca-finances"
+    ],
+    "openingCash": 11598553,
+    "customerCashReceipts": 20484630,
+    "otherOperatingCashReceipts": 187234,
+    "capitalFeeAndOtherCashReceipts": 1086054,
+    "investmentIncome": 831720,
+    "totalCashRevenue": 22589638,
+    "cashOperatingExpense": 15183495,
+    "debtService": 3923351,
+    "capitalSpending": 13186250,
+    "newBorrowing": 5651000,
+    "endingCash": 7546095,
+    "endingOperatingCash": 7309406,
+    "endingCapitalUnrestrictedCash": 236689,
+    "restrictedCash": 1893397,
+    "unrestrictedInvestments": 3148223,
+    "reportedCashDays": 181.4,
+    "reportedDscr": 1.89,
+    "notes": "Opening unrestricted cash uses the cash-flow schedule's $11,598,553; the executive summary is $1 lower. Ending cash includes operating and capital unrestricted cash. Restricted cash and investments are excluded from model spendable cash. Rates in this approved budget remained proposals at the evidence cutoff."
+  },
+  "cip": {
+    "sourceIds": [
+      "lca-suburban-cip",
+      "lca-oct26-packet"
+    ],
+    "page": "Suburban capital plan printed pp. 3–4, PDF pp. 6–7; October 26 board packet PDF pp. 32–33",
+    "userCharges": [
+      20583590,
+      21413109,
+      22276057,
+      23173782,
+      24107685
+    ],
+    "otherOperatingRevenue": [
+      187238,
+      187238,
+      187238,
+      187238,
+      187238
+    ],
+    "nonOperatingRevenue": [
+      1086052,
+      1086052,
+      1086052,
+      1086052,
+      1086052
+    ],
+    "cashOperatingExpense": [
+      13312885,
+      13845400,
+      14335524,
+      14843150,
+      15368910
+    ],
+    "currentDebtService": [
+      3576427,
+      3600227,
+      3599970,
+      3600345,
+      3600136
+    ],
+    "newDebtService": [
+      350393,
+      871239,
+      1007651,
+      1075857,
+      1100659
+    ],
+    "newBorrowing": [
+      5651000,
+      8400000,
+      2200000,
+      1100000,
+      400000
+    ],
+    "cashFlowCapex": [
+      13186250,
+      12536250,
+      6541250,
+      5836250,
+      5416250
+    ],
+    "directProjectCapex": [
+      12430000,
+      12030000,
+      6160000,
+      5605000,
+      5210000
+    ],
+    "netFundFlows": [
+      -2918075,
+      233283,
+      264952,
+      191470,
+      295020
+    ],
+    "endingCash": [
+      6656587,
+      6889870,
+      7154822,
+      7346292,
+      7641312
+    ],
+    "unrestrictedInvestments": [
+      3148223,
+      3148223,
+      3148223,
+      3148223,
+      3148223
+    ],
+    "reportedCashDays": [
+      183,
+      182,
+      182,
+      181,
+      181
+    ],
+    "reportedDscr": [
+      2.18,
+      1.98,
+      2.0,
+      2.05,
+      2.13
+    ],
+    "rateIncreasePct": [
+      3,
+      3,
+      3,
+      3,
+      3
+    ],
+    "volumeIncreasePct": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "notes": "The original CIP financial projection is preserved for comparison. It is not spliced into the reanchored model's cash balances. Cash-flow capex, not the smaller direct-project table, drives the ledger. No grants are shown as separate Suburban Water financing sources in this table."
+  },
+  "tariff": {
+    "sourceIds": [
+      "lca-final-budget",
+      "lca-2027-rates",
+      "lca-2026-water-rates"
+    ],
+    "meter": "5/8-inch",
+    "service": "Suburban Water common rate; residential; no sprinkler charge",
+    "2026": {
+      "quarterlyFixed": 36.5,
+      "perThousandGallons": 4.14
+    },
+    "2027": {
+      "quarterlyFixed": 38.2,
+      "perThousandGallons": 4.26,
+      "status": "proposed_at_cutoff"
+    },
+    "maxMonthlyGallons": 15000,
+    "notes": "The model's 3.5% 2027 rate index maps to the exact proposed fixed and volume components. It is an approximate planning index, not the exact percentage change for every household. At 5,000 gallons/month the actual proposed change is $14/year, about 3.55%. Above the modeled volume range, consult the full block-rate schedule. Welshtown Road is excluded."
+  },
+  "billComparisons": [
+    {
+      "system": "Suburban common water",
+      "scope": "Water only",
+      "annual2026": 394.4,
+      "annual2027": 408.4
+    },
+    {
+      "system": "Allentown",
+      "scope": "Water + sewer + capital charges + administrative order fee",
+      "annual2026": 1116.48,
+      "annual2027": 1212.32
+    },
+    {
+      "system": "Suburban sewer, Common Rate 1",
+      "scope": "Collection only: Upper Milford, Weisenberg, Lowhill",
+      "annual2026": 367.8,
+      "annual2027": 387
+    },
+    {
+      "system": "Suburban sewer, Common Rate 2",
+      "scope": "Collection and treatment: Wynnewood Terrace, Heidelberg Heights, Sand Spring, Lynn",
+      "annual2026": 691.8,
+      "annual2027": 727.2
+    }
+  ],
+  "authorityBudget2027": [
+    {
+      "fund": "Suburban Water",
+      "cashRevenue": 22589638,
+      "cashExpense": 15183495,
+      "debtService": 3923351,
+      "capitalSpending": 13186250,
+      "newBorrowing": 5651000,
+      "endingCash": 7546095,
+      "reportedDscr": 1.89
+    },
+    {
+      "fund": "Suburban Wastewater",
+      "cashRevenue": 30345659,
+      "cashExpense": 18665053,
+      "debtService": 1473729,
+      "capitalSpending": 10116250,
+      "newBorrowing": 0,
+      "endingCash": 10447425,
+      "reportedDscr": 4.04
+    },
+    {
+      "fund": "City Division",
+      "cashRevenue": 91706633,
+      "cashExpense": 30047113,
+      "debtService": 19289357,
+      "capitalSpending": 55897500,
+      "newBorrowing": 8173780,
+      "endingCash": 53947018,
+      "reportedDscr": 2.54
+    }
+  ],
+  "cashReceiptsHistory": [
+    {
+      "year": 2025,
+      "status": "actual_in_budget_schedule",
+      "value": 17235927
+    },
+    {
+      "year": 2026,
+      "status": "forecast",
+      "value": 19696759
+    },
+    {
+      "year": 2027,
+      "status": "budget",
+      "value": 20484630
+    }
+  ],
+  "sources": [
+    {
+      "id": "lca-finances",
+      "title": "LCA Finances",
+      "url": "https://www.lcawaterworks.org/lca-finances/",
+      "locator": "2027 Budget Review & Approval Process; fund descriptions; capital plan status",
+      "status": "Official status page",
+      "retrieved": "2026-11-07"
+    },
+    {
+      "id": "lca-final-budget",
+      "title": "2027 Budget — Final Review & Approval",
+      "url": "https://www.lcawaterworks.org/wp-content/uploads/2026/10/LCA-2027-Budget-Final-Review-Approval-102626.pdf",
+      "locator": "PDF p. 8 summary; pp. 12–15 residential bill examples; p. 20 rate adoption timeline",
+      "status": "October 26 presentation for approved budget; rates proposed",
+      "sha256": "cfd46ed27e098170f35b01b65467a3268c5682b386126a3a597267510036d848",
+      "retrieved": "2026-11-07"
+    },
+    {
+      "id": "lca-oct26-packet",
+      "title": "October 26, 2026 board packet",
+      "url": "https://www.lcawaterworks.org/wp-content/uploads/2026/10/2026October26-BoardAgendaLCA.pdf",
+      "locator": "PDF pp. 4–5 rate-study discussion; p. 13 summary; p. 16 cash flows; p. 18 cash buckets; pp. 32–33 Suburban Water CIP",
+      "status": "Published board packet; includes forecast, budget, and earlier meeting minutes",
+      "retrieved": "2026-11-07"
+    },
+    {
+      "id": "lca-suburban-cip",
+      "title": "2027–2031 Suburban Division Capital Plan",
+      "url": "https://www.lcawaterworks.org/wp-content/uploads/2026/10/2027-2031-Capital-Plan-Suburban-Division.pdf",
+      "locator": "Printed pp. 3–4 / PDF pp. 6–7; direct projects and condensed cash flow",
+      "status": "Adopted conceptual capital plan; project and financing approvals separate",
+      "sha256": "c12ea62e30c610e977d5b8dd2fe3230b2a2e711ff86b096de5ea5cdb8ebbcdaf",
+      "retrieved": "2026-11-07"
+    },
+    {
+      "id": "lca-2027-rates",
+      "title": "2027 customer rate information",
+      "url": "https://www.lcawaterworks.org/2027-rates/",
+      "locator": "Residential examples, system exclusions, public comment period",
+      "status": "Proposals at the cutoff; no later adoption assumed",
+      "retrieved": "2026-11-07"
+    },
+    {
+      "id": "lca-2026-water-rates",
+      "title": "2026 water rates",
+      "url": "https://www.lcawaterworks.org/customer-service/rates/water-rates/",
+      "locator": "Suburban common fixed and volume charges; Welshtown exception",
+      "status": "2026 published rate schedule summary",
+      "retrieved": "2026-11-07"
+    },
+    {
+      "id": "lca-acfr-2025",
+      "title": "2025 Annual Comprehensive Financial Report",
+      "url": "https://www.lcawaterworks.org/wp-content/uploads/2026/10/LCA-ACFR-2025.pdf",
+      "locator": "Printed p. 127 / PDF p. 145: Water Sales and Customer Growth, 2016–2025; statistical operating section",
+      "status": "Historical operating statistics, not a future forecast; audit opinion should not be extended to all statistical tables",
+      "sha256": "e1e23cf767499a1924608cf7b0e523fcebaf0d9204c078f94962451ccfa7c67d",
+      "retrieved": "2026-11-07"
+    }
+  ],
+  "historicalOperations": {
+    "sourceId": "lca-acfr-2025",
+    "scope": "Western Lehigh Service Area within the Suburban Division",
+    "status": "Historical operating statistics reported in the 2025 ACFR",
+    "years": [
+      2016,
+      2017,
+      2018,
+      2019,
+      2020,
+      2021,
+      2022,
+      2023,
+      2024,
+      2025
+    ],
+    "salesThousandGallons": [
+      3416336,
+      3178240,
+      3251749,
+      3285643,
+      3476340,
+      3695527,
+      3823288,
+      3825020,
+      3986497,
+      3783596
+    ],
+    "customerUnits": [
+      19459,
+      19794,
+      20706,
+      20903,
+      21228,
+      21483,
+      22077,
+      22297,
+      22608,
+      22922
+    ],
+    "largeIndustrialSalesThousandGallons": [
+      732464,
+      647574,
+      622634,
+      665161,
+      663152,
+      745311,
+      722607,
+      674410,
+      717196,
+      623041
+    ],
+    "otherIndustrialSalesThousandGallons": [
+      1158204,
+      1127906,
+      1121571,
+      1086340,
+      1108619,
+      1271081,
+      1349293,
+      1371491,
+      1311681,
+      1340170
+    ],
+    "notes": "Printed p. 127 / PDF p. 145. Customers are units served at year end, not connections. Scope includes Central Lehigh, Upper Milford, Arcadia West, Beverly Hills and Emmaus Consecutive divisions. Municipal sales are included in commercial/small-industrial/institutional/other. This service-area series is contextual and does not calibrate the whole-fund 1% growth assumption. It excludes Northern Lehigh, Northampton and City systems."
+  }
+}

@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="User manual and analyst guides for the independent WaterWorks Rate Planning Lab: scenarios, optimization, sources, constraints, and mock ERP integration.">
+  <title>User manual · WaterWorks Rate Planning Lab</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#manual">Skip to manual</a>
+  <header class="topbar"><a class="brand" href="./"><span class="monogram">NW</span><span>WaterWorks<span class="brand-sub">Rate planning lab</span></span></a><nav aria-label="Manual navigation"><a href="./">Open dashboard</a><a href="https://github.com/nwags/nwags.github.io/tree/main/lca-waterworks">Project source</a></nav></header>
+  <main class="document" id="manual">
+    <p class="eyebrow">User manual · Model 0.1.0</p>
+    <h1>Make the rate decision inspectable.</h1>
+    <p>This guide explains how to run a five-year scenario, understand the financial tradeoffs, inspect the evidence, and carry a saved analysis into the next stage of work. The demonstration uses public Lehigh County Authority information with an evidence cutoff of <strong>November 7, 2026</strong>.</p>
+    <div class="callout"><strong>Scope:</strong> the executable model covers the Suburban Water fund and a common residential 5/8-inch water bill. Allentown and wastewater are separate reference systems. This independent prototype is not an LCA product, adopted tariff, management forecast, or financial/legal approval.</div>
+    <nav class="toc" aria-label="Contents"><a href="#quick-start">Quick start</a><a href="#controls">Controls</a><a href="#results">Read results</a><a href="#search">Optimize</a><a href="#stress">Stress tests</a><a href="#evidence">Evidence</a><a href="#rules">Rules</a><a href="#erp">ERP mock</a><a href="#save">Save and export</a><a href="#demo">CEO demonstration</a><a href="#guides">Associated guides</a></nav>
+
+    <h2 id="quick-start">1. Your first scenario</h2>
+    <ol>
+      <li><a href="./">Open the dashboard</a> in a modern browser. No login, AI service, API key, or local spreadsheet is required.</li>
+      <li>Select <strong>Reset</strong>. The starting point is “2027 budget + derived reference.” Its rates are 3.5%, 3%, 3%, 3%, and 3%; customer/usage growth is 1%; extra cost drift, capital overruns, grants and extra borrowing are zero.</li>
+      <li>Read the status message. The reference falls below the selected 180-day cash floor in later years, even though it maintains the selected coverage target. These are model outcomes, not a finding that LCA has forecast a legal covenant breach.</li>
+      <li>Choose <strong>Save comparison</strong>. This preserves the current bill path in memory for comparison while you explore.</li>
+      <li>Change one annual rate index or cost assumption. The cards, charts, ledger and decision notes recalculate immediately.</li>
+      <li>Select <strong>Find rate path</strong> to search the disclosed path family. Then open <strong>Assumptions &amp; stress</strong> and run the tests.</li>
+      <li>Use <strong>Export scenario</strong> to keep the complete settings snapshot. A refresh otherwise resets the session.</li>
+    </ol>
+    <p>The three starting points are the derived reference, a flat modeled rate index, and a cost-pressure scenario. Selecting a starting point resets the driver settings. “Hold modeled rate index flat” is an index scenario; it does not exactly reproduce each component of the historical 2026 tariff.</p>
+
+    <h2 id="controls">2. What each control changes</h2>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Control</th><th>How to interpret it</th><th>Important boundary</th></tr></thead>
+      <tbody>
+        <tr><td>Annual rate index</td><td>Changes rate-sensitive customer receipts and the illustrated bill for that year and later years.</td><td>2027's 3.5% index maps to exact proposed components. Later years scale fixed and volume charges together. It is not class tariff design.</td></tr>
+        <tr><td>Extra annual O&amp;M growth</td><td>Adds a compounding factor to the expense profile, beginning in 2027.</td><td>0 preserves the reference. The reference already contains CIP expense growth; this is additional pressure.</td></tr>
+        <tr><td>Customer / usage growth</td><td>Changes the aggregate customer-receipts growth proxy.</td><td>1% follows the CIP assumption. It is not a fitted demand or connection forecast.</td></tr>
+        <tr><td>Capital cost increase</td><td>Raises the entire capital cash-spending schedule.</td><td>All planned work is retained. This control cannot remove or defer projects.</td></tr>
+        <tr><td>Extra debt share of capital</td><td>Adds hypothetical borrowing above planned loans, capped at remaining capital need.</td><td>Annual repayment starts the following year. Most extra principal remains payable after 2031.</td></tr>
+        <tr><td>Interest on extra borrowing</td><td>Sets the cost of the additional 20-year loans.</td><td>It does not reprice published baseline debt service. With no extra debt, changing it has no effect.</td></tr>
+        <tr><td>Additional grant support</td><td>Adds up to this amount each year, limited to capital not funded by planned borrowing.</td><td>Default is zero. No award, commitment or eligibility is established by this control.</td></tr>
+        <tr><td>Future investment income retained</td><td>Retains 0–100% of the budget’s $831,720 annual investment income in 2028–2031.</td><td>2027 remains anchored. 100% is the flat-income reference; 0% is a limiting case. A production model needs balances and yields.</td></tr>
+        <tr><td>Minimum cash days</td><td>Requires closing unrestricted cash to cover the selected number of days of annual operating expense.</td><td>The default 180 days is a planning target. Restricted cash and investment balances are excluded.</td></tr>
+        <tr><td>Minimum debt coverage</td><td>Tests (cash revenue − operating expense) / debt service in every year.</td><td>The default 1.20× is a planning assumption; an actual covenant may use different definitions.</td></tr>
+        <tr><td>Maximum annual increase</td><td>Limits every searched annual index and flags manually entered paths above the bound.</td><td>A chosen search bound is not a Pennsylvania legal cap.</td></tr>
+        <tr><td>Monthly water bill ceiling</td><td>Limits the illustrated nominal monthly equivalent in every modeled year.</td><td>0 disables it. It is a policy illustration, not an affordability standard.</td></tr>
+        <tr><td>Household usage and income</td><td>Change the illustrated bill and water-bill/income ratio.</td><td>They do not change fund finances. Default income is assumed, not a census estimate.</td></tr>
+        <tr><td>Rate-sensitive share</td><td>In Assumptions &amp; stress, controls the share of customer receipts affected by the index.</td><td>Default 100% is an aggregate simplification requiring class/exception validation.</td></tr>
+        <tr><td>Price elasticity</td><td>Optionally reduces the variable-usage response when the relative price rises.</td><td>Default 0; negative values are illustrative priors, not measured LCA behavior.</td></tr>
+      </tbody>
+    </table></div>
+    <p>Manual rate inputs range from −5% to 25%; the search uses nonnegative increases. The dashboard keeps the last valid calculation when a numeric field is empty or outside its allowed range and explains the problem in the status message.</p>
+
+    <h2 id="results">3. Read the result as a financial bridge</h2>
+    <p><strong>Monthly water bill</strong> is a monthly equivalent of a quarterly common residential water tariff at your selected usage. At the reference 5,000 gallons/month, the 2027 proposed bill is $102.10 per quarter, or $408.40 per year. It excludes sewer, special districts, other meter sizes and other charges.</p>
+    <p><strong>Cash days</strong> measure liquidity: closing unrestricted cash divided by annual cash operating expense, multiplied by 365. <strong>Debt coverage</strong> measures a different relationship: cash revenue after operating expense divided by debt service. A plan can pass coverage and still use too much cash for capital work.</p>
+    <p><strong>Capital funding</strong> connects cash after debt service, borrowing, grants and the draw from opening cash to capital spending. If cash accumulates, the bridge subtracts that accumulation. Debt proceeds are financing, not operating revenue. Extra debt outstanding at the end of the horizon must still be paid.</p>
+    <p>The <strong>annual financial plan</strong> is the audit trail. Every year's closing cash equals opening cash + cash revenue − operating expense − debt service − capital spending + borrowing + grants. Displayed values are rounded; exports retain calculation precision.</p>
+    <p>The <strong>saved comparison</strong> adds a bill line. It is recalculated at your current household usage so the two paths are comparable. It does not persist across a page reload and does not add a second cash line. Decision notes identify the first cash-floor shortfall and the assumptions most relevant to interpretation.</p>
+
+    <h2 id="search">4. Use optimization as a structured comparison</h2>
+    <p><strong>Lowest peak annual increase</strong> first minimizes the highest annual index, then changes between years, then five-year nominal household bills. <strong>Lowest five-year household bill</strong> first minimizes cumulative nominal bills, then the highest annual increase and year-to-year changes. Neither objective includes a hidden legal approval score.</p>
+    <p>The engine searches three path shapes—level, earlier increases, and later increases—at 0.1-percentage-point resolution. It removes duplicate paths and simulates every candidate against every annual test. With the default 15% maximum, it checks 453 unique candidates. It preserves your chosen cost and financing assumptions.</p>
+    <p>With this release's defaults, the lowest-peak search finds a level 5.4% annual index path. That is a reproducible example within this family, not a global mathematical optimum or an LCA tariff recommendation. The result changes when assumptions, policy targets or objective change.</p>
+    <div class="callout amber-callout"><strong>“No feasible path” is a useful result.</strong> It means no candidate in the disclosed family met every selected test. Your current scenario remains visible. Inspect the binding cash, coverage, rate or bill constraint and examine the assumptions; do not interpret it as proof that every possible policy design is impossible.</div>
+
+    <h2 id="stress">5. Test possibilities without inventing probabilities</h2>
+    <p>Open <strong>Assumptions &amp; stress</strong> after choosing a path. Run the tests to compare the selected case with faster operating costs, slower growth, capital cost pressure, no additional grants, more expensive extra debt, no future investment income, and a joint adverse case.</p>
+    <p>Each row states the exact change. An interest test with no extra borrowing or a grant-removal test with no assumed grants is identified as having no exposure. A control already at its validation bound is also identified. These unchanged cases provide no additional evidence of robustness.</p>
+    <p>The scenarios are disclosed judgements. The number of passing rows is not a probability of success. A calibrated distribution would require consistent actuals, capital outturns, billing/demand evidence and a validated treatment of dependencies. When any input changes, old stress results are cleared and must be rerun.</p>
+
+    <h2 id="evidence">6. Inspect sources and understand the reference</h2>
+    <p><strong>Public evidence</strong> separates the original CIP financial projection from the final annual budget. The original 2027 CIP expense was $13.31 million; the final budget cash expense was $15.18 million. The demo reproduces the budget's $7,546,095 closing cash and then derives later years using the CIP's growth, spending and debt profiles. It does not copy the CIP's later cash balances into a different ledger.</p>
+    <p>The original CIP and derived reference cash lines are both visible. Their difference is a model reconciliation, not a statement that LCA forecasts a liquidity shortfall. Actuals, forecasts, budgets and proposed tariffs retain their statuses. Do not fit a historical trend across unlike statuses or compare water-only bills with combined water/sewer bills as if service scope were identical.</p>
+    <p>The evidence view also shows 2016–2025 Western Lehigh service-area water sales and units served from the 2025 ACFR. The indexed chart distinguishes volume from customer growth. It is contextual operating history, not a fitted whole-fund forecast.</p>
+    <p>Each source entry links to its original and identifies the table or page. Download the baseline JSON for the exact input values, source register and available PDF hashes. The release is deliberately versioned: financial sources are not silently refreshed during a presentation.</p>
+
+    <h2 id="rules">7. Apply rules and agreements before expanding scope</h2>
+    <p><strong>Rules &amp; agreements</strong> records verified public restrictions and unresolved applicability. Pennsylvania municipal-authority rate powers, Allentown's amended agreements, wastewater arrangements, fund restrictions and board/project approvals cannot be reduced to a single statewide percentage cap.</p>
+    <p>The demo therefore keeps Allentown and wastewater out of the editable fund optimization and retains capital work. Its cash and coverage floors are analytical targets. A green result always means “meets selected financial tests,” while agreement/adoption status remains separate.</p>
+    <p>Before using a result for an actual proposal, the model needs the complete applicable executed agreement and amendment set, current debt definitions, class allocation, required approvals and reconciled internal data. The constraint guide names the evidence that is still missing.</p>
+
+    <h2 id="erp">8. Demonstrate the mock ERP handoff</h2>
+    <ol>
+      <li>Open <strong>Data connections</strong> and select <strong>Validate mock extract</strong>.</li>
+      <li>Inspect the six synthetic records and their aggregate totals. The example is a generic canonical contract, not a real Munis API response.</li>
+      <li>Download the fixture to inspect its schema. Optional local JSON validation accepts only the documented synthetic form.</li>
+      <li>Observe that the public planning baseline is unchanged. This step demonstrates validation and reconciliation, not a live data refresh.</li>
+    </ol>
+    <p>Checks include the schema version, explicit synthetic flag, unique mock record IDs, fund, year, cash/USD basis, allowed fields and metrics, valid amounts/date, and agreement with control totals. Duplicate records, unknown funds, personal fields, invalid amounts and mismatched totals are rejected.</p>
+    <p>Files are processed locally in the browser and are not uploaded. This public demonstration is intended for public and synthetic inputs. The production design begins with an approved read-only export or documented licensed interface, then fund/class mapping, control totals, general-ledger reconciliation, reviewed aggregates and a versioned model refresh.</p>
+
+    <h2 id="save">9. Save, export, import and embed</h2>
+    <p><strong>Export scenario</strong> downloads a JSON file with settings, calculated rows, model/schema version, source URLs, evidence cutoff and scope. <strong>Import</strong> accepts matching release versions and recalculates results from the saved settings. A mismatched version or invalid input is rejected; exported output rows are not trusted as input calculations.</p>
+    <p><strong>Download table CSV</strong> exports one annual row per year. Use it in Excel or Power BI for review, keeping the scenario JSON alongside it for reproducibility. The guides provide the formulas and data mapping for a future implementation independent of this browser.</p>
+    <p>Use the dashboard directly at <a href="https://nwags.com/lca-waterworks/">nwags.com/lca-waterworks/</a>. For another authorized webpage, the same static app can be embedded using an iframe. Give it enough height and provide a full-page link for accessibility and small screens:</p>
+    <pre><code>&lt;iframe
+  src="https://nwags.com/lca-waterworks/"
+  title="WaterWorks Rate Planning Lab"
+  width="100%" height="1100" loading="lazy"
+  style="border:0;border-radius:12px"&gt;
+&lt;/iframe&gt;
+&lt;a href="https://nwags.com/lca-waterworks/"&gt;Open the full dashboard&lt;/a&gt;</code></pre>
+    <p>If scripts are disabled, use this manual and the public JSON. If the baseline does not load, reload once and check the deployed site connection. A local <code>file:</code> opening cannot reliably load the modules and JSON; use the public site or a static HTTP server. Browser printing can save this manual as a PDF.</p>
+
+    <h2 id="demo">10. A concise CEO demonstration</h2>
+    <p>Start with scope and the evidence cutoff. Show the source reconciliation, then the reference's different coverage and liquidity outcomes. Save the reference, find a path, and show its customer impact. Stress it. Show an infeasible case. Finish with the rule register and the synthetic ERP validation.</p>
+    <p>The decision to invite is which policy priorities, service scope, internal data and agreement review should lead a production pilot. The longer presentation guide includes an 8–10 minute run of show, likely questions and precise interpretation of the default result.</p>
+
+    <h2 id="guides">11. Associated guides and worker handoffs</h2>
+    <p>These version-controlled guides explain the method and make the next stage reproducible. They open in the project's GitHub documentation.</p>
+    <div class="table-wrap"><table><thead><tr><th>Guide</th><th>Use it for</th></tr></thead><tbody>
+      <tr><td><a href="https://github.com/nwags/nwags.github.io/blob/main/lca-waterworks/docs/CEO_DEMO.md">CEO demonstration</a></td><td>A timed walkthrough, key interpretations and questions for management.</td></tr>
+      <tr><td><a href="https://github.com/nwags/nwags.github.io/blob/main/lca-waterworks/docs/METHODOLOGY.md">Model methodology</a></td><td>Cash equations, assumptions, debt timing, bill calculations and exact search definition.</td></tr>
+      <tr><td><a href="https://github.com/nwags/nwags.github.io/blob/main/lca-waterworks/docs/DATA_GUIDE.md">Data and analyst guide</a></td><td>Provenance, status labels, refresh procedure, missing information and prior calibration.</td></tr>
+      <tr><td><a href="https://github.com/nwags/nwags.github.io/blob/main/lca-waterworks/docs/CONSTRAINTS.md">Constraint register</a></td><td>Law, agreements, applicability gaps and executable boundaries.</td></tr>
+      <tr><td><a href="https://github.com/nwags/nwags.github.io/blob/main/lca-waterworks/docs/MODEL_COMPARISON.md">Public model comparison</a></td><td>What other rate-planning approaches cover and what remains beyond this demo.</td></tr>
+      <tr><td><a href="https://github.com/nwags/nwags.github.io/blob/main/lca-waterworks/docs/ERP_INTEGRATION.md">ERP integration</a></td><td>Mock contract, Munis discovery, reconciliation and Excel/Power BI migration.</td></tr>
+      <tr><td><a href="https://github.com/nwags/nwags.github.io/blob/main/lca-waterworks/docs/ORCHESTRATION.md">Worker orchestration</a></td><td>Staged roles, boundaries, handoffs, evidence gates and escalation rules.</td></tr>
+      <tr><td><a href="https://github.com/nwags/nwags.github.io/tree/main/lca-waterworks/workers">Worker briefs and templates</a></td><td>Reusable controller/worker instructions for continuing research and development.</td></tr>
+      <tr><td><a href="https://github.com/nwags/nwags.github.io/blob/main/lca-waterworks/docs/STATE.md">Project state</a> · <a href="https://github.com/nwags/nwags.github.io/blob/main/lca-waterworks/docs/ROADMAP.md">Roadmap</a></td><td>Observed validation, open items and the next accepted milestone.</td></tr>
+    </tbody></table></div>
+    <p>Workers collect and reconcile public evidence, specify constraints, develop models, compare methods and review results in stages. The controller owns integration and release. Workers do not gain authority to change rates, contact stakeholders, publish changes, or connect production systems from a task brief alone.</p>
+    <h2>12. Short glossary</h2>
+    <p><strong>CIP:</strong> capital improvement plan. <strong>O&amp;M:</strong> operating and maintenance expense. <strong>Coverage:</strong> a revenue-to-debt-service relationship whose exact contractual definition matters. <strong>Cash days:</strong> a liquidity measure. <strong>Rate index:</strong> an aggregate sensitivity factor. <strong>Prior:</strong> a stated belief or assumption before observing sufficient new evidence. <strong>Control total:</strong> an independent aggregate used to check an extract. <strong>Feasible:</strong> passes the declared model tests under selected assumptions.</p>
+  </main>
+  <footer><div><strong>WaterWorks Rate Planning Lab</strong><p>Independent public-data demonstration by Nicholas Wagner.</p></div><div><a href="./">Return to dashboard</a><a href="../">nwags.com</a></div></footer>
+</body>
+</html>

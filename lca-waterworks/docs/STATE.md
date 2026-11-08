@@ -1,6 +1,6 @@
 # Project state
 
-Release candidate observed November 8, 2026 UTC. Financial/rate evidence cutoff: November 7, 2026.
+Published and verified November 8, 2026 UTC. Financial/rate evidence cutoff: November 7, 2026.
 
 ## Intent and repository
 
@@ -14,7 +14,7 @@ Release candidate observed November 8, 2026 UTC. Financial/rate evidence cutoff:
 
 ## Milestones
 
-M0–M4 are complete for the bounded demonstration. M5 publication is ready, pending observed deployment. This is not completion of a production rate study or legal applicability review.
+M0–M5 are complete for the bounded demonstration. The dashboard and manual were observed working at their public URLs. This is not completion of a production rate study or legal applicability review.
 
 ## Completed and verified
 
@@ -44,6 +44,17 @@ The executable first release is deliberately one fund, rather than all systems. 
 
 Future investment income, rate-sensitive class shares, demand response, customer growth, capital outturns, and post-2031 liabilities remain model assumptions or production requirements. Historical volume and customer growth are descriptive; they do not automatically calibrate the future fund forecast. The browser implementation includes responsive CSS, but a separate physical mobile-device test has not been observed.
 
+## Publication evidence
+
+- Implementation commit: `dd7a701564084c2384b3036a493078fb8eb1fdb5`.
+- Reviewed changes merged through [pull request 2](https://github.com/nwags/nwags.github.io/pull/2).
+- Published merge commit: `2ffe00a32111ebf667e26188574b0c50f99d0dd3`.
+- Immutable implementation tree: `2a4c038dc89b7992aece86a51a08b6a90f38d4b5`, matched exactly against the staged local tree before commit.
+- [GitHub Pages build/deployment 42438054306](https://github.com/nwags/nwags.github.io/actions/runs/42438054306) completed successfully for that merge commit.
+- [Dashboard](https://nwags.com/lca-waterworks/) returned HTTP 200 and was checked in the browser. Its live optimizer reproduced the 453-candidate / 287-feasible level 5.4% result.
+- [User manual](https://nwags.com/lca-waterworks/guide.html) loaded at the public URL and its title/content were verified.
+- This state-only follow-up records the observed release. Its own commit can be found in repository history; it does not change the numerical engine or public data.
+
 ## Next objective
 
-Publish and verify the actual GitHub Pages URL, then replace this release-candidate state with observed commit/deployment details. The subsequent production milestone is one finance-reviewed fund cash bridge, tariff/class mapping, current agreement applicability matrix and reconciled internal aggregate extract in an approved environment.
+The next production milestone is one finance-reviewed fund cash bridge, tariff/class mapping, current agreement applicability matrix and reconciled internal aggregate extract in an approved environment.

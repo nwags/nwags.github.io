@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="An independent public-data demonstration of five-year water utility rate planning, financial constraints, scenario analysis, and transparent assumptions.">
+  <meta name="theme-color" content="#123a43">
+  <title>WaterWorks Rate Planning Lab · Nicholas Wagner</title>
+  <link rel="stylesheet" href="styles.css">
+  <script type="module" src="app.mjs"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to rate planning</a>
+  <header class="topbar">
+    <a class="brand" href="../" aria-label="Nicholas Wagner portfolio"><span class="monogram">NW</span><span>Nicholas Wagner<span class="brand-sub">Decision systems</span></span></a>
+    <nav aria-label="Project navigation"><a href="guide.html">User guide</a><a href="https://github.com/nwags/nwags.github.io/blob/main/lca-waterworks/docs/ORCHESTRATION.md">Worker playbook</a><a href="https://github.com/nwags/nwags.github.io/tree/main/lca-waterworks" target="_blank" rel="noopener">Source</a></nav>
+  </header>
+  <main id="main">
+    <section class="masthead" aria-labelledby="page-title">
+      <div><p class="eyebrow">Independent public-data demonstration</p><h1 id="page-title">WaterWorks <span>Rate planning lab</span></h1><p class="intro">Explore the choices behind a five-year rate plan. Connect customer bills to essential investment, financial resilience, and the evidence behind each assumption.</p></div>
+      <div class="edition"><span class="small-label">Planning horizon</span><strong>2027—2031</strong><span>Evidence cutoff · Nov 7, 2026</span><span class="scope-chip">Lehigh County Authority context</span></div>
+    </section>
+    <div class="scope-note" id="scope-note"><span class="note-symbol" aria-hidden="true">i</span><p><strong>Suburban Water scenario model.</strong> Allentown and wastewater remain separate reference systems. Financial feasibility is tested within the model; agreement review and rate adoption remain separate decisions. <a href="#rules" data-tab-link="rules">See scope and rules</a>.</p></div>
+    <div class="tabbar" role="tablist" aria-label="Dashboard views">
+      <button role="tab" aria-selected="true" aria-controls="panel-plan" id="tab-plan" data-tab="plan">Rate planner</button>
+      <button role="tab" aria-selected="false" aria-controls="panel-evidence" id="tab-evidence" data-tab="evidence" tabindex="-1">Public evidence</button>
+      <button role="tab" aria-selected="false" aria-controls="panel-assumptions" id="tab-assumptions" data-tab="assumptions" tabindex="-1">Assumptions & stress</button>
+      <button role="tab" aria-selected="false" aria-controls="panel-rules" id="tab-rules" data-tab="rules" tabindex="-1">Rules & agreements</button>
+      <button role="tab" aria-selected="false" aria-controls="panel-connections" id="tab-connections" data-tab="connections" tabindex="-1">Data connections</button>
+    </div>
+    <section id="panel-plan" role="tabpanel" aria-labelledby="tab-plan">
+      <div class="planner-layout">
+        <aside class="controls" aria-label="Scenario controls">
+          <div class="panel-heading"><div><p class="eyebrow">Your scenario</p><h2>Adjust the plan</h2></div><button class="text-button" id="reset">Reset</button></div>
+          <label class="field-label" for="preset">Starting point</label>
+          <select id="preset"><option value="baseline">2027 budget + derived reference</option><option value="freeze">Hold modeled rate index flat</option><option value="pressure">Cost and funding pressure</option></select>
+          <div class="control-section"><h3>Annual rate index changes</h3><p class="control-help">2027's 3.5% planning index maps to the exact proposed bill. Later years scale both bill components uniformly. This is a fund sensitivity, not a customer-class tariff design.</p><div id="rate-controls"></div></div>
+          <details class="control-section" open><summary>Costs and funding</summary><div id="cost-controls"></div></details>
+          <details class="control-section"><summary>Financial policy targets</summary>
+            <label class="input-row" for="minCash"><span>Minimum cash days <small>Model policy, not a legal threshold</small></span><input id="minCash" type="number" min="0" max="500" step="5" value="180"></label>
+            <label class="input-row" for="minDscr"><span>Minimum debt coverage <small>Planning proxy; covenant definition differs</small></span><input id="minDscr" type="number" min="1" max="3" step="0.05" value="1.2"></label>
+            <label class="input-row" for="maxRate"><span>Maximum annual increase <small>Search bound chosen for this scenario</small></span><span class="number-unit"><input id="maxRate" type="number" min="0" max="25" step="0.1" value="15"><span>%</span></span></label>
+            <label class="input-row" for="billCeiling"><span>Monthly water bill ceiling <small>Every modeled year; nominal dollars; 0 disables</small></span><span class="number-unit"><span>$</span><input id="billCeiling" type="number" min="0" max="500" step="1" value="0"></span></label>
+          </details>
+          <details class="control-section"><summary>Household illustration</summary>
+            <label class="input-row" for="usage"><span>Monthly water use <small>5/8-inch residential common rate</small></span><span class="number-unit"><input id="usage" type="number" min="500" max="15000" step="500" value="5000"><span>gal</span></span></label>
+            <label class="input-row" for="income"><span>Annual household income <small>Illustrative income, not a census estimate</small></span><span class="number-unit"><span>$</span><input id="income" type="number" min="5000" max="300000" step="1000" value="35000"></span></label>
+          </details>
+          <div class="optimizer-box"><p class="eyebrow">Constrained search</p><h3>Find a feasible rate path</h3><label class="field-label" for="objective">Objective</label><select id="objective"><option value="smooth">Lowest peak annual increase</option><option value="bill">Lowest five-year household bill</option></select><button class="primary-button" id="optimize">Find rate path</button><p class="control-help">Searches a disclosed family of annual paths. It preserves capital work and the selected funding assumptions.</p></div>
+        </aside>
+        <div class="results">
+          <div class="result-heading"><div><p class="eyebrow">Suburban Water</p><h2>What changes over five years?</h2></div><div class="actions"><button class="button" id="save-scenario">Save comparison</button><button class="button" id="export-scenario">Export scenario</button><label class="button file-button">Import<input id="import-scenario" type="file" accept="application/json,.json" aria-label="Import a saved scenario JSON"></label></div></div>
+          <div id="scenario-status" class="scenario-status" role="status" aria-live="polite">Loading the public baseline…</div>
+          <div class="kpi-grid" id="kpis"></div>
+          <div class="chart-grid">
+            <article class="card"><div class="card-heading"><div><p class="eyebrow">Customer impact</p><h3>Monthly water bill</h3></div><span class="unit">USD · 5/8-inch meter</span></div><div id="bill-chart" class="chart"></div><div class="legend"><span><i class="dot teal"></i>Scenario</span><span><i class="line grey"></i>Reference scenario</span><span id="comparison-legend" hidden><i class="line amber"></i>Saved comparison</span></div><p class="chart-note">Water only, at your selected use. 2027 begins with proposed rates. 2028–2031 bills are illustrations. Sewer and special districts are excluded.</p></article>
+            <article class="card"><div class="card-heading"><div><p class="eyebrow">Financial resilience</p><h3>Cash available at year end</h3></div><span class="unit">USD millions</span></div><div id="cash-chart" class="chart"></div><div class="legend"><span><i class="dot teal"></i>Scenario cash</span><span><i class="line amber"></i>Policy minimum</span><span><i class="line grey"></i>Reference scenario</span></div><p class="chart-note">Budget cash definition; investments and restricted cash are excluded. No Allentown or wastewater cash is used. Later years are derived.</p></article>
+          </div>
+          <article class="card"><div class="card-heading"><div><p class="eyebrow">The funding equation</p><h3>Capital work and its funding</h3></div><span class="unit">Five-year totals · USD millions</span></div><div id="funding-chart"></div><p class="chart-note" id="funding-note"></p></article>
+          <article class="card"><div class="card-heading"><div><p class="eyebrow">Trace the result</p><h3>Annual financial plan</h3></div><button class="text-button" id="export-csv">Download table CSV</button></div><div class="table-wrap" id="financial-table"></div><p class="chart-note">Values are rounded for display. Calculations retain full precision. Open the methodology for definitions and the baseline reconciliation.</p></article>
+          <article class="card insights"><div class="card-heading"><div><p class="eyebrow">Decision notes</p><h3>What the scenario is telling you</h3></div></div><div id="decision-notes"></div><div id="optimizer-result" aria-live="polite"></div></article>
+        </div>
+      </div>
+    </section>
+    <section id="panel-evidence" role="tabpanel" aria-labelledby="tab-evidence" hidden><div class="section-heading"><p class="eyebrow">From public records to model inputs</p><h2>See the evidence behind the plan</h2><p>Actuals, forecasts, budgets, and model assumptions carry different meanings. Their status follows each value through the demonstration.</p></div><div id="evidence-content"></div></section>
+    <section id="panel-assumptions" role="tabpanel" aria-labelledby="tab-assumptions" hidden><div class="section-heading"><p class="eyebrow">Possibilities, made explicit</p><h2>Assumptions and stress tests</h2><p>Explore adverse combinations without treating illustrative scenarios as calibrated probabilities.</p></div><div class="card"><div class="card-heading"><div><h3>Does this rate path survive different conditions?</h3><p class="muted">Each test starts from your current plan and changes the stated drivers.</p></div><button class="primary-button" id="run-stress">Run stress tests</button></div><div id="stress-results"></div></div><div id="assumptions-content"></div></section>
+    <section id="panel-rules" role="tabpanel" aria-labelledby="tab-rules" hidden><div class="section-heading"><p class="eyebrow">Scope before optimization</p><h2>Rules, agreements, and decision rights</h2><p>Documented restrictions determine which controls are available. Passing a financial test does not resolve an agreement or confer approval.</p></div><div id="rules-content"></div></section>
+    <section id="panel-connections" role="tabpanel" aria-labelledby="tab-connections" hidden><div class="section-heading"><p class="eyebrow">A path to operational BI</p><h2>Inspect a synthetic ERP handoff</h2><p>A small mock extract demonstrates the validation and reconciliation steps that would precede an approved Munis or other ERP connection.</p></div><div class="card"><div class="connection-head"><div><span class="badge assumed">Synthetic data</span><h3>ERP export → canonical records → reconciled model inputs</h3><p>No live system, credentials, or customer records are connected. This fixture does not replace the public planning baseline.</p></div><button class="primary-button" id="load-mock">Validate mock extract</button></div><div id="connection-results"></div><div class="connection-actions"><a class="button" href="data/mock-erp.json" download>Download fixture</a><a class="button" href="https://github.com/nwags/nwags.github.io/blob/main/lca-waterworks/docs/ERP_INTEGRATION.md">Integration design</a><label class="button file-button">Validate local JSON<input id="import-mock" type="file" accept="application/json,.json"></label></div><p class="chart-note">Use the documented synthetic schema. Files are checked locally in your browser and are never uploaded.</p></div><div id="connection-guide"></div></section>
+    <noscript><div class="scope-note">This interactive demonstration requires JavaScript. The <a href="guide.html">guide</a> and <a href="data/baseline.json">public data</a> remain available.</div></noscript>
+  </main>
+  <footer><div><strong>WaterWorks Rate Planning Lab</strong><p>Independent demonstration by Nicholas Wagner. Not an LCA product, adopted rate schedule, or financial/legal approval.</p></div><div><a href="guide.html">User manual</a><a href="https://github.com/nwags/nwags.github.io/blob/main/lca-waterworks/docs/METHODOLOGY.md">Model methodology</a><a href="https://github.com/nwags/nwags.github.io/blob/main/lca-waterworks/docs/STATE.md">Project state</a><a href="../">nwags.com</a></div></footer>
+</body>
+</html>

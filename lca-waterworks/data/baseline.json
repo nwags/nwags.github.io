@@ -1,8 +1,7 @@
 {
-  "schemaVersion": "1.0",
-  "modelVersion": "0.1.0",
+  "schemaVersion": "2.0",
+  "modelVersion": "0.2.0",
   "cutoff": "2026-11-07",
-  "scope": "Suburban Water fund sensitivity model; 5/8-inch common residential water bill illustration",
   "years": [
     2027,
     2028,
@@ -10,255 +9,505 @@
     2030,
     2031
   ],
-  "referenceRatePct": [
-    3.5,
-    3,
-    3,
-    3,
-    3
-  ],
-  "referenceGrowthPct": 1,
-  "budget2027": {
-    "status": "approved_budget_with_proposed_rates",
-    "sourceIds": [
-      "lca-final-budget",
-      "lca-oct26-packet",
-      "lca-finances"
-    ],
-    "openingCash": 11598553,
-    "customerCashReceipts": 20484630,
-    "otherOperatingCashReceipts": 187234,
-    "capitalFeeAndOtherCashReceipts": 1086054,
-    "investmentIncome": 831720,
-    "totalCashRevenue": 22589638,
-    "cashOperatingExpense": 15183495,
-    "debtService": 3923351,
-    "capitalSpending": 13186250,
-    "newBorrowing": 5651000,
-    "endingCash": 7546095,
-    "endingOperatingCash": 7309406,
-    "endingCapitalUnrestrictedCash": 236689,
-    "restrictedCash": 1893397,
-    "unrestrictedInvestments": 3148223,
-    "reportedCashDays": 181.4,
-    "reportedDscr": 1.89,
-    "notes": "Opening unrestricted cash uses the cash-flow schedule's $11,598,553; the executive summary is $1 lower. Ending cash includes operating and capital unrestricted cash. Restricted cash and investments are excluded from model spendable cash. Rates in this approved budget remained proposals at the evidence cutoff."
-  },
-  "cip": {
-    "sourceIds": [
-      "lca-suburban-cip",
-      "lca-oct26-packet"
-    ],
-    "page": "Suburban capital plan printed pp. 3–4, PDF pp. 6–7; October 26 board packet PDF pp. 32–33",
-    "userCharges": [
-      20583590,
-      21413109,
-      22276057,
-      23173782,
-      24107685
-    ],
-    "otherOperatingRevenue": [
-      187238,
-      187238,
-      187238,
-      187238,
-      187238
-    ],
-    "nonOperatingRevenue": [
-      1086052,
-      1086052,
-      1086052,
-      1086052,
-      1086052
-    ],
-    "cashOperatingExpense": [
-      13312885,
-      13845400,
-      14335524,
-      14843150,
-      15368910
-    ],
-    "currentDebtService": [
-      3576427,
-      3600227,
-      3599970,
-      3600345,
-      3600136
-    ],
-    "newDebtService": [
-      350393,
-      871239,
-      1007651,
-      1075857,
-      1100659
-    ],
-    "newBorrowing": [
-      5651000,
-      8400000,
-      2200000,
-      1100000,
-      400000
-    ],
-    "cashFlowCapex": [
-      13186250,
-      12536250,
-      6541250,
-      5836250,
-      5416250
-    ],
-    "directProjectCapex": [
-      12430000,
-      12030000,
-      6160000,
-      5605000,
-      5210000
-    ],
-    "netFundFlows": [
-      -2918075,
-      233283,
-      264952,
-      191470,
-      295020
-    ],
-    "endingCash": [
-      6656587,
-      6889870,
-      7154822,
-      7346292,
-      7641312
-    ],
-    "unrestrictedInvestments": [
-      3148223,
-      3148223,
-      3148223,
-      3148223,
-      3148223
-    ],
-    "reportedCashDays": [
-      183,
-      182,
-      182,
-      181,
-      181
-    ],
-    "reportedDscr": [
-      2.18,
-      1.98,
-      2.0,
-      2.05,
-      2.13
-    ],
-    "rateIncreasePct": [
-      3,
-      3,
-      3,
-      3,
-      3
-    ],
-    "volumeIncreasePct": [
-      1,
-      1,
-      1,
-      1,
-      1
-    ],
-    "notes": "The original CIP financial projection is preserved for comparison. It is not spliced into the reanchored model's cash balances. Cash-flow capex, not the smaller direct-project table, drives the ledger. No grants are shown as separate Suburban Water financing sources in this table."
-  },
-  "tariff": {
-    "sourceIds": [
-      "lca-final-budget",
-      "lca-2027-rates",
-      "lca-2026-water-rates"
-    ],
-    "meter": "5/8-inch",
-    "service": "Suburban Water common rate; residential; no sprinkler charge",
-    "2026": {
-      "quarterlyFixed": 36.5,
-      "perThousandGallons": 4.14
+  "funds": {
+    "suburbanWater": {
+      "id": "suburbanWater",
+      "name": "Suburban Water",
+      "service": "Water",
+      "budget": {
+        "sourcePdfPage": 16,
+        "status": "approved_2027_budget_cash_schedule",
+        "openingUnrestrictedCash": 11598553,
+        "customerCashReceipts": 20484630,
+        "otherOperatingCashReceipts": 187234,
+        "operatingSupplierPayments": 8618300,
+        "operatingEmployeePayments": 6013596,
+        "cashOperatingExpense": 14631896,
+        "cityLeasePayments": 0,
+        "capitalAcquisitionPayments": 13186250,
+        "tappingCapitalFees": 356549,
+        "meterSales": 144596,
+        "inspectionReviewReimbursements": 428014,
+        "otherCapitalCashReceipts": 156895,
+        "grants": 0,
+        "otherCapitalCashPayments": 551599,
+        "debtService": 3923351,
+        "debtDraws": 5651000,
+        "investmentIncome": 831720,
+        "investmentConversions": 0,
+        "endingUnrestrictedCash": 7546095,
+        "restrictedCash": 1893397,
+        "calculatedEndingCash": 7546095,
+        "residualPublishedMinusCalculated": 0
+      },
+      "defaultBillType": "standard",
+      "futureTariffGrowthPct": 3,
+      "planVolumeGrowthPct": 1,
+      "retailExposurePct": 91.67414302710026,
+      "fixedSharePct": 30,
+      "addonSharePct": 0,
+      "industrialSharePct": 38.2870524062,
+      "historyOpexGrowthPct": 8.996915469820976,
+      "historicalVolumeGrowthPct": 1.140973886732,
+      "historicalAccountGrowthPct": 1.836521043765,
+      "historicalDemandScope": "Western Lehigh water history used as a disclosed Suburban Water proxy",
+      "plan": {
+        "customerReceipts": [
+          20484630.0,
+          21310160.91044711,
+          22168960.103845343,
+          23062369.09939714,
+          23991782.161496125
+        ],
+        "otherOperatingReceipts": [
+          187234.0,
+          187234.0,
+          187234.0,
+          187234.0,
+          187234.0
+        ],
+        "operatingExpense": [
+          14631896.0,
+          15217171.400368892,
+          15755855.794856187,
+          16313776.248529151,
+          16891627.378540415
+        ],
+        "publishedOperatingExpense": [
+          13312885,
+          13845400,
+          14335524,
+          14843150,
+          15368910
+        ],
+        "capitalReceipts": [
+          1086054,
+          1086054,
+          1086054,
+          1086054,
+          1086054
+        ],
+        "otherCapitalPayments": [
+          551599,
+          551599,
+          551599,
+          551599,
+          551599
+        ],
+        "investmentIncome": [
+          831720,
+          831720,
+          831720,
+          831720,
+          831720
+        ],
+        "investmentConversions": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "leasePayments": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "debtService": [
+          3923351,
+          4471466,
+          4607621,
+          4676202,
+          4700795
+        ],
+        "borrowing": [
+          5651000,
+          8400000,
+          2200000,
+          1100000,
+          400000
+        ],
+        "grants": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "capex": [
+          13186250,
+          12536250,
+          6541250,
+          5836250,
+          5416250
+        ],
+        "publishedCashCapex": [
+          13186250,
+          12536250,
+          6541250,
+          5836250,
+          5416250
+        ],
+        "publishedEndingCash": [
+          6656587,
+          6889870,
+          7154822,
+          7346292,
+          7641312
+        ],
+        "publishedCoverage": [
+          2.18,
+          1.98,
+          2,
+          2.05,
+          2.13
+        ]
+      },
+      "assumptions": [
+        "2027 uses the detailed approved budget cash ledger. Rates remain proposed at the evidence cutoff.",
+        "2028\u20132031 customer receipts preserve the published CIP profile relative to the 2027 budget; that profile includes more than household tariff growth.",
+        "Future operating cash expense uses published CIP growth, blended 75% plan / 25% historical 2020\u20132025 accrual-cost CAGR in the central case. The blend is judgment, not statistical calibration.",
+        "Other capital payments, capital receipts and investment income are held at 2027 nominal amounts unless a scenario changes them.",
+        "Future base debt service is the published schedule, not a reconstructed amortization ledger. Remaining baseline principal after 2031 is not estimated.",
+        "2025 named customer-class revenue is 91.67% of water service charges. The remainder includes fire-service revenue; no household rate multiplier is applied to it by default.",
+        "The 30% fixed / 70% variable revenue split is assumed pending billing determinants; industrial usage sensitivity uses a 2025 class-revenue proxy."
+      ]
     },
-    "2027": {
-      "quarterlyFixed": 38.2,
-      "perThousandGallons": 4.26,
-      "status": "proposed_at_cutoff"
+    "suburbanWastewater": {
+      "id": "suburbanWastewater",
+      "name": "Suburban Wastewater",
+      "service": "Sewer",
+      "budget": {
+        "sourcePdfPage": 16,
+        "status": "approved_2027_budget_cash_schedule",
+        "openingUnrestrictedCash": 10356798,
+        "customerCashReceipts": 22234061,
+        "otherOperatingCashReceipts": 159737,
+        "operatingSupplierPayments": 14896888,
+        "operatingEmployeePayments": 3250914,
+        "cashOperatingExpense": 18147802,
+        "cityLeasePayments": 0,
+        "capitalAcquisitionPayments": 10116250,
+        "tappingCapitalFees": 1656626,
+        "meterSales": 1936,
+        "inspectionReviewReimbursements": 74452,
+        "otherCapitalCashReceipts": 481,
+        "grants": 5725000,
+        "otherCapitalCashPayments": 517251,
+        "debtService": 1473730,
+        "debtDraws": 0,
+        "investmentIncome": 493366,
+        "investmentConversions": 1,
+        "endingUnrestrictedCash": 10447425,
+        "restrictedCash": 366401,
+        "calculatedEndingCash": 10447425,
+        "residualPublishedMinusCalculated": 0
+      },
+      "defaultBillType": "common1",
+      "futureTariffGrowthPct": 5,
+      "planVolumeGrowthPct": 0,
+      "retailExposurePct": 4.485321104813042,
+      "fixedSharePct": 30,
+      "addonSharePct": 0,
+      "industrialSharePct": 10,
+      "historyOpexGrowthPct": 6.495720520892045,
+      "historicalVolumeGrowthPct": 0,
+      "historicalAccountGrowthPct": 0,
+      "historicalDemandScope": "No complete wastewater class demand series; plan assumptions retained",
+      "plan": {
+        "customerReceipts": [
+          22234061.0,
+          19286671.978498723,
+          21001974.86300746,
+          25042996.861476917,
+          22387940.31411803
+        ],
+        "otherOperatingReceipts": [
+          159737.0,
+          166126.95999699505,
+          172222.921834504,
+          178545.88225093592,
+          185101.8412087293
+        ],
+        "operatingExpense": [
+          18147802.0,
+          16938738.003572516,
+          17516298.370256934,
+          18113661.282107513,
+          18731510.753167268
+        ],
+        "publishedOperatingExpense": [
+          18757650,
+          17507956,
+          18104925,
+          18722362,
+          19360974
+        ],
+        "capitalReceipts": [
+          1733495,
+          1733495,
+          1733495,
+          1733495,
+          1733495
+        ],
+        "otherCapitalPayments": [
+          517251,
+          517251,
+          517251,
+          517251,
+          517251
+        ],
+        "investmentIncome": [
+          493366,
+          493366,
+          493366,
+          493366,
+          493366
+        ],
+        "investmentConversions": [
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "leasePayments": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "debtService": [
+          1473730,
+          3042626,
+          3929760,
+          3926601,
+          3605800
+        ],
+        "borrowing": [
+          0,
+          16525000,
+          14500000,
+          0,
+          0
+        ],
+        "grants": [
+          5725000,
+          4275000,
+          0,
+          0,
+          0
+        ],
+        "capex": [
+          10116250,
+          23231250,
+          16356250,
+          3431250,
+          2026250
+        ],
+        "publishedCashCapex": [
+          10116250,
+          23231250,
+          16356250,
+          3431250,
+          2026250
+        ],
+        "publishedEndingCash": [
+          11020585,
+          9213603,
+          8217901,
+          9077866,
+          8378097
+        ],
+        "publishedCoverage": [
+          3.02,
+          1.21,
+          1.22,
+          2.09,
+          1.37
+        ]
+      },
+      "assumptions": [
+        "2027 uses the detailed approved budget cash ledger. Rates remain proposed at the evidence cutoff.",
+        "2028\u20132031 customer receipts preserve the published CIP profile relative to the 2027 budget; that profile includes more than household tariff growth.",
+        "Future operating cash expense uses published CIP growth, blended 75% plan / 25% historical 2020\u20132025 accrual-cost CAGR in the central case. The blend is judgment, not statistical calibration.",
+        "Other capital payments, capital receipts and investment income are held at 2027 nominal amounts unless a scenario changes them.",
+        "Future base debt service is the published schedule, not a reconstructed amortization ledger. Remaining baseline principal after 2031 is not estimated.",
+        "The 2027 budget has no new borrowing, whereas the older CIP had $2.175m. Future published debt service is retained as a conservative schedule sensitivity.",
+        "Common-rate retail exposure is proxied by the 2025 common-rate accounting share (4.49%). Residual receipts are not all verified wholesale; separate contract/other controls apply.",
+        "The industrial share within exposed usage is a 10% sensitivity assumption; public class-level sewer billing determinants are incomplete."
+      ]
     },
-    "maxMonthlyGallons": 15000,
-    "notes": "The model's 3.5% 2027 rate index maps to the exact proposed fixed and volume components. It is an approximate planning index, not the exact percentage change for every household. At 5,000 gallons/month the actual proposed change is $14/year, about 3.55%. Above the modeled volume range, consult the full block-rate schedule. Welshtown Road is excluded."
-  },
-  "billComparisons": [
-    {
-      "system": "Suburban common water",
-      "scope": "Water only",
-      "annual2026": 394.4,
-      "annual2027": 408.4
-    },
-    {
-      "system": "Allentown",
-      "scope": "Water + sewer + capital charges + administrative order fee",
-      "annual2026": 1116.48,
-      "annual2027": 1212.32
-    },
-    {
-      "system": "Suburban sewer, Common Rate 1",
-      "scope": "Collection only: Upper Milford, Weisenberg, Lowhill",
-      "annual2026": 367.8,
-      "annual2027": 387
-    },
-    {
-      "system": "Suburban sewer, Common Rate 2",
-      "scope": "Collection and treatment: Wynnewood Terrace, Heidelberg Heights, Sand Spring, Lynn",
-      "annual2026": 691.8,
-      "annual2027": 727.2
+    "city": {
+      "id": "city",
+      "name": "City Division",
+      "service": "Water + sewer",
+      "budget": {
+        "sourcePdfPage": 16,
+        "status": "approved_2027_budget_cash_schedule",
+        "openingUnrestrictedCash": 59300576,
+        "customerCashReceipts": 69839693,
+        "otherOperatingCashReceipts": 811234,
+        "operatingSupplierPayments": 9090678,
+        "operatingEmployeePayments": 18705780,
+        "cashOperatingExpense": 27796458,
+        "cityLeasePayments": 1442981,
+        "capitalAcquisitionPayments": 50697500,
+        "tappingCapitalFees": 5130814,
+        "meterSales": 26915,
+        "inspectionReviewReimbursements": 1677201,
+        "otherCapitalCashReceipts": 39784,
+        "grants": 10966220,
+        "otherCapitalCashPayments": 6126740,
+        "debtService": 19170291,
+        "debtDraws": 8173780,
+        "investmentIncome": 3214772,
+        "investmentConversions": 0,
+        "endingUnrestrictedCash": 53947019,
+        "restrictedCash": 83823303,
+        "calculatedEndingCash": 53947019,
+        "residualPublishedMinusCalculated": 0
+      },
+      "defaultBillType": "standard",
+      "futureTariffGrowthPct": 5.8,
+      "planVolumeGrowthPct": 0,
+      "retailExposurePct": 70,
+      "fixedSharePct": 40,
+      "addonSharePct": 10,
+      "industrialSharePct": 3.3333968412,
+      "historyOpexGrowthPct": 6.970926891701024,
+      "historicalVolumeGrowthPct": -0.393948283396,
+      "historicalAccountGrowthPct": 0.505507937425,
+      "historicalDemandScope": "City water history used as a disclosed combined-division demand proxy",
+      "plan": {
+        "customerReceipts": [
+          69839693.0,
+          76211898.84412968,
+          81607853.75866981,
+          87055808.37514637,
+          91829708.3600206
+        ],
+        "otherOperatingReceipts": [
+          811234,
+          811234,
+          811234,
+          811234,
+          811234
+        ],
+        "operatingExpense": [
+          27796458.0,
+          28821291.276957396,
+          29884246.65558731,
+          30986752.333331164,
+          32130294.57205095
+        ],
+        "publishedOperatingExpense": [
+          29680489,
+          30774785,
+          31909787,
+          33087020,
+          34308071
+        ],
+        "capitalReceipts": [
+          6874714,
+          6874714,
+          6874714,
+          6874714,
+          6874714
+        ],
+        "otherCapitalPayments": [
+          926740,
+          926740,
+          926740,
+          926740,
+          926740
+        ],
+        "investmentIncome": [
+          3214772,
+          3214772,
+          3214772,
+          3214772,
+          3214772
+        ],
+        "investmentConversions": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "leasePayments": [
+          1442981,
+          1490599,
+          1539789,
+          1590602,
+          1643092
+        ],
+        "debtService": [
+          19170291,
+          19507390,
+          21533124,
+          22364828,
+          23016628
+        ],
+        "borrowing": [
+          8173780,
+          5300000,
+          12000000,
+          3500000,
+          0
+        ],
+        "grants": [
+          10966220,
+          3300000,
+          3000000,
+          0,
+          0
+        ],
+        "capex": [
+          55897500,
+          72487500,
+          53819500,
+          41812500,
+          38617500
+        ],
+        "publishedCashCapex": [
+          55897500,
+          72487500,
+          48219500,
+          41812500,
+          38617500
+        ],
+        "publishedEndingCash": [
+          49634682,
+          17887871,
+          19120667,
+          18774889,
+          21079867
+        ],
+        "publishedCoverage": [
+          2.51,
+          2.68,
+          2.63,
+          2.72,
+          2.8
+        ]
+      },
+      "assumptions": [
+        "2027 uses the detailed approved budget cash ledger. Rates remain proposed at the evidence cutoff.",
+        "2028\u20132031 customer receipts preserve the published CIP profile relative to the 2027 budget; that profile includes more than household tariff growth.",
+        "Future operating cash expense uses published CIP growth, blended 75% plan / 25% historical 2020\u20132025 accrual-cost CAGR in the central case. The blend is judgment, not statistical calibration.",
+        "Other capital payments, capital receipts and investment income are held at 2027 nominal amounts unless a scenario changes them.",
+        "Future base debt service is the published schedule, not a reconstructed amortization ledger. Remaining baseline principal after 2031 is not estimated.",
+        "2027 City capital groups move $5.2m from other capital payments into the headline capital schedule, preserving the exact cash total. Project-level mapping is inferred.",
+        "Central City 2029 capital is $53.8195m from detailed project tables plus administration. The published condensed cash table is $5.6m lower.",
+        "70% retail exposure and its 40% fixed / 50% core usage / 10% add-on split are explicit planning assumptions; the ACFR does not fully map the categories."
+      ]
     }
-  ],
-  "authorityBudget2027": [
-    {
-      "fund": "Suburban Water",
-      "cashRevenue": 22589638,
-      "cashExpense": 15183495,
-      "debtService": 3923351,
-      "capitalSpending": 13186250,
-      "newBorrowing": 5651000,
-      "endingCash": 7546095,
-      "reportedDscr": 1.89
-    },
-    {
-      "fund": "Suburban Wastewater",
-      "cashRevenue": 30345659,
-      "cashExpense": 18665053,
-      "debtService": 1473729,
-      "capitalSpending": 10116250,
-      "newBorrowing": 0,
-      "endingCash": 10447425,
-      "reportedDscr": 4.04
-    },
-    {
-      "fund": "City Division",
-      "cashRevenue": 91706633,
-      "cashExpense": 30047113,
-      "debtService": 19289357,
-      "capitalSpending": 55897500,
-      "newBorrowing": 8173780,
-      "endingCash": 53947018,
-      "reportedDscr": 2.54
-    }
-  ],
-  "cashReceiptsHistory": [
-    {
-      "year": 2025,
-      "status": "actual_in_budget_schedule",
-      "value": 17235927
-    },
-    {
-      "year": 2026,
-      "status": "forecast",
-      "value": 19696759
-    },
-    {
-      "year": 2027,
-      "status": "budget",
-      "value": 20484630
-    }
-  ],
+  },
   "sources": [
     {
       "id": "lca-finances",
@@ -270,9 +519,9 @@
     },
     {
       "id": "lca-final-budget",
-      "title": "2027 Budget — Final Review & Approval",
+      "title": "2027 Budget \u2014 Final Review & Approval",
       "url": "https://www.lcawaterworks.org/wp-content/uploads/2026/10/LCA-2027-Budget-Final-Review-Approval-102626.pdf",
-      "locator": "PDF p. 8 summary; pp. 12–15 residential bill examples; p. 20 rate adoption timeline",
+      "locator": "PDF p. 8 summary; pp. 12\u201315 residential bill examples; p. 20 rate adoption timeline",
       "status": "October 26 presentation for approved budget; rates proposed",
       "sha256": "cfd46ed27e098170f35b01b65467a3268c5682b386126a3a597267510036d848",
       "retrieved": "2026-11-07"
@@ -281,15 +530,15 @@
       "id": "lca-oct26-packet",
       "title": "October 26, 2026 board packet",
       "url": "https://www.lcawaterworks.org/wp-content/uploads/2026/10/2026October26-BoardAgendaLCA.pdf",
-      "locator": "PDF pp. 4–5 rate-study discussion; p. 13 summary; p. 16 cash flows; p. 18 cash buckets; pp. 32–33 Suburban Water CIP",
+      "locator": "PDF pp. 4\u20135 rate-study discussion; p. 13 summary; p. 16 cash flows; p. 18 cash buckets; pp. 32\u201333 Suburban Water CIP",
       "status": "Published board packet; includes forecast, budget, and earlier meeting minutes",
       "retrieved": "2026-11-07"
     },
     {
       "id": "lca-suburban-cip",
-      "title": "2027–2031 Suburban Division Capital Plan",
+      "title": "2027\u20132031 Suburban Division Capital Plan",
       "url": "https://www.lcawaterworks.org/wp-content/uploads/2026/10/2027-2031-Capital-Plan-Suburban-Division.pdf",
-      "locator": "Printed pp. 3–4 / PDF pp. 6–7; direct projects and condensed cash flow",
+      "locator": "Printed pp. 3\u20134 / PDF pp. 6\u20137; direct projects and condensed cash flow",
       "status": "Adopted conceptual capital plan; project and financing approvals separate",
       "sha256": "c12ea62e30c610e977d5b8dd2fe3230b2a2e711ff86b096de5ea5cdb8ebbcdaf",
       "retrieved": "2026-11-07"
@@ -314,76 +563,171 @@
       "id": "lca-acfr-2025",
       "title": "2025 Annual Comprehensive Financial Report",
       "url": "https://www.lcawaterworks.org/wp-content/uploads/2026/10/LCA-ACFR-2025.pdf",
-      "locator": "Printed p. 127 / PDF p. 145: Water Sales and Customer Growth, 2016–2025; statistical operating section",
+      "locator": "Printed p. 127 / PDF p. 145: Water Sales and Customer Growth, 2016\u20132025; statistical operating section",
       "status": "Historical operating statistics, not a future forecast; audit opinion should not be extended to all statistical tables",
       "sha256": "e1e23cf767499a1924608cf7b0e523fcebaf0d9204c078f94962451ccfa7c67d",
       "retrieved": "2026-11-07"
+    },
+    {
+      "id": "water2026",
+      "title": "water2026",
+      "url": "https://www.lcawaterworks.org/wp-content/uploads/2025/11/LCA-2026-Water-Rate-Schedule.pdf",
+      "locator": "PDF pp.1\u20132 Suburban; pp.6\u20138 City",
+      "status": "adopted effective2026-01-01; schedule updated2026-09-01"
+    },
+    {
+      "id": "sewer2026",
+      "title": "sewer2026",
+      "url": "https://www.lcawaterworks.org/wp-content/uploads/2025/11/LCA-2026-Wastewater-Rate-Schedule.pdf",
+      "locator": "PDF pp.1\u20132 retail; p.4 strength; p.6 interceptors; pp.7\u20138 City",
+      "status": "adopted effective2026-01-01; schedule updated2026-09-01"
+    },
+    {
+      "id": "suburban2027",
+      "title": "suburban2027",
+      "url": "https://www.lcawaterworks.org/wp-content/uploads/2026/10/Suburban-Rate-Details.pdf",
+      "locator": "PDF pp.1\u20132 image tables visually inspected",
+      "status": "PROPOSED at2026-11-07 cutoff"
+    },
+    {
+      "id": "city2027",
+      "title": "city2027",
+      "url": "https://www.lcawaterworks.org/wp-content/uploads/2026/10/City-Rate-Details.pdf",
+      "locator": "PDF pp.1\u20134",
+      "status": "PROPOSED at2026-11-07 cutoff"
+    },
+    {
+      "id": "lease2013",
+      "title": "lease2013",
+      "url": "https://www.lcawaterworks.org/wp-content/uploads/Allentown-Water-and-Sewer-Concession.-Lease-Agreement-May-1-2013.pdf",
+      "locator": "PDF p.11 annualchange;p.21 CPI;p.26 margin;p.28 permittedadjustment;p.83\u201384 \u00a77.1",
+      "status": "Original agreement; not standalone assurance of no later amendments"
+    },
+    {
+      "id": "lease2020",
+      "title": "lease2020",
+      "url": "https://allentownpa.legistar.com/View.ashx?GUID=947959AF-3F70-4D50-992E-34ADED223689&ID=8716538&M=F",
+      "locator": "Final CLEAN EXECUTION COPY8.10.20; PDF pp.2\u20133 CCRC;pp.10\u201311 schedule3;pp.12\u201313 rate relief;pp.17\u201318 conditions/signatures",
+      "status": "Councilapproved R85Aug12 2020; copy has blank execution/signature dates"
+    },
+    {
+      "id": "ccrc2020",
+      "title": "ccrc2020",
+      "url": "https://allentownpa.legistar.com/View.ashx?GUID=5D3C9E03-C2CA-4F28-8DBE-9F32DE5CD650&ID=8682769&M=F",
+      "locator": "PDF pp.2\u20133 terms;pp.5\u20136 effectiveness",
+      "status": "Approvedpacketform; blank dates; do not label signedcopy"
+    },
+    {
+      "id": "resolution2020",
+      "title": "resolution2020",
+      "url": "https://allentownpa.legistar.com/LegislationDetail.aspx?GUID=0252BB7A-E462-4BDB-9350-02C85E2EAD8E&ID=4590278&Options=&Search=",
+      "locator": "R85 file15-3680 enactment30026Aug12 2020",
+      "status": "Passed"
+    },
+    {
+      "id": "sewerRules2026",
+      "title": "sewerRules2026",
+      "url": "https://www.lcawaterworks.org/wp-content/uploads/2026/09/LCA-SewerRulesRegs.pdf",
+      "locator": "printedp6/PDF8 domesticstrength;printedp12/PDF14 billing",
+      "status": "28September2026 edition"
+    },
+    {
+      "id": "statute",
+      "title": "statute",
+      "url": "https://www.legis.state.pa.us/WU01/LI/LI/CT/HTM/53/00.056.007.000..HTM",
+      "locator": "53PaCS5607(d)(9)",
+      "status": "current statutory framework"
+    },
+    {
+      "id": "puc",
+      "title": "puc",
+      "url": "https://www.puc.beta.pa.gov/water-wastewater/",
+      "locator": "NotRegulatedbyPUC",
+      "status": "official jurisdiction explanation"
+    },
+    {
+      "id": "cityCompliance2024",
+      "title": "cityCompliance2024",
+      "url": "https://www.allentownpa.gov/Portals/0/files/Departments/Compliance/2024%20Annual%20Report%20Final%20Draft%20.pdf",
+      "locator": "printedp2 2020settlement;printedpp26\u201327 CCRC/AO",
+      "status": "CityOfficeofCompliance report publishedAug30 2025"
+    },
+    {
+      "id": "city-cip",
+      "title": "2027\u20132031 City Division capital plan",
+      "url": "https://www.lcawaterworks.org/wp-content/uploads/2026/10/2027-2031-Capital-Plan-Allentown-Division.pdf",
+      "status": "Adopted capital plan, October 2026"
+    },
+    {
+      "id": "admin-cip",
+      "title": "2027\u20132031 Administration capital plan",
+      "url": "https://www.lcawaterworks.org/wp-content/uploads/2026/10/2027-2031-Capital-Plan-Administration.pdf",
+      "status": "Adopted capital plan, October 2026"
     }
   ],
-  "historicalOperations": {
-    "sourceId": "lca-acfr-2025",
-    "scope": "Western Lehigh Service Area within the Suburban Division",
-    "status": "Historical operating statistics reported in the 2025 ACFR",
+  "capitalReconciliation": {
+    "units": "USD",
     "years": [
-      2016,
-      2017,
-      2018,
-      2019,
-      2020,
-      2021,
-      2022,
-      2023,
-      2024,
-      2025
+      2027,
+      2028,
+      2029,
+      2030,
+      2031
     ],
-    "salesThousandGallons": [
-      3416336,
-      3178240,
-      3251749,
-      3285643,
-      3476340,
-      3695527,
-      3823288,
-      3825020,
-      3986497,
-      3783596
+    "suburbanWaterDirect": [
+      12430000,
+      12030000,
+      6160000,
+      5605000,
+      5210000
     ],
-    "customerUnits": [
-      19459,
-      19794,
-      20706,
-      20903,
-      21228,
-      21483,
-      22077,
-      22297,
-      22608,
-      22922
+    "suburbanWastewaterDirect": [
+      9360000,
+      22725000,
+      15975000,
+      3200000,
+      1820000
     ],
-    "largeIndustrialSalesThousandGallons": [
-      732464,
-      647574,
-      622634,
-      665161,
-      663152,
-      745311,
-      722607,
-      674410,
-      717196,
-      623041
+    "cityWaterDirect": [
+      34970000,
+      43605000,
+      32860000,
+      25560000,
+      23980000
     ],
-    "otherIndustrialSalesThousandGallons": [
-      1158204,
-      1127906,
-      1121571,
-      1086340,
-      1108619,
-      1271081,
-      1349293,
-      1371491,
-      1311681,
-      1340170
+    "cityWastewaterDirect": [
+      19415000,
+      27870000,
+      20197000,
+      15790000,
+      14225000
     ],
-    "notes": "Printed p. 127 / PDF p. 145. Customers are units served at year end, not connections. Scope includes Central Lehigh, Upper Milford, Arcadia West, Beverly Hills and Emmaus Consecutive divisions. Municipal sales are included in commercial/small-industrial/institutional/other. This service-area series is contextual and does not calibrate the whole-fund 1% growth assumption. It excludes Northern Lehigh, Northampton and City systems."
-  }
+    "administration": [
+      3025000,
+      2025000,
+      1525000,
+      925000,
+      825000
+    ],
+    "cityProjectTablePlusAllocatedAdmin": [
+      55897500,
+      72487500,
+      53819500,
+      41812500,
+      38617500
+    ],
+    "allFundsProjectTablePlusAdmin": [
+      79200000,
+      108255000,
+      76717000,
+      51080000,
+      46060000
+    ],
+    "fiveYearTotalProjectTablesPlusAdmin": 361312000,
+    "fiveYearTotalPublishedCashTables": 355712000,
+    "conflict": "City2029 project tableplusadmin is5.6mabovecondensedcash; narrative wastewater91.897m vsprojecttable97.497m. AD-S-21 2029has5.6m, but exactreasonforomissionunverified.",
+    "cityWastewaterLocator": "City CIP printed51/PDF55; AD-S-21 WetWeather Phase1; Citywater printed6/PDF8; adminprinted3\u20134/PDF6\u20137"
+  },
+  "defaultRationale": "Best-supported central planning estimate: approved 2027 cash budget, proposed 2027 component tariffs, detailed project capital, published future revenue/funding profiles, and a 25% historical cost-trend blend. It is an independent scenario, not an adopted LCA forecast or a calibrated most-probable outcome.",
+  "dataRevision": "sha256:3955c58456c7dd31767d96910b8b962dce111a7c4862f9d7d6c78fa9f3f89da3"
 }

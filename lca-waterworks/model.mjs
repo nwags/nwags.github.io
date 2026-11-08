@@ -1,165 +1,151 @@
-/** Pure, deterministic public-data demonstration. All money is nominal USD. */
-export const MODEL_VERSION = '0.1.0';
-export const sum = xs => xs.reduce((a,b) => a+b,0);
-const EPS = 1e-7;
-const bounded = (v,lo,hi,name) => {
-  if (typeof v !== 'number' || !Number.isFinite(v) || v < lo || v > hi) throw new Error(`${name} must be between ${lo} and ${hi}.`);
-  return v;
-};
+/** Independent public-data planning model. Nominal USD; no interfund pooling. */
+export const MODEL_VERSION='0.2.0';
+export const sum=a=>a.reduce((x,y)=>x+y,0);
+const clone=x=>JSON.parse(JSON.stringify(x));
+const cents=x=>Math.round((x+Number.EPSILON)*100)/100;
+const factor=(a,i)=>a.slice(0,i+1).reduce((x,y)=>x*(1+y/100),1);
 
-export function defaultSettings(data) {
-  return {rates:[...data.referenceRatePct], opexDrift:0, customerGrowth:1, capexOverrun:0, extraDebtShare:0,
-    extraDebtRate:4.5, extraDebtTerm:20, grantAnnual:0, investmentIncomeRetention:100, elasticity:0, rateExposure:100,
-    minCash:180, minDscr:1.2, maxRate:15, billCeiling:0, usage:5000, income:35000};
+export function defaultSettings(data,fundId='suburbanWater') {
+ const f=data.funds[fundId];if(!f)throw new Error('Unknown reporting division.');
+ return {fundId,tariffPath:'planned',fixedAdjustments:[0,0,0,0,0],usageAdjustments:[0,0,0,0,0],addonAdjustments:[0,0,0,0,0],
+  historyWeight:25,opexDrift:0,customerGrowth:f.planVolumeGrowthPct,volumeGrowth:f.planVolumeGrowthPct,industrialShock:0,industrialShare:f.industrialSharePct,
+  retailExposure:f.retailExposurePct,fixedShare:f.fixedSharePct,addonShare:f.addonSharePct,contractDrift:0,elasticity:0,
+  capexOverrun:0,capitalBasis:'project',grantRetention:100,grantDelay:0,extraGrantAnnual:0,extraDebtShare:0,extraDebtRate:4.5,extraDebtTerm:20,
+  investmentRetention:100,minCash:180,minCoverage:1.2,maxUplift:12,billCeiling:0,cpi:[4.3,3.3,3.3,3.3,3.3],assumeLeaseAmendment:false,
+  optimizationLever:fundId==='city'?'addons':fundId==='suburbanWastewater'?'balanced':'retail',usage:5000,income:35000,meter:'5/8',billType:f.defaultBillType,edu:1};
 }
-
-export function validateSettings(s) {
-  if (!s || !Array.isArray(s.rates) || s.rates.length !== 5) throw new Error('Exactly five annual rate inputs are required.');
-  s.rates.forEach((v,i)=>bounded(v,-5,25,`Rate for ${2027+i}`));
-  for(const [k,lo,hi] of [['opexDrift',-2,5],['customerGrowth',-3,4],['capexOverrun',0,50],['extraDebtShare',0,50],
-    ['extraDebtRate',0,15],['extraDebtTerm',5,40],['grantAnnual',0,5000000],['investmentIncomeRetention',0,100],['elasticity',-.4,0],['rateExposure',0,100],
-    ['minCash',0,500],['minDscr',1,3],['maxRate',0,25],['billCeiling',0,500],['usage',500,15000],['income',5000,300000]]) bounded(s[k],lo,hi,k);
-  if (!Number.isInteger(s.extraDebtTerm)) throw new Error('Extra debt term must be a whole number of years.');
-  return s;
+export function validateSettings(s,data) {
+ const errors=[];
+ if(!s||typeof s!=='object'||Array.isArray(s))return ['Settings must be an object.'];
+ if(!data.funds[s.fundId])return ['Unknown reporting division.'];
+ const keys=Object.keys(defaultSettings(data,s.fundId));
+ if(Object.keys(s).some(k=>!keys.includes(k))||keys.some(k=>!(k in s)))errors.push('Settings fields do not match model 0.2.0.');
+ const ranges={historyWeight:[0,100],opexDrift:[-5,15],customerGrowth:[-10,10],volumeGrowth:[-10,10],industrialShock:[-80,50],industrialShare:[0,100],retailExposure:[0,100],fixedShare:[0,100],addonShare:[0,100],contractDrift:[-10,20],elasticity:[-1,0],capexOverrun:[0,50],grantRetention:[0,100],grantDelay:[0,3],extraGrantAnnual:[0,20000000],extraDebtShare:[0,100],extraDebtRate:[0,15],extraDebtTerm:[5,40],investmentRetention:[0,150],minCash:[0,730],minCoverage:[0,5],maxUplift:[0,25],billCeiling:[0,10000],usage:[0,100000000],income:[1000,1000000],edu:[1,10000]};
+ for(const [key,[lo,hi]] of Object.entries(ranges))if(typeof s[key]!=='number'||!Number.isFinite(s[key])||s[key]<lo||s[key]>hi)errors.push(`${key} must be between ${lo} and ${hi}.`);
+ for(const key of ['fixedAdjustments','usageAdjustments','addonAdjustments','cpi']){const lo=key==='cpi'?-5:-30,hi=key==='cpi'?15:30;if(!Array.isArray(s[key])||s[key].length!==5||s[key].some(v=>typeof v!=='number'||!Number.isFinite(v)||v<lo||v>hi))errors.push(`${key}: five values between ${lo} and ${hi} required.`);}
+ if(s.fixedShare+s.addonShare>100)errors.push('Fixed and add-on shares cannot exceed 100% of exposed receipts.');
+ if(s.fundId!=='city'&&s.addonShare!==0)errors.push('Only City has the separate add-on revenue bucket.');
+ if(!['planned','freeze2026'].includes(s.tariffPath))errors.push('Unknown tariff starting path.');
+ if(!['project','cashTable'].includes(s.capitalBasis))errors.push('Unknown capital basis.');
+ if(!['retail','balanced','addons'].includes(s.optimizationLever)||(s.optimizationLever==='addons'&&s.fundId!=='city'))errors.push('Unsupported optimization lever.');
+ if(typeof s.assumeLeaseAmendment!=='boolean')errors.push('Lease amendment assumption must be boolean.');
+ if(!Number.isInteger(s.grantDelay)||!Number.isInteger(s.extraDebtTerm))errors.push('Grant delay and debt term must be whole years.');
+ const meters=data.tariffs?.[s.fundId]?.['2026']?.[s.fundId==='city'?'waterFixed':'fixedCharges']?.map(v=>v.meterInch)??['5/8'];
+ if(!meters.includes(s.meter))errors.push('Unsupported meter size for this division.');
+ const types=s.fundId==='suburbanWastewater'?['common1','common2','washington']:s.fundId==='suburbanWater'?['standard','welshtown']:['standard'];
+ if(!types.includes(s.billType))errors.push('Unsupported illustrative bill tariff.');
+ if(s.billType==='welshtown'&&!Object.hasOwn(data.tariffs.suburbanWater.welshtown.minimumByMeterInch,s.meter))errors.push('No published Welshtown minimum for this meter.');
+ return errors;
 }
-
-export function buildReference(data) {
-  const b=data.budget2027, c=data.cip;
-  let customer=b.customerCashReceipts, cash=b.openingCash;
-  const other=b.totalCashRevenue-b.customerCashReceipts;
-  return data.years.map((year,i)=>{
-    if (i) customer *= (1+data.referenceRatePct[i]/100)*(1+data.referenceGrowthPct/100);
-    const opex=b.cashOperatingExpense*c.cashOperatingExpense[i]/c.cashOperatingExpense[0];
-    const debtService=i===0?b.debtService:c.currentDebtService[i]+c.newDebtService[i];
-    const capex=c.cashFlowCapex[i], borrowing=c.newBorrowing[i];
-    const openingCash=cash, revenue=customer+other, netFlow=revenue-opex-debtService-capex+borrowing;
-    cash+=netFlow;
-    return {year,customer,other,revenue,opex,debtService,capex,borrowing,openingCash,cash,netFlow,
-      cashDays:cash/opex*365, dscr:(revenue-opex)/debtService,
-      status:i===0?'2027 approved budget with proposed rates':'derived scenario; not an LCA forecast'};
-  });
-}
-
-export function annuityPayment(principal, annualRate, years) {
-  if (principal===0) return 0;
-  if (annualRate===0) return principal/years;
-  return principal*annualRate/(1-Math.pow(1+annualRate,-years));
-}
-
-export function simulate(data, settings) {
-  const s=validateSettings(settings), reference=buildReference(data), b=data.budget2027;
-  let cash=b.openingCash, rateRatio=1, referenceBillScale=1;
-  const loans=[], rows=[];
-  const monthlyProposed=data.tariff['2027'].quarterlyFixed/3 + s.usage/1000*data.tariff['2027'].perThousandGallons;
-  // This household component mix is an explicit proxy for the fund's variable-revenue share.
-  const variableShare=(s.usage/1000*data.tariff['2027'].perThousandGallons)/monthlyProposed;
-  // Use the published typical household, not the user's selected usage, to avoid changing fund revenue when a household control moves.
-  const fundVariableShare=(5000/1000*data.tariff['2027'].perThousandGallons)/(data.tariff['2027'].quarterlyFixed/3+5000/1000*data.tariff['2027'].perThousandGallons);
-  for (let i=0;i<5;i++) {
-    const base=reference[i];
-    rateRatio *= (1+s.rates[i]/100)/(1+data.referenceRatePct[i]/100);
-    if(i) referenceBillScale*=1+data.referenceRatePct[i]/100;
-    const growthRatio=Math.pow((1+s.customerGrowth/100)/(1+data.referenceGrowthPct/100),i+1);
-    const exposed=s.rateExposure/100;
-    const demandEffect=Math.pow(rateRatio,s.elasticity);
-    const priceRevenueFactor=(1-exposed)+exposed*rateRatio*((1-fundVariableShare)+fundVariableShare*demandEffect);
-    const customer=base.customer*growthRatio*priceRevenueFactor;
-    const other=base.other-(i>0?b.investmentIncome*(1-s.investmentIncomeRetention/100):0);
-    const revenue=customer+other;
-    const opex=base.opex*Math.pow(1+s.opexDrift/100,i+1);
-    const capex=base.capex*(1+s.capexOverrun/100);
-    // Hypothetical grants and extra debt can fund only the remaining capital need.
-    // Their proceeds cannot inflate operating liquidity by exceeding capital spending.
-    const grants=Math.min(s.grantAnnual,Math.max(0,capex-base.borrowing));
-    const extraBorrowing=Math.min(base.capex*s.extraDebtShare/100,Math.max(0,capex-base.borrowing-grants));
-    let extraDebtService=0, extraInterest=0, extraPrincipal=0;
-    for (const loan of loans) {
-      const interest=loan.balance*s.extraDebtRate/100;
-      const principal=Math.min(loan.balance,Math.max(0,loan.payment-interest));
-      loan.balance-=principal;
-      extraDebtService+=interest+principal; extraInterest+=interest; extraPrincipal+=principal;
-    }
-    // New draws occur at year end, with level annual payments beginning the following year.
-    if(extraBorrowing>0) loans.push({balance:extraBorrowing,payment:annuityPayment(extraBorrowing,s.extraDebtRate/100,s.extraDebtTerm)});
-    const debtService=base.debtService+extraDebtService;
-    const openingCash=cash;
-    const netFlow=revenue-opex-debtService-capex+base.borrowing+extraBorrowing+grants;
-    cash+=netFlow;
-    const monthlyBill=monthlyProposed*referenceBillScale*rateRatio;
-    const referenceMonthlyBill=monthlyProposed*referenceBillScale;
-    const cashDays=cash/opex*365, dscr=(revenue-opex)/debtService, requiredCash=s.minCash*opex/365;
-    const failures=[];
-    if(cash < -EPS) failures.push('Negative cash');
-    if(cashDays+EPS<s.minCash) failures.push('Cash days');
-    if(dscr+EPS<s.minDscr) failures.push('Debt coverage');
-    if(s.rates[i]>s.maxRate+EPS) failures.push('Rate-change bound');
-    if(s.billCeiling>0 && monthlyBill>s.billCeiling+EPS) failures.push('Household bill ceiling');
-    rows.push({year:base.year,rate:s.rates[i],rateRatio,customer,other,revenue,opex,capex,baseBorrowing:base.borrowing,
-      extraBorrowing,grants,baseDebtService:base.debtService,extraDebtService,extraInterest,extraPrincipal,debtService,
-      extraDebtOutstanding:sum(loans.map(l=>l.balance)),openingCash,cash,netFlow,cashDays,requiredCash,dscr,monthlyBill,
-      referenceMonthlyBill,annualBill:monthlyBill*12,householdBurden:monthlyBill*12/s.income,failures,
-      capitalFromOperations:revenue-opex-debtService,capitalCoverage:(revenue-opex-debtService)/capex});
+export function blockCharge(gallons,upperBounds,prices){let lower=0,total=0;for(let j=0;j<prices.length;j++){const upper=upperBounds[j]??Infinity;total+=Math.max(0,Math.min(gallons,upper)-lower)/1000*prices[j];lower=upper;}return total;}
+/** Round each billing line; monthly result is an equivalent, not a billing frequency. */
+export function calculateBill(data,s,index=0,historical=false) {
+ const f=data.funds[s.fundId],t=data.tariffs[s.fundId],frozen=historical||s.tariffPath==='freeze2026',year=frozen?'2026':'2027';
+ const growth=frozen?1:(1+f.futureTariffGrowthPct/100)**index;
+ const mod=kind=>historical?1:factor(s[kind==='fixed'?'fixedAdjustments':kind==='addon'?'addonAdjustments':'usageAdjustments'],index);
+ let period='quarter',lines=[];
+ const add=(label,kind,raw,rate,unit)=>lines.push({label,kind,raw:raw*mod(kind),amount:cents(raw*mod(kind)),rate:rate==null?null:rate*mod(kind),unit});
+ if(s.fundId==='suburbanWater'){
+  if(s.billType==='welshtown'){
+   add('Minimum: includes first 8,000 gallons / quarter','fixed',t.welshtown.minimumByMeterInch[s.meter]*growth,null,'quarter');
+   add('Usage above included allowance','usage',Math.max(0,s.usage*3-8000)/1000*t.welshtown.usdPerKgalExcess*growth,t.welshtown.usdPerKgalExcess*growth,'per 1,000 excess gallons');
+  }else{
+   const fixed=t[year].fixedCharges.find(v=>v.meterInch===s.meter);period=fixed.period;const months=period==='quarter'?3:1;
+   add('Water fixed service charge','fixed',fixed.usd*growth,fixed.usd*growth,period);
+   const bounds=t[year].monthlyBlockUpperGallons.map(v=>v==null?null:v*months);
+   add('Water usage: marginal declining blocks','usage',blockCharge(s.usage*months,bounds,t[year].usdPerKgal.map(v=>v*growth)),t[year].usdPerKgal[0]*growth,'first block / 1,000 gallons');
   }
-  const failures=rows.flatMap(r=>r.failures.map(rule=>({year:r.year,rule})));
-  const approvals=[];
-  if(s.extraDebtShare>0) approvals.push('Additional borrowing is hypothetical and requires financing and project approvals.');
-  if(s.grantAnnual>0) approvals.push('Additional grant funding is hypothetical; no award or eligibility is established.');
-  if(s.rates.some((r,i)=>Math.abs(r-data.referenceRatePct[i])>EPS)) approvals.push('The selected rate path is an analytical scenario, not an adopted tariff.');
-  return {version:MODEL_VERSION,rows,reference,feasible:failures.length===0,failures,approvals,
-    minCashDays:Math.min(...rows.map(r=>r.cashDays)),minDscr:Math.min(...rows.map(r=>r.dscr)),
-    totalHouseholdBill:sum(rows.map(r=>r.annualBill)),maxRate:Math.max(...s.rates),
-    totalCapital:sum(rows.map(r=>r.capex)),totalBorrowing:sum(rows.map(r=>r.baseBorrowing+r.extraBorrowing)),
-    totalGrants:sum(rows.map(r=>r.grants)),totalOperatingCapital:sum(rows.map(r=>r.capitalFromOperations)),
-    extraDebtOutstanding:rows.at(-1).extraDebtOutstanding,variableShare};
+ }else if(s.fundId==='suburbanWastewater'){
+  const tariff=s.billType==='washington'?t.washington['2026and2027']:t[s.billType][year];
+  const g=s.billType==='washington'&&index===0?1:growth;
+  add(s.billType==='washington'?'Sewer fixed charge per customer':'Sewer fixed charge per EDU','fixed',(tariff.quarterlyFixedPerEdu??tariff.quarterlyFixedPerCustomer)*(s.billType==='washington'?1:s.edu)*g,(tariff.quarterlyFixedPerEdu??tariff.quarterlyFixedPerCustomer)*g,s.billType==='washington'?'quarter / customer':'quarter / EDU');
+  add('Sewer billable usage','usage',s.usage*3/1000*tariff.perKgal*g,tariff.perKgal*g,'per 1,000 gallons');
+ }else{
+  const tariff=t[year],wf=tariff.waterFixed.find(v=>v.meterInch===s.meter),sf=tariff.sewerFixed.find(v=>v.meterInch===s.meter);period=wf.period;const kgal=s.usage*(period==='quarter'?3:1)/1000;
+  add('Water fixed service charge','fixed',wf.usd*growth,wf.usd*growth,period);
+  add('Water usage','usage',kgal*tariff.waterPerKgal*growth,tariff.waterPerKgal*growth,'per 1,000 gallons');
+  add('Water capital cost recovery','addon',kgal*tariff.waterCcrcPerKgal*growth,tariff.waterCcrcPerKgal*growth,'per 1,000 gallons');
+  add('Sewer fixed service charge','fixed',sf.usd*growth,sf.usd*growth,period);
+  add('Sewer usage','usage',kgal*tariff.sewerPerKgal*growth,tariff.sewerPerKgal*growth,'per 1,000 gallons');
+  add('Sewer capital cost recovery','addon',kgal*tariff.sewerCcrcPerKgal*growth,tariff.sewerCcrcPerKgal*growth,'per 1,000 gallons');
+  add('Administrative-order fee','addon',kgal*tariff.aoPerKgal*growth,tariff.aoPerKgal*growth,'per 1,000 gallons');
+ }
+ const periods=period==='quarter'?4:12,periodTotal=cents(sum(lines.map(v=>v.amount)));
+ const groups=Object.fromEntries(['fixed','usage','addon'].map(k=>[k,sum(lines.filter(v=>v.kind===k).map(v=>v.raw))*periods]));
+ return {period,lines,periodTotal,annual:periodTotal*periods,monthly:periodTotal*periods/12,groups};
 }
-
-export function optimize(data, settings, objective='smooth') {
-  validateSettings(settings);
-  if(!['smooth','bill'].includes(objective)) throw new Error('Unknown optimization objective.');
-  // Exhaustive search of this declared finite family, not a global continuous optimum.
-  const patterns=[{name:'Level',offsets:[0,0,0,0,0]},{name:'Earlier increases',offsets:[2,1,0,-1,-2]},
-    {name:'Later increases',offsets:[-2,-1,0,1,2]}];
-  let best=null, tested=0, feasibleCount=0;
-  const seen=new Set(), candidates=[];
-  for(let step=0;step<=Math.floor(settings.maxRate*10+EPS);step++) for(const p of patterns) {
-    const rates=p.offsets.map(o=>Math.round(Math.max(0,Math.min(settings.maxRate,step/10+o))*10)/10);
-    if(rates.some(r=>r>settings.maxRate+EPS)) continue;
-    const key=rates.join(','); if(seen.has(key)) continue; seen.add(key); tested++;
-    const result=simulate(data,{...settings,rates});
-    if(!result.feasible) continue;
-    feasibleCount++;
-    const smoothness=sum(rates.slice(1).map((r,i)=>(r-rates[i])**2));
-    const score=objective==='smooth'?[result.maxRate,smoothness,result.totalHouseholdBill]:[result.totalHouseholdBill,result.maxRate,smoothness];
-    const candidate={name:p.name,rates,result,score}; candidates.push(candidate);
-    if(!best || score.some((v,i)=>v<best.score[i]-EPS && score.slice(0,i).every((x,j)=>Math.abs(x-best.score[j])<=EPS))) best=candidate;
-  }
-  candidates.sort((a,b)=>a.result.totalHouseholdBill-b.result.totalHouseholdBill);
-  return {best,tested,feasibleCount,objective,resolutionPct:0.1,patterns:patterns.map(p=>p.name),
-    alternatives:candidates.filter(c=>c.name!==best?.name).filter((c,i,a)=>a.findIndex(x=>x.name===c.name)===i).slice(0,2)};
+export function annuityPayment(principal,rate,years){if(!principal)return 0;const r=rate/100;return r===0?principal/years:principal*r/(1-(1+r)**-years);}
+function run(data,s){
+ const f=data.funds[s.fundId],p=f.plan,defaults=defaultSettings(data,s.fundId);
+ let cash=f.budget.openingUnrestrictedCash,opex=f.budget.cashOperatingExpense;
+ const loans=[],rows=[],violations=[],ruleFlags=[];
+ const benchmark={...s,meter:'5/8',billType:f.defaultBillType,usage:5000,edu:1},referenceBenchmark={...defaults,usage:5000};
+ const scheduledGrants=data.years.map((_,i)=>p.grants[i]*s.grantRetention/100),grantsAfterHorizon=sum(scheduledGrants.filter((_,i)=>i+s.grantDelay>=5));
+ for(let i=0;i<5;i++){
+  const year=data.years[i],bill=calculateBill(data,s,i),b=calculateBill(data,benchmark,i),ref=calculateBill(data,referenceBenchmark,i);
+  const ratio=kind=>ref.groups[kind]?b.groups[kind]/ref.groups[kind]:1;
+  const fixedRatio=ratio('fixed'),usageRatio=ratio('usage'),addonRatio=ratio('addon');
+  const accountFactor=((1+s.customerGrowth/100)/(1+f.planVolumeGrowthPct/100))**(i+1),volumeFactor=((1+s.volumeGrowth/100)/(1+f.planVolumeGrowthPct/100))**(i+1),industrialFactor=1+s.industrialShock/100*s.industrialShare/100;
+  const exposed=s.retailExposure/100,fixed=s.fixedShare/100,addon=s.addonShare/100,variable=1-fixed-addon;
+  const volumePriceRatio=variable+addon>0?(usageRatio*variable+addonRatio*addon)/(variable+addon):1,priceResponse=volumePriceRatio**s.elasticity;
+  const fixedReceipts=p.customerReceipts[i]*exposed*fixed*fixedRatio*accountFactor;
+  const usageReceipts=p.customerReceipts[i]*exposed*variable*usageRatio*volumeFactor*priceResponse*industrialFactor;
+  const addonReceipts=p.customerReceipts[i]*exposed*addon*addonRatio*volumeFactor*priceResponse*industrialFactor;
+  const contractReceipts=p.customerReceipts[i]*(1-exposed)*(1+s.contractDrift/100)**(i+1);
+  const customer=fixedReceipts+usageReceipts+addonReceipts+contractReceipts;
+  // Preserve approved 2027 level; blend growth only from 2028.
+  if(i>0){const planGrowth=p.operatingExpense[i]/p.operatingExpense[i-1]-1;const blended=planGrowth*(1-s.historyWeight/100)+f.historyOpexGrowthPct/100*s.historyWeight/100;opex*=1+blended+s.opexDrift/100;}
+  const operatingExpense=opex,investment=p.investmentIncome[i]*(i===0?1:s.investmentRetention/100),otherOperating=p.otherOperatingReceipts[i],capitalReceipts=p.capitalReceipts[i],otherCapitalPayments=p.otherCapitalPayments[i],lease=p.leasePayments[i];
+  const baseCapex=(s.capitalBasis==='cashTable'?p.publishedCashCapex:p.capex)[i],capex=baseCapex*(1+s.capexOverrun/100);
+  const plannedGrants=i-s.grantDelay>=0?scheduledGrants[i-s.grantDelay]:0,baseBorrowing=p.borrowing[i];
+  // Existing plan sources remain visible. Cap incremental sources after existing capital contributions.
+  const remainingNeed=Math.max(0,capex-baseBorrowing-plannedGrants-capitalReceipts),extraGrants=Math.min(s.extraGrantAnnual,remainingNeed),extraBorrowing=Math.min(capex*s.extraDebtShare/100,remainingNeed-extraGrants);
+  let extraDebtService=0;
+  for(const loan of loans){const interest=loan.balance*s.extraDebtRate/100,payment=Math.min(loan.payment,loan.balance+interest);loan.balance=Math.max(0,loan.balance+interest-payment);extraDebtService+=payment;}
+  if(extraBorrowing>0)loans.push({balance:extraBorrowing,payment:annuityPayment(extraBorrowing,s.extraDebtRate,s.extraDebtTerm)});
+  const debtService=p.debtService[i]+extraDebtService,operatingReceipts=customer+otherOperating+investment,grants=plannedGrants+extraGrants,receipts=operatingReceipts+capitalReceipts+grants;
+  const netFlow=receipts+baseBorrowing+extraBorrowing+p.investmentConversions[i]-operatingExpense-lease-otherCapitalPayments-debtService-capex,openingCash=cash;cash+=netFlow;
+  const cashDays=cash/operatingExpense*365,coverageNumerator=operatingReceipts-operatingExpense-lease,coverage=debtService?coverageNumerator/debtService:null,requiredCash=operatingExpense/365*s.minCash;
+  const priorBill=i?calculateBill(data,s,i-1).annual:calculateBill(data,s,0,true).annual,annualBillChangePct=priorBill?(bill.annual/priorBill-1)*100:0,failures=[];
+  if(cash<-.005)failures.push('negative unrestricted cash');
+  if(cashDays<s.minCash-1e-8)failures.push(`cash below ${s.minCash} days`);
+  if(coverage!==null&&coverage<s.minCoverage-1e-8)failures.push(`coverage proxy below ${s.minCoverage}×`);
+  if(s.billCeiling&&bill.monthly>s.billCeiling+.005)failures.push('monthly bill above ceiling');
+  const uplift=Math.max(s.fixedAdjustments[i],s.usageAdjustments[i],s.addonAdjustments[i],s.contractDrift);
+  if(uplift>s.maxUplift+1e-8)failures.push('uplift exceeds selected search/policy limit');
+  const coreBase=s.tariffPath==='freeze2026'?0:i===0?6.8:f.futureTariffGrowthPct;
+  const coreGrowth=Math.max((1+coreBase/100)*(1+s.fixedAdjustments[i]/100)-1,(1+coreBase/100)*(1+s.usageAdjustments[i]/100)-1)*100,cityCeiling=Math.max(0,s.cpi[i]+2.5),ceilingExceeded=s.fundId==='city'&&coreGrowth>cityCeiling+.015;
+  if(ceilingExceeded)ruleFlags.push(`${year}: core-growth proxy ${coreGrowth.toFixed(2)}% exceeds CPI + margin ${cityCeiling.toFixed(2)}%.`);
+  failures.forEach(reason=>violations.push({year,reason}));
+  rows.push({year,openingCash,customer,fixedReceipts,usageReceipts,addonReceipts,contractReceipts,otherOperating,investment,capitalReceipts,plannedGrants,extraGrants,grants,receipts,operatingExpense,lease,otherCapitalPayments,debtService,baseDebtService:p.debtService[i],extraDebtService,capex,baseBorrowing,extraBorrowing,investmentConversions:p.investmentConversions[i],netFlow,cash,cashDays,requiredCash,coverage,coverageNumerator,monthlyBill:bill.monthly,annualBill:bill.annual,annualBillChangePct,bill,failures,ceilingExceeded,coreGrowth,cityCeiling,fundingCapacity:remainingNeed,industrialFactor,accountFactor,volumeFactor,priceResponse});
+ }
+ const extraDebtOutstanding=sum(loans.map(v=>v.balance)),annualExtraDebtAfterHorizon=sum(loans.map(v=>v.payment));
+ return {rows,violations,ruleFlags,financiallyFeasible:violations.length===0,feasible:violations.length===0&&(s.assumeLeaseAmendment||ruleFlags.length===0),minCashDays:Math.min(...rows.map(r=>r.cashDays)),minCoverage:Math.min(...rows.map(r=>r.coverage??Infinity)),endingCash:cash,totalCapital:sum(rows.map(r=>r.capex)),totalBills:sum(rows.map(r=>r.annualBill)),totalBorrowing:sum(rows.map(r=>r.baseBorrowing+r.extraBorrowing)),totalGrants:sum(rows.map(r=>r.grants)),extraDebtOutstanding,annualExtraDebtAfterHorizon,grantsAfterHorizon,baselineDebtAfterHorizon:'Not estimated; published base debt service is a schedule, not a full liability rollforward.'};
 }
-
-export function stressTests(data,settings) {
-  validateSettings(settings);
-  const cases=[
-    {name:'Selected scenario',change:'No changes',patch:{}},
-    {name:'Faster operating costs',change:'+1 percentage point annual O&M drift',patch:{opexDrift:Math.min(5,settings.opexDrift+1)}},
-    {name:'Slower customer growth',change:'Annual customer/usage growth lower by 1 percentage point',patch:{customerGrowth:Math.max(-3,settings.customerGrowth-1)}},
-    {name:'Capital cost pressure',change:'+10 percentage points on planned capital costs',patch:{capexOverrun:Math.min(50,settings.capexOverrun+10)}},
-    {name:'No additional grants',change:'All hypothetical additional grants removed',patch:{grantAnnual:0}},
-    {name:'Higher new-debt interest',change:'+2 percentage points on extra borrowing only',patch:{extraDebtRate:Math.min(15,settings.extraDebtRate+2)}},
-    {name:'No future investment income',change:'Remove budget investment income only in 2028–2031; a limiting case',patch:{investmentIncomeRetention:0}},
-    {name:'Joint adverse case',change:'O&M +1pp, growth −1pp, capital +10pp, no extra grants, extra-debt interest +2pp, no future investment income',patch:{opexDrift:Math.min(5,settings.opexDrift+1),customerGrowth:Math.max(-3,settings.customerGrowth-1),capexOverrun:Math.min(50,settings.capexOverrun+10),grantAnnual:0,extraDebtRate:Math.min(15,settings.extraDebtRate+2),investmentIncomeRetention:0}}
-  ];
-  return cases.map(c=>({...c,result:simulate(data,{...settings,...c.patch})}));
+export function simulate(data,s){const errors=validateSettings(s,data);if(errors.length)throw new Error(errors.join(' '));const result=run(data,s),referenceSettings={...defaultSettings(data,s.fundId),usage:s.usage,income:s.income,meter:s.meter,billType:s.billType,edu:s.edu},reference=run(data,referenceSettings);return {...result,reference:reference.rows,referenceEndingCash:reference.endingCash,settings:clone(s)};}
+export function buildReference(data,fundId='suburbanWater'){return run(data,defaultSettings(data,fundId)).rows;}
+export function scenarioPresets(data,fundId){
+ const d=defaultSettings(data,fundId),h=data.funds[fundId].historicalVolumeGrowthPct,accounts=data.funds[fundId].historicalAccountGrowthPct,make=(id,name,description,changes={})=>({id,name,description,settings:{...clone(d),...changes}});
+ return [make('central','Central planning estimate','Approved budget + detailed capital; 25% historical cost-trend blend.'),make('plan','Published drivers','No historical cost blend; detailed project capital. A derived budget anchor, not LCA’s published cash forecast.',{historyWeight:0}),make('cash-table','Condensed capital table','Published cost drivers and original condensed cash capital; City 2029 is $5.6m below detailed projects.',{historyWeight:0,capitalBasis:'cashTable'}),make('freeze','Freeze 2026 tariffs','Hold every modeled fixed, usage and City add-on component at its actual 2026 value.',{tariffPath:'freeze2026'}),make('history','Historical trend','Full cost CAGR; separate observed water-unit and volume trends; sewer demand remains at plan.',{historyWeight:100,customerGrowth:accounts,volumeGrowth:h}),make('industry','Industrial demand −20%','20% less usage within the exposed industrial revenue proxy; household use unchanged.',{industrialShock:-20}),make('pressure','Cost pressure','Extra O&M +2 points/year from 2028; capital +10%; future investment receipts 50%.',{opexDrift:2,capexOverrun:10,investmentRetention:50}),make('grant-delay','Grants delayed two years','Move planned grant cash two years later; show receipts beyond 2031 separately.',{grantDelay:2}),make('debt','Additional borrowing','Up to 25% of capital with extra 20-year debt at 4.5%, capped after existing capital sources.',{extraDebtShare:25}),make('mix-low','Lower retail exposure','Test the uncertain receipt share responding to household tariffs.',{retailExposure:fundId==='city'?50:fundId==='suburbanWastewater'?4.485321104813042:80}),make('mix-high','Higher retail exposure','Broader exposed retail share; noncustomer cash stays unscaled.',{retailExposure:fundId==='city'?90:fundId==='suburbanWastewater'?20:100})];
 }
-
-export function exportScenario(data,settings,result) {
-  validateSettings(settings);
-  return {schemaVersion:'1.0',modelVersion:MODEL_VERSION,dataCutoff:data.cutoff,scope:data.scope,settings,
-    referenceMethod:'2027 approved budget anchor with derived 2028–2031 growth and CIP financing; not an adopted LCA forecast',
-    numericalFeasibility:result.feasible,legalApproval:'not established',rows:result.rows,
-    sourceUrls:data.sources.map(s=>s.url)};
+/** Exhaustive finite family; other assumptions and financing held fixed. */
+export function optimize(data,s,objective='peak'){
+ const errors=validateSettings(s,data);if(errors.length)throw new Error(errors.join(' '));if(!['peak','bills'].includes(objective))throw new Error('Unknown objective.');
+ const patterns=[[0,0,0,0,0],[2,1,0,-1,-2],[-2,-1,0,1,2]],seen=new Set();let checked=0,feasibleCount=0,best=null;
+ const lexLess=(a,b)=>a.some((v,i)=>v<b[i]-1e-8&&a.slice(0,i).every((x,j)=>Math.abs(x-b[j])<1e-8));
+ for(let tick=0;tick<=Math.floor(s.maxUplift*10);tick++)for(const pattern of patterns){
+  const rates=pattern.map(v=>Math.round(Math.min(s.maxUplift,Math.max(0,tick/10+v))*10)/10),key=rates.join(',');if(seen.has(key))continue;seen.add(key);const candidate=clone(s);
+  if(candidate.optimizationLever==='addons')candidate.addonAdjustments=rates;else{candidate.fixedAdjustments=rates;candidate.usageAdjustments=rates;}
+  if(candidate.optimizationLever==='balanced')candidate.contractDrift=Math.max(...rates);
+  if(validateSettings(candidate,data).length)continue;
+  const result=run(data,candidate);checked++;if(!result.feasible)continue;feasibleCount++;
+  const peak=Math.max(...result.rows.map(r=>r.annualBillChangePct)),smooth=sum(result.rows.slice(1).map((r,i)=>(r.annualBillChangePct-result.rows[i].annualBillChangePct)**2)),score=objective==='peak'?[peak,result.totalBills,smooth]:[result.totalBills,peak,smooth];
+  if(!best||lexLess(score,best.score))best={settings:candidate,result,score};
+ }
+ return {best,checked,feasibleCount,objective,search:'0.1-point grid; level, earlier and later uplift patterns; no global-optimum claim'};
 }
+export function exportScenario(data,s,name='Custom scenario'){const r=simulate(data,s);return {schemaVersion:'2.0',modelVersion:MODEL_VERSION,cutoff:data.cutoff,dataRevision:data.dataRevision,name,settings:clone(s),assumptions:data.funds[s.fundId].assumptions,financiallyFeasible:r.financiallyFeasible,implementedChecksPass:r.feasible,legalApproval:'Not certified; explicit assumptions remain subject to review',rows:r.rows,terminal:{extraDebtOutstanding:r.extraDebtOutstanding,annualExtraDebtAfterHorizon:r.annualExtraDebtAfterHorizon,grantsAfterHorizon:r.grantsAfterHorizon,baselineDebt:r.baselineDebtAfterHorizon},sourceUrls:data.sources.map(v=>v.url)};}
+export function importScenario(data,payload){if(!payload||payload.schemaVersion!=='2.0'||payload.modelVersion!==MODEL_VERSION||payload.cutoff!==data.cutoff||payload.dataRevision!==data.dataRevision)throw new Error('Scenario must match model 0.2.0, cutoff 2026-11-07 and the exact baseline data fingerprint. Older scenarios are not silently migrated.');const errors=validateSettings(payload.settings,data);if(errors.length)throw new Error(errors.join(' '));return clone(payload.settings);}
 
 export function validateMock(payload) {
   const errors=[],warnings=[];

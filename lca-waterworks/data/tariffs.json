@@ -1,0 +1,926 @@
+{
+  "schemaVersion": "revision-research-1",
+  "cutoff": "2026-11-07",
+  "timezone": "America/New_York",
+  "allDivisionsEnabledForScenarioAnalysis": true,
+  "legalComplianceCertified": false,
+  "sources": {
+    "water2026": {
+      "url": "https://www.lcawaterworks.org/wp-content/uploads/2025/11/LCA-2026-Water-Rate-Schedule.pdf",
+      "locator": "PDF pp.1\u20132 Suburban; pp.6\u20138 City",
+      "status": "adopted effective2026-01-01; schedule updated2026-09-01"
+    },
+    "sewer2026": {
+      "url": "https://www.lcawaterworks.org/wp-content/uploads/2025/11/LCA-2026-Wastewater-Rate-Schedule.pdf",
+      "locator": "PDF pp.1\u20132 retail; p.4 strength; p.6 interceptors; pp.7\u20138 City",
+      "status": "adopted effective2026-01-01; schedule updated2026-09-01"
+    },
+    "suburban2027": {
+      "url": "https://www.lcawaterworks.org/wp-content/uploads/2026/10/Suburban-Rate-Details.pdf",
+      "locator": "PDF pp.1\u20132 image tables visually inspected",
+      "status": "PROPOSED at2026-11-07 cutoff"
+    },
+    "city2027": {
+      "url": "https://www.lcawaterworks.org/wp-content/uploads/2026/10/City-Rate-Details.pdf",
+      "locator": "PDF pp.1\u20134",
+      "status": "PROPOSED at2026-11-07 cutoff"
+    },
+    "examples2027": {
+      "url": "https://www.lcawaterworks.org/2027-rates/",
+      "locator": "City and Suburban example images; HTML modified2026-11-05",
+      "status": "2027 proposals"
+    },
+    "lease2013": {
+      "url": "https://www.lcawaterworks.org/wp-content/uploads/Allentown-Water-and-Sewer-Concession.-Lease-Agreement-May-1-2013.pdf",
+      "locator": "PDF p.11 annualchange;p.21 CPI;p.26 margin;p.28 permittedadjustment;p.83\u201384 \u00a77.1",
+      "status": "Original agreement; not standalone assurance of no later amendments"
+    },
+    "lease2020": {
+      "url": "https://allentownpa.legistar.com/View.ashx?GUID=947959AF-3F70-4D50-992E-34ADED223689&ID=8716538&M=F",
+      "locator": "Final CLEAN EXECUTION COPY8.10.20; PDF pp.2\u20133 CCRC;pp.10\u201311 schedule3;pp.12\u201313 rate relief;pp.17\u201318 conditions/signatures",
+      "status": "Councilapproved R85Aug12 2020; copy has blank execution/signature dates"
+    },
+    "ccrc2020": {
+      "url": "https://allentownpa.legistar.com/View.ashx?GUID=5D3C9E03-C2CA-4F28-8DBE-9F32DE5CD650&ID=8682769&M=F",
+      "locator": "PDF pp.2\u20133 terms;pp.5\u20136 effectiveness",
+      "status": "Approvedpacketform; blank dates; do not label signedcopy"
+    },
+    "resolution2020": {
+      "url": "https://allentownpa.legistar.com/LegislationDetail.aspx?GUID=0252BB7A-E462-4BDB-9350-02C85E2EAD8E&ID=4590278&Options=&Search=",
+      "locator": "R85 file15-3680 enactment30026Aug12 2020",
+      "status": "Passed"
+    },
+    "sewerRules2026": {
+      "url": "https://www.lcawaterworks.org/wp-content/uploads/2026/09/LCA-SewerRulesRegs.pdf",
+      "locator": "printedp6/PDF8 domesticstrength;printedp12/PDF14 billing",
+      "status": "28September2026 edition"
+    },
+    "acfr2025": {
+      "url": "https://www.lcawaterworks.org/wp-content/uploads/2026/10/LCA-ACFR-2025.pdf",
+      "locator": "printedp89/PDF99 SWW combining;printedp96/PDF111 revenuebySource;printedp127/PDF145 volume",
+      "status": "Historical2025; forward application assumed"
+    },
+    "statute": {
+      "url": "https://www.legis.state.pa.us/WU01/LI/LI/CT/HTM/53/00.056.007.000..HTM",
+      "locator": "53PaCS5607(d)(9)",
+      "status": "current statutory framework"
+    },
+    "puc": {
+      "url": "https://www.puc.beta.pa.gov/water-wastewater/",
+      "locator": "NotRegulatedbyPUC",
+      "status": "official jurisdiction explanation"
+    },
+    "cityCompliance2024": {
+      "url": "https://www.allentownpa.gov/Portals/0/files/Departments/Compliance/2024%20Annual%20Report%20Final%20Draft%20.pdf",
+      "locator": "printedp2 2020settlement;printedpp26\u201327 CCRC/AO",
+      "status": "CityOfficeofCompliance report publishedAug30 2025"
+    },
+    "oct26packet": {
+      "url": "https://www.lcawaterworks.org/wp-content/uploads/2026/10/2026October26-BoardAgendaLCA.pdf",
+      "locator": "October12minutesprintedpp2\u20133;packetPDFpp4\u20135",
+      "status": "SWWmostlymunicipalwholesale;2027WLI/LLRIpreliminaryapprovalnotfinaladoption"
+    }
+  },
+  "suburbanWater": {
+    "sourceIds": [
+      "water2026",
+      "suburban2027"
+    ],
+    "classTreatment": "Same meter-size and declining-block schedule for residential/commercial/industrial retail; customer class alone does not select a different per-kgal tariff. Contract customers need contract assumptions.",
+    "2026": {
+      "fixedCharges": [
+        {
+          "meterInch": "5/8",
+          "period": "quarter",
+          "usd": 36.5
+        },
+        {
+          "meterInch": "3/4",
+          "period": "quarter",
+          "usd": 36.5
+        },
+        {
+          "meterInch": "1",
+          "period": "quarter",
+          "usd": 65
+        },
+        {
+          "meterInch": "1.5",
+          "period": "month",
+          "usd": 49
+        },
+        {
+          "meterInch": "2",
+          "period": "month",
+          "usd": 67.75
+        },
+        {
+          "meterInch": "3",
+          "period": "month",
+          "usd": 122.75
+        },
+        {
+          "meterInch": "4",
+          "period": "month",
+          "usd": 179.75
+        },
+        {
+          "meterInch": "6",
+          "period": "month",
+          "usd": 336.5
+        },
+        {
+          "meterInch": "8",
+          "period": "month",
+          "usd": 522.75
+        },
+        {
+          "meterInch": "10",
+          "period": "month",
+          "usd": 736
+        }
+      ],
+      "monthlyBlockUpperGallons": [
+        40000,
+        1000000,
+        9000000,
+        58000000,
+        null
+      ],
+      "quarterlyBlockUpperGallons": [
+        120000,
+        3000000,
+        27000000,
+        174000000,
+        null
+      ],
+      "usdPerKgal": [
+        4.14,
+        3.74,
+        3.28,
+        3.01,
+        2.8
+      ]
+    },
+    "2027": {
+      "status": "proposed",
+      "fixedCharges": [
+        {
+          "meterInch": "5/8",
+          "period": "quarter",
+          "usd": 38.2
+        },
+        {
+          "meterInch": "3/4",
+          "period": "quarter",
+          "usd": 38.2
+        },
+        {
+          "meterInch": "1",
+          "period": "quarter",
+          "usd": 68.02
+        },
+        {
+          "meterInch": "1.5",
+          "period": "month",
+          "usd": 51.28
+        },
+        {
+          "meterInch": "2",
+          "period": "month",
+          "usd": 70.9
+        },
+        {
+          "meterInch": "3",
+          "period": "month",
+          "usd": 128.46
+        },
+        {
+          "meterInch": "4",
+          "period": "month",
+          "usd": 188.11
+        },
+        {
+          "meterInch": "6",
+          "period": "month",
+          "usd": 352.15
+        },
+        {
+          "meterInch": "8",
+          "period": "month",
+          "usd": 547.06
+        },
+        {
+          "meterInch": "10",
+          "period": "month",
+          "usd": 770.22
+        }
+      ],
+      "monthlyBlockUpperGallons": [
+        40000,
+        1000000,
+        9000000,
+        58000000,
+        null
+      ],
+      "quarterlyBlockUpperGallons": [
+        120000,
+        3000000,
+        27000000,
+        174000000,
+        null
+      ],
+      "usdPerKgal": [
+        4.26,
+        3.85,
+        3.36,
+        3.12,
+        2.9
+      ],
+      "quarterlyBlockStatus": "INFERRED continuation of2026 period convention; proposedtable displaysmonthlyblocks"
+    },
+    "publicFire2027": {
+      "perHydrantAnnualUsd": 146.14,
+      "perInchSquaredFootAnnualUsd": 0.00204
+    },
+    "privateFire": {
+      "status": "nochange2027",
+      "singleFamilyMonthlyUsd": 5,
+      "monthlyByLineInch": {
+        "2": 13.61,
+        "2.5": 21.26,
+        "3": 30.62,
+        "4": 54.43,
+        "6": 122.47,
+        "8": 217.72,
+        "10": 340.18,
+        "12": 489.87
+      }
+    },
+    "welshtown": {
+      "status": "2026published_nochange2027",
+      "period": "quarter",
+      "includedGallons": 8000,
+      "usdPerKgalExcess": 5.5,
+      "minimumByMeterInch": {
+        "5/8": 60,
+        "3/4": 60,
+        "1": 72,
+        "1.25": 84,
+        "1.5": 108,
+        "2": 133,
+        "3": 169,
+        "4": 266,
+        "6": 459
+      }
+    }
+  },
+  "city": {
+    "sourceIds": [
+      "water2026",
+      "sewer2026",
+      "city2027"
+    ],
+    "classTreatment": "Retail water/sewer fixed charge changes with meter and billingperiod; flat per-kgal rate at all volumes; no generalindustrialdiscount verified. Exceptionalstrength/pretreatment are separate. Municipalserviceagreements excluded from coreleaseescalator.",
+    "2026": {
+      "waterFixed": [
+        {
+          "meterInch": "5/8",
+          "period": "quarter",
+          "usd": 90.28
+        },
+        {
+          "meterInch": "3/4",
+          "period": "quarter",
+          "usd": 100.15
+        },
+        {
+          "meterInch": "1",
+          "period": "quarter",
+          "usd": 120.38
+        },
+        {
+          "meterInch": "1.5",
+          "period": "month",
+          "usd": 56.73
+        },
+        {
+          "meterInch": "2",
+          "period": "month",
+          "usd": 76.62
+        },
+        {
+          "meterInch": "3",
+          "period": "month",
+          "usd": 129.54
+        },
+        {
+          "meterInch": "4",
+          "period": "month",
+          "usd": 189.38
+        },
+        {
+          "meterInch": "6",
+          "period": "month",
+          "usd": 355.09
+        },
+        {
+          "meterInch": "8",
+          "period": "month",
+          "usd": 554.17
+        }
+      ],
+      "sewerFixed": [
+        {
+          "meterInch": "5/8",
+          "period": "quarter",
+          "usd": 31.38
+        },
+        {
+          "meterInch": "3/4",
+          "period": "quarter",
+          "usd": 34.78
+        },
+        {
+          "meterInch": "1",
+          "period": "quarter",
+          "usd": 41.59
+        },
+        {
+          "meterInch": "1.5",
+          "period": "month",
+          "usd": 19.54
+        },
+        {
+          "meterInch": "2",
+          "period": "month",
+          "usd": 26.34
+        },
+        {
+          "meterInch": "3",
+          "period": "month",
+          "usd": 44.62
+        },
+        {
+          "meterInch": "4",
+          "period": "month",
+          "usd": 65.03
+        },
+        {
+          "meterInch": "6",
+          "period": "month",
+          "usd": 121.87
+        },
+        {
+          "meterInch": "8",
+          "period": "month",
+          "usd": 223.58
+        }
+      ],
+      "waterPerKgal": 5.35708,
+      "sewerPerKgal": 3.85688,
+      "waterCcrcPerKgal": 0.42054,
+      "sewerCcrcPerKgal": 0.65344,
+      "aoPerKgal": 0.20934
+    },
+    "2027": {
+      "status": "proposed",
+      "waterFixed": [
+        {
+          "meterInch": "5/8",
+          "period": "quarter",
+          "usd": 96.42
+        },
+        {
+          "meterInch": "3/4",
+          "period": "quarter",
+          "usd": 106.96
+        },
+        {
+          "meterInch": "1",
+          "period": "quarter",
+          "usd": 128.57
+        },
+        {
+          "meterInch": "1.5",
+          "period": "month",
+          "usd": 60.59
+        },
+        {
+          "meterInch": "2",
+          "period": "month",
+          "usd": 81.83
+        },
+        {
+          "meterInch": "3",
+          "period": "month",
+          "usd": 138.35
+        },
+        {
+          "meterInch": "4",
+          "period": "month",
+          "usd": 202.26
+        },
+        {
+          "meterInch": "6",
+          "period": "month",
+          "usd": 379.24
+        },
+        {
+          "meterInch": "8",
+          "period": "month",
+          "usd": 591.85
+        }
+      ],
+      "sewerFixed": [
+        {
+          "meterInch": "5/8",
+          "period": "quarter",
+          "usd": 33.52
+        },
+        {
+          "meterInch": "3/4",
+          "period": "quarter",
+          "usd": 37.15
+        },
+        {
+          "meterInch": "1",
+          "period": "quarter",
+          "usd": 44.42
+        },
+        {
+          "meterInch": "1.5",
+          "period": "month",
+          "usd": 20.86
+        },
+        {
+          "meterInch": "2",
+          "period": "month",
+          "usd": 28.13
+        },
+        {
+          "meterInch": "3",
+          "period": "month",
+          "usd": 47.65
+        },
+        {
+          "meterInch": "4",
+          "period": "month",
+          "usd": 69.45
+        },
+        {
+          "meterInch": "6",
+          "period": "month",
+          "usd": 130.16
+        },
+        {
+          "meterInch": "8",
+          "period": "month",
+          "usd": 238.78
+        }
+      ],
+      "waterPerKgal": 5.71869,
+      "sewerPerKgal": 4.11875,
+      "waterCcrcPerKgal": 0.70841,
+      "sewerCcrcPerKgal": 0.78932,
+      "aoPerKgal": 0.20704,
+      "leaseIncreasePct": 6.8,
+      "impliedPriorJuneCpiPct": 4.3,
+      "embeddedVolumePassThroughs": "Publishedwater/sewervolumerates already include ChangeofLaw/DRBC; donotaddagain."
+    },
+    "futureCoreEscalator": {
+      "formula": "max(0,cpiNortheastJuneYearOverYearPct+marginPct)",
+      "index": "CPI-U NortheastRegion notseasonallyadjusted",
+      "indexPeriod": "annualperiodendingJune30priorcalendarYear",
+      "marginThrough2032Pct": 2.5,
+      "margin2033OnPct": 2,
+      "effectiveDay": "January1",
+      "scope": "core retailservicecharges, excludes \u00a77.1(f)\u2013(m) add-ons and municipalserviceagreementrates",
+      "futureCpiStatus": "ASSUMEDscenarioinput; no published2028\u20132031value",
+      "implementation": "showcoreceilingflag; enable ratesaboveceiling as explicit contract-change scenario, not legallycompliant tariff",
+      "volumeApproximation": "Escalating entire publishedvolumecomponent approximatescoreplusunseparatedembeddedpassThrough; disclose this planningproxy."
+    },
+    "majorCapitalEligibility": {
+      "sourceId": "lease2013",
+      "locator": "definitionprintedp18/PDFp25",
+      "categories": [
+        "RequiredCapitalImprovement",
+        "Sewercapacityincreaseunder3.22(a)",
+        "CasualtyCostabovenetinsurance",
+        "OtherSystemrenewal/replacement/bettermentwithexpectedlifeatleast5yearsandcostabove$1millioninflationadjustedfromClosingDate"
+      ],
+      "approval": "\u00a77.1(f)writtenreport/Cityapproval;2020formtimingandfundingamendmentsapplyonlyifassumedcurrent;donotassumeallcapitalautomaticallyeligible"
+    }
+  },
+  "suburbanWastewater": {
+    "sourceIds": [
+      "sewer2026",
+      "examples2027",
+      "sewerRules2026"
+    ],
+    "common1": {
+      "scope": "collectiononly; UpperMilford,Weisenberg,Lowhill;2026schedulealsoincludesUpperMacungiedirectcustomers",
+      "2026": {
+        "quarterlyFixedPerEdu": 24,
+        "multifamilyQuarterlyFixedPerEdu": 12,
+        "perKgal": 4.53
+      },
+      "2027": {
+        "status": "proposed",
+        "quarterlyFixedPerEdu": 26.4,
+        "perKgal": 4.69,
+        "perKgalStatus": "DERIVED70.35/15 frompublishedexample",
+        "multifamilyQuarterlyFixedPerEdu": 13.2,
+        "multifamilyStatus": "ASSUMEDhalfstandardfixed;2027multifamilyvalueunverified"
+      },
+      "billingUsage": "singlefamilyfirstcalendarquarter;multifamilyactualeachcycle;commercialactual;unmetered/nofirstquarter180gpdperEDU",
+      "commercialEduGallonsPerDay": 235
+    },
+    "common2": {
+      "scope": "collectionandtreatment;WynnewoodTerrace,HeidelbergHeights,SandSpring,Lynn",
+      "2026": {
+        "quarterlyFixedPerEdu": 30,
+        "multifamilyQuarterlyFixedPerEdu": 15,
+        "perKgal": 9.53
+      },
+      "2027": {
+        "status": "proposed",
+        "quarterlyFixedPerEdu": 34.5,
+        "perKgal": 9.82,
+        "perKgalStatus": "DERIVED147.30/15frompublishedexample",
+        "multifamilyQuarterlyFixedPerEdu": 17.25,
+        "multifamilyStatus": "ASSUMEDhalfstandardfixed;2027multifamilyvalueunverified"
+      },
+      "billingUsage": "actualeachcycle;unmetered180gpdperEDU",
+      "commercialEduGallonsPerDay": 235
+    },
+    "washington": {
+      "2026and2027": {
+        "quarterlyFixedPerCustomer": 124,
+        "perKgal": 5
+      },
+      "status": "nochange2027"
+    },
+    "arcadiaWest": {
+      "2026and2027": {
+        "quarterlyFixedPerKgalDailyAllocation": 7.55,
+        "flowPerKgal": 58
+      },
+      "status": "nochange2027",
+      "interpretation": "fixed =7.55*(allocatedgpd/1000)perquarter; doNOTmultiplybydaysagain"
+    },
+    "interceptor2026": {
+      "WLI": {
+        "flowPerKgal": 1.48,
+        "bodPerLb": 0.4,
+        "tssPerLb": 0.39,
+        "tknPerLb": 0.53,
+        "allocationPerKgalDaily": 0.36,
+        "allocationPeriod": "periodnotexplicitinratecolumn;assumequarterlyonlyifmodelingdeclaredscenario",
+        "emmausFlowPerKgal": 0.58
+      },
+      "LLRI": {
+        "phase1SignatoriesFlowPerKgal": 0.16,
+        "otherUsersFlowPerKgal": 0.19,
+        "phase2SignatoriesFlowPerKgal": 0.025
+      },
+      "2027": "useobservedadopted2027userscheduleifavailable; otherwise2026anchoredexplicitcontractindexassumption"
+    }
+  },
+  "industrialWastewater": {
+    "sourceIds": [
+      "sewer2026",
+      "sewerRules2026"
+    ],
+    "suburban2026ExcessStrengthPerLb": {
+      "bod": 0.4,
+      "tss": 0.39,
+      "tkn": 0.43
+    },
+    "city2026ExcessStrengthPerLb": {
+      "bod": 0.334,
+      "tss": 0.312,
+      "tkn": 0.466
+    },
+    "normalStrengthNonKlinesIslandMgL": {
+      "bod": 250,
+      "tss": 275,
+      "tkn": 35
+    },
+    "formulaProxy": "excessLb=max(0,actualMgL-thresholdMgL)*gallons*8.345404e-6;charge=sum(excessLb*perLb);onlyifapplicablepermitagrees",
+    "warning": "Citythresholdsandpermitsnotverified; nonKlinesIslandthresholdsarenotautomaticCitytariffthresholds;doNOTimposeindustrialstrengthsurchargetoallindustrialflow",
+    "suburbanSamplingDailyUsd": 182,
+    "fatsOilGreasePerSampleUsd": 68.5,
+    "cityPermitInitialTwoYearsUsd": 1200,
+    "cityPermitRenewalUsd": 575,
+    "cityMonitoringReportReviewUsd": 275,
+    "citySiteVisitUsd": 130,
+    "2027RateStatus": "ASSUMEDhold2026feesunlessreplacementsource;permit/samplingchargesarenotmonthlyretailcharges"
+  },
+  "billExamples": [
+    {
+      "system": "SuburbanWater",
+      "meter": "5/8",
+      "quarterGallons": 15000,
+      "2026Quarter": 98.6,
+      "2027Quarter": 102.1,
+      "2026Annual": 394.4,
+      "2027Annual": 408.4,
+      "annualDelta": 14
+    },
+    {
+      "system": "Common1",
+      "edu": 1,
+      "quarterGallons": 15000,
+      "2026Quarter": 91.95,
+      "2027Quarter": 96.75,
+      "2026Annual": 367.8,
+      "2027Annual": 387,
+      "annualDelta": 19.2
+    },
+    {
+      "system": "Common2",
+      "edu": 1,
+      "quarterGallons": 15000,
+      "2026Quarter": 172.95,
+      "2027Quarter": 181.8,
+      "2026Annual": 691.8,
+      "2027Annual": 727.2,
+      "annualDelta": 35.4
+    },
+    {
+      "system": "City",
+      "meter": "5/8",
+      "quarterGallons": 15000,
+      "2026Quarter": 279.12,
+      "2027Quarter": 303.08,
+      "2026Annual": 1116.48,
+      "2027Annual": 1212.32,
+      "annualDelta": 95.84,
+      "rounding": "roundeachbilllinetocents,thensum;annual=quarter*4;directunroundedaggregatecreatescentdifference",
+      "2027Lines": [
+        96.42,
+        85.78,
+        10.63,
+        33.52,
+        61.78,
+        11.84,
+        3.11
+      ]
+    },
+    {
+      "system": "SuburbanWater commercial/industrial illustration",
+      "meter": "1.5",
+      "period": "month",
+      "gallons": 1000000,
+      "2027Fixed": 51.28,
+      "2027FirstBlock": 170.4,
+      "2027SecondBlock": 3696,
+      "2027PeriodTotal": 3917.68,
+      "status": "DERIVEDexample;notpublishedtypicalbill",
+      "formula": "51.28+40000/1000*4.26+960000/1000*3.85"
+    }
+  ],
+  "revenueExposure": {
+    "status": "ASSUMEDforwardbillingmix; historicalanchorsVERIFIED; percentagesapplytocustomerreceiptsNOTallcashrevenue",
+    "sourceId": "acfr2025",
+    "suburbanWater": {
+      "known2025ClassRevenue": 16320546,
+      "known2025AllServiceRevenue": 17802780,
+      "historicalClassSharePct": 91.67414302710026,
+      "retailExposureDefaultPct": 91.7,
+      "fixedShareWithinExposedDefaultPct": 30,
+      "industrialShareWithinExposedDefaultPct": 38.28705240621239,
+      "industrialShareStatus": "historicalclassrevenueproxy;notexactvolumerevenueshare",
+      "fixedShareStatus": "ASSUMED;notderivedfromtypicalhouseholdbill",
+      "sensitivityExposurePct": [
+        80,
+        91.7,
+        100
+      ]
+    },
+    "suburbanWastewater": {
+      "known2025CommonRateRevenue": 823922,
+      "known2025AllServiceRevenue": 18369298,
+      "known2025WliRevenue": 9267741,
+      "known2025WestWeisenbergRevenue": 392600,
+      "known2025OtherWastewaterRevenue": 7885037,
+      "historicalCommonSharePct": 4.485321104813042,
+      "retailExposureDefaultPct": 4.5,
+      "fixedShareWithinExposedDefaultPct": 30,
+      "contractExposureDefaultPct": 95.5,
+      "contractIndexDefaultPct": 3,
+      "sensitivityRetailExposurePct": [
+        4.5,
+        10,
+        20
+      ],
+      "caution": "CommonRateaccountingcolumnonly;OtherFundsmaycontainotherretail/pretreatment.95.5%isresidualnotverifiedallwholesale.Industrialflow/strengthandcontractcostsharingmustuseseparatecontrols."
+    },
+    "city": {
+      "known2025NamedClassRevenue": 27135743,
+      "known2025AllServiceRevenue": 58556400,
+      "genericUserCharges2025": 23459676,
+      "other2025": 7885911,
+      "historicalNamedClassSharePct": 46.3412077928288,
+      "retailExposureDefaultPct": 70,
+      "fixedShareWithinExposedDefaultPct": 40,
+      "contractExposureDefaultPct": 30,
+      "sensitivityRetailExposurePct": [
+        50,
+        70,
+        90
+      ],
+      "caution": "2025tabledoesnotlabelwater/sewerorretail/wholesaleforUserCharges/Other.70%isexplicitplanningassumption;46.34%namedclassshareisanchorNOTconfirmedcompletecombinedretailexposure.",
+      "industrialShareWithinExposedDefaultPct": 3.333396841206817,
+      "industrialShareStatus": "historicalnamedclassproxy;volumeandsewermixunknown"
+    }
+  },
+  "roundingAndUnits": {
+    "currency": "USD",
+    "kgal": 1000,
+    "monthlyToQuarterFixed": 3,
+    "quarterToAnnual": 4,
+    "monthlyToAnnual": 12,
+    "billRounding": "eachlinecentsthensum",
+    "blockMethod": "marginaldecliningblocks; applyeachrateonlytousagewithinblock",
+    "monthlyBudgetPresentation": "quarterlybill/3;notclaimmonthlybillingfor5/8meter"
+  },
+  "modelProfiles": {
+    "years": [
+      2027,
+      2028,
+      2029,
+      2030,
+      2031
+    ],
+    "city": {
+      "cpiScenarioPct": [
+        4.3,
+        3.3,
+        3.3,
+        3.3,
+        3.3
+      ],
+      "marginPct": 2.5,
+      "coreEscalationPct": [
+        6.8,
+        5.8,
+        5.8,
+        5.8,
+        5.8
+      ],
+      "futureAddonEscalationPct": 5.8,
+      "futureAddonStatus": "ASSUMEDproxy;notCPIleaseentitlement",
+      "retailExposurePct": 70,
+      "withinRetailRevenueSharesPct": {
+        "fixedCore": 40,
+        "variableCore": 50,
+        "variableCapitalAndAo": 10
+      },
+      "shareStatus": "ASSUMEDbillingmix;notdeterminedbyhouseholdbill"
+    },
+    "suburbanWastewater": {
+      "futureRetailEscalationPct": 5,
+      "retailExposurePct": 4.485321104813042,
+      "fixedShareWithinRetailPct": 30,
+      "status": "ASSUMED;contractcost-sharingandindustrialprofiledistinctfromcommonretail5%",
+      "contractUpliftAboveCipPct": 0
+    },
+    "suburbanWater": {
+      "retailExposurePct": 91.67414302710026,
+      "fixedShareWithinRetailPct": 30,
+      "status": "2025observedmixforwardASSUMED;futurecommonratepath3%planning"
+    }
+  },
+  "resolvedConstraintMatrix": [
+    {
+      "id": "authority-rates",
+      "knownRule": "Authoritysetsreasonableuniformratescoveringoperations,capital,debtandagreements;PUCgenerallydoesnotregulatmunicipalauthorities",
+      "sourceIds": [
+        "statute",
+        "puc"
+      ],
+      "scenarioAssumption": "No genericpercentagecap;selecttransparentratesandreviewflags",
+      "calculationEffect": "enableallthreefunds;doNOTimposegenericPUCcap",
+      "classification": "statutoryreviewstandard;notnumericalcompliancecertificate"
+    },
+    {
+      "id": "service-area-benefit",
+      "knownRule": "5607(d)(9)projectrevenueparagraphcontainsentireserviceareabenefitconditionformultimunicipalauthority",
+      "sourceIds": [
+        "statute"
+      ],
+      "scenarioAssumption": "Eachfundretainsitscash,debt,capex;sharedcostsusevisibleallocationparameter",
+      "calculationEffect": "nevernetdivisioncashorrevenue;noinventeduniversaltransferban",
+      "classification": "bindingstatutorycondition;allocationplanningassumption"
+    },
+    {
+      "id": "allentown-amendments",
+      "knownRule": "R85approvedintegrated2020agreementsonAug12;postedCLEANEXECUTIONCOPYhasblanksignaturesandconditionalbondholderconsent",
+      "sourceIds": [
+        "resolution2020",
+        "lease2020",
+        "cityCompliance2024"
+      ],
+      "scenarioAssumption": "Usepublished2026/2027tariffsastartingcharges;model2020capitalmechanicsasdocumentedplanningconventionwithapprovalstatusvisible",
+      "calculationEffect": "Citycontrolsenabled;donotclaimexecutionprovenorallfutureCCRCsapproved",
+      "classification": "approvalVERIFIED;execution/effectivenessnotestablishedbyblankcopy"
+    },
+    {
+      "id": "allentown-escalator",
+      "knownRule": "CPI-UNortheastNSAJuneYoYprioryear+2.5ppthrough2032;+2pp2033+;floor0%;excludesadd-onsandmunicipalcontracts",
+      "sourceIds": [
+        "lease2013",
+        "city2027"
+      ],
+      "scenarioAssumption": "2028\u20132031CPI3.3%default;futurecore5.8%;contractchangescanbeexplored",
+      "calculationEffect": "flagcoreincreaseabovescenarioceiling;doNOTcapcombinedbillorSuburbanfunds",
+      "classification": "originalcontractruleVERIFIED;futureCPIASSUMED;currentagreementverificationqualified"
+    },
+    {
+      "id": "city-capital",
+      "knownRule": "Published2027CCRCwater0.70841/sewer0.78932perKgal;2020formpreservespriorCCRCs,usesdebtserviceplus5.445107%equityreturnfornewprojects;design/Cityreviewtimingrequired",
+      "sourceIds": [
+        "city2027",
+        "lease2020",
+        "ccrc2020"
+      ],
+      "scenarioAssumption": "FutureCCRC/AOgrow5.8%proxyunlessprojectregisterandallocationavailable",
+      "calculationEffect": "separateCCRC/AOfromcore;keepmandatorycapital;potentialfutureCCRCnotapproval",
+      "classification": "publishedproposedtariffVERIFIED;futureamountASSUMED"
+    },
+    {
+      "id": "coverage",
+      "knownRule": "2020amendment1.70appearsinconditionalrate-reliefprovisions;notuniversalcovenant",
+      "sourceIds": [
+        "lease2020"
+      ],
+      "scenarioAssumption": "Use an editable 1.20x conservative planning coverage floor; this is not a certified covenant definition.",
+      "calculationEffect": "financialconstraintflagonly;nevercall1.70universalbindingfloor",
+      "classification": "clauseVERIFIED;chosenfloorplanningonly"
+    },
+    {
+      "id": "municipal-wholesale",
+      "knownRule": "2026WLIchargesflow,strength,allocation;LLRIphase-specificflow;municipalagreementsareseparatefromCitycorelease",
+      "sourceIds": [
+        "sewer2026",
+        "lease2013",
+        "acfr2025"
+      ],
+      "scenarioAssumption": "CommonretailSWWexposure4.485%;residualseparatelyeditablecontract/cost-sharingindex;noautomaticretailbillmultipliertoresidual",
+      "calculationEffect": "enableSWWfinanceandindustrialshockcontrols;restrictpublishedcalculatorclaims toknownclasses",
+      "classification": "tariffratesVERIFIED;futurecontractindexandcompositionASSUMED"
+    },
+    {
+      "id": "2027-adoption",
+      "knownRule": "NoadoptionbeforeNov7established;proposed2027tariffdetailspublishedOctober",
+      "sourceIds": [
+        "examples2027",
+        "city2027",
+        "suburban2027"
+      ],
+      "scenarioAssumption": "Use2027proposedchargesasscenariobase",
+      "calculationEffect": "keepPROPOSEDlabels;donotreadNov9actionintocutoff",
+      "classification": "proposedbaselines"
+    },
+    {
+      "id": "capital-financing",
+      "knownRule": "Capitalplanandnumericalfeasibilitydonotapproveprojectsorborrowing",
+      "sourceIds": [
+        "acfr2025"
+      ],
+      "scenarioAssumption": "Defaultfundspecificborrowing/capexfrombudget;userchangesplanningonly;requiredprojectsprotected",
+      "calculationEffect": "cashidentityandcoveragechecksindependentfromapprovalflags",
+      "classification": "financialscenariofeasibilityonly"
+    },
+    {
+      "id": "welshtown",
+      "knownRule": "2026schedulep1publishesminimumby\u092e\u0940\u091f\u0930and8k/qtrinclusion;2027webpagenochange",
+      "sourceIds": [
+        "water2026",
+        "examples2027"
+      ],
+      "scenarioAssumption": "Holdpublishedschedule;fundallocationunknown",
+      "calculationEffect": "welshtownbillcanbecalculatedexactly;doNOTsubstituteforcommonrateorassumefundallocation",
+      "classification": "tariffknown;forwardfundallocationASSUMED"
+    }
+  ],
+  "sourceConflicts": [
+    {
+      "issue": "2026Common1multifamilyfixed",
+      "webSummaryUsd": 12.5,
+      "formalScheduleUsd": 12,
+      "treatment": "Useformal2026PDFp1$12.00notwebsite$12.50;2027halfstandardassumption13.20pendingformal2027schedule"
+    },
+    {
+      "issue": "2027Common1/2exampleimageheader",
+      "printedHeader": "2026RatesProposed",
+      "columns": [
+        2026,
+        2027
+      ],
+      "treatment": "Treatsecondcolumnas2027proposalusing2027pagecontext;notnew2026rate"
+    }
+  ]
+}

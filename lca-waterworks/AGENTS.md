@@ -20,7 +20,7 @@ Live repository and source evidence outrank remembered values. Distinguish verif
 1. Keep cash, debt, revenues, and constraints within their documented fund/system boundaries. Do not silently net interfund balances or allocate costs without evidence.
 2. Preserve original source amounts and units. Calculations and normalization must be reproducible; do not scale non-rate revenue as if it were retail sales.
 3. Show a model-feasible result only after checking every implemented constraint. Legal and agreement verification is a separate status, never inferred from numerical feasibility.
-4. Unverified contract limits, approvals, borrowing, grants, or customer-class allocations must remain visible as assumptions or unresolved gates.
+4. Unverified contract limits, approvals, borrowing, grants, or customer-class allocations must remain visible as explicit scenario assumptions. Missing evidence must not disable analytical controls. Keep a planning-feasibility result separate from verified authority to adopt rates or incur obligations.
 5. Protect mandatory/regulatory capital work. Do not let the optimizer make a plan affordable by silently eliminating required work or using restricted cash.
 6. The browser must run the demonstration without an AI service, server secret, or production ERP connection. Synthetic connector fixtures must be clearly identified.
 7. Keep private interview, household, customer, employee, and account data out of this public repository.
@@ -29,6 +29,8 @@ Live repository and source evidence outrank remembered values. Distinguish verif
 10. Separate estimated scenario weights from empirically calibrated probabilities. Do not report model assumptions as measured LCA behavior.
 
 ## Work boundaries
+
+The current revision supersedes the original one-fund scope: support Suburban Water, Suburban Wastewater, and City Division with separate ledgers, component tariffs, published capital schedules, named comparison scenarios, customer-class evidence, and a dedicated model explanation page. Do not present the earlier reanchored cash forecast as LCA's adopted plan.
 
 Workers change only their assigned files, return evidence and observed verification, and do not commit, merge, publish, contact LCA, or connect production systems. The controller integrates and reviews changes. Use the existing static GitHub Pages architecture. Scope website additions to this directory and an explicitly reviewed portfolio link.
 

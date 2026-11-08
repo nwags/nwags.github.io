@@ -1,104 +1,80 @@
 {
-  "summary": "Bounded governance register for an independent public demonstration, with an evidence cutoff of November 7, 2026. Scope is Suburban Water fund sensitivities for 2027–2031. Allentown, wastewater, wholesale, signatory, and Welshtown customer-rate optimization remain unavailable. Verified means the cited proposition is supported, not that a complete current compliance review has been performed. Applicability unresolved identifies missing current documents, scope-specific application, or adoption evidence. Financial feasibility and user-set proxy floors do not establish legal compliance.",
+  "schemaVersion": "2.0",
+  "cutoff": "2026-11-07",
+  "allDivisionsEnabled": true,
+  "legalComplianceCertified": false,
   "rules": [
     {
-      "id": "PA-RATE-AUTHORITY",
-      "scope": "Pennsylvania municipal-authority rate setting; all modeled years, 2027–2031",
-      "rule": "Use the Municipality Authorities Act as the authority-rate framework. No generic Pennsylvania PUC percentage increase cap has been verified for this prototype. Jurisdiction and contractual treatment must be checked for each particular service relationship.",
-      "status": "Applicability unresolved",
-      "treatment": "Do not label a scenario PUC-approved or legally compliant. Do not insert an invented statewide percentage cap. Keep service-specific jurisdiction review visible.",
-      "url": "https://www.legis.state.pa.us/WU01/LI/LI/CT/HTM/53/00.056.007.000..HTM",
-      "locator": "53 Pa.C.S. § 5607(d)(9); rate-setting power and judicial review. This section alone does not establish every possible PUC jurisdictional boundary."
+      "name": "PA authority rate power",
+      "scope": "Applies to authority services",
+      "evidence": "53 Pa.C.S. §5607(d)(9): reasonable and uniform rates within the applicable service/class framework; sufficient revenues and lawful charges.",
+      "implementation": "No invented statewide annual percentage cap. Class allocation is a planning assumption; cost-of-service support remains needed.",
+      "status": "Verified framework",
+      "source": "https://www.legis.state.pa.us/WU01/LI/LI/CT/HTM/53/00.056.007.000..HTM"
     },
     {
-      "id": "PA-REASONABLE-UNIFORM",
-      "scope": "Municipal-authority rates; 2027–2031, subject to later statutory change",
-      "rule": "Section 5607(d)(9) authorizes reasonable and uniform rates in the service area sufficient for authority expenses, principal and interest, and contractual obligations, and requires safe and adequate service. Rate or service challenges are assigned to the court of common pleas described in the statute.",
-      "status": "Verified",
-      "treatment": "Show a statutory review flag. Financial sufficiency is a useful model check; reasonableness, uniformity, service adequacy, and legally appropriate cost allocation are not established by a numeric optimizer result.",
-      "url": "https://www.legis.state.pa.us/WU01/LI/LI/US/HTM/2021/0/0043..HTM",
-      "locator": "Act 43 of 2021, § 1, amendment of 53 Pa.C.S. § 5607(d)(9), paragraphs beginning with the authority rate-setting power and court jurisdiction."
+      "name": "PUC jurisdiction",
+      "scope": "Municipal authority service",
+      "evidence": "Municipal-authority systems are not generally regulated as investor-owned PUC water utilities. Particular statutory/contract exceptions require their own analysis.",
+      "implementation": "No imported investor-owned rate-case, allowed-return or automatic PUC approval rule.",
+      "status": "Resolved scope",
+      "source": "https://www.puc.beta.pa.gov/water-wastewater/"
     },
     {
-      "id": "PA-SERVICE-AREA-BENEFIT",
-      "scope": "Project revenues of an authority serving more than one municipality; 2027–2031",
-      "rule": "Apply the project-revenue restriction in § 5607(d)(9), including the condition concerning benefit to the entire service area. It is not a categorical universal ban on every interfund or intermunicipal transfer.",
-      "status": "Verified",
-      "treatment": "Retain separate fund and project ledgers. Flag cross-system allocations for documented benefit, allocation method, agreement terms, and legal review. Do not assume that a single aggregate cash balance authorizes transfers.",
-      "url": "https://www.legis.state.pa.us/WU01/LI/LI/US/HTM/2021/0/0043..HTM",
-      "locator": "Act 43 of 2021, § 1, 53 Pa.C.S. § 5607(d)(9), paragraph addressing project revenues where the authority serves more than one municipality."
+      "name": "City core annual adjustment",
+      "scope": "City retail core charges",
+      "evidence": "Prior June annual Northeast CPI-U, not seasonally adjusted, plus 2.5 points through 2032; nonnegative. Municipal contracts and permitted add-ons are separate.",
+      "implementation": "2027 CPI 4.3% implied by published proposal; 2028–2031 CPI 3.3% assumed. Check ceiling; an explicit amendment assumption allows above-ceiling scenarios.",
+      "status": "Rule + editable future input",
+      "source": "https://www.lcawaterworks.org/wp-content/uploads/Allentown-Water-and-Sewer-Concession.-Lease-Agreement-May-1-2013.pdf"
     },
     {
-      "id": "ALLENTOWN-2020-AMENDMENT",
-      "scope": "Allentown concession, water supply, and capital cost recovery; reference only",
-      "rule": "Allentown City Council passed R85 on August 12, 2020, approving settlement-related amendments to the lease, water supply agreement, and capital cost recovery memorandum. The 2013 lease by itself is not a complete current agreement set.",
-      "status": "Verified",
-      "treatment": "Keep Allentown optimization disabled. Require the executed integrated agreements, effectiveness evidence, and subsequent amendments before encoding current contractual rules.",
-      "url": "https://allentownpa.legistar.com/LegislationDetail.aspx?GUID=0252BB7A-E462-4BDB-9350-02C85E2EAD8E&ID=4590278&Options=&Search=",
-      "locator": "File 15-3680, version 1; R85; final action August 12, 2020; enactment 30026. Approval record is not proof of execution of every posted draft."
+      "name": "City capital recovery and AO fees",
+      "scope": "City eligible costs / separate add-ons",
+      "evidence": "Published 2027 water/sewer CCRC and administrative-order rates are explicit invoice lines; eligible cost and approval treatment is separate from core rates.",
+      "implementation": "Existing component rates are verified. Future growth uses a 5.8% proxy; any selected uplift assumes eligibility and required approvals, without certifying them.",
+      "status": "Verified current / assumed future",
+      "source": "https://allentownpa.legistar.com/View.ashx?GUID=947959AF-3F70-4D50-992E-34ADED223689&ID=8716538&M=F"
     },
     {
-      "id": "ALLENTOWN-ESCALATOR",
-      "scope": "Allentown retail rate formulas; reference only, not Suburban Water",
-      "rule": "The official historical lease overview describes CPI plus 2.5 percentage points through 2032 and CPI plus 2.0 thereafter. The currently effective formula, CPI definition, timing, rounding, and amendment effects have not been fully verified.",
-      "status": "Applicability unresolved",
-      "treatment": "Do not implement this as a current legal ceiling or transplant it to Suburban Water. Allentown rate knobs remain unavailable pending the executed lease and Schedule 3 / § 7.1(e).",
-      "url": "https://lehighcountyauthority.org/wp-content/uploads/Lease-Overview-LCA-Board-Meeting-040917.pdf",
-      "locator": "Physical PDF pages 17–18, Schedule 3 rate overview; historical 2017 presentation. Check against the executed 2013 lease, § 7.1(e), and the complete amendment chain."
+      "name": "2020 concession amendments",
+      "scope": "City lease and rate-relief mechanism",
+      "evidence": "Council approval and later implementation history support operation of the amendment. The reviewed execution-copy PDF contains blank signatures.",
+      "implementation": "Use published operating regime for analysis. Conditional 1.70× rate relief is not imposed as a generic debt covenant or a Suburban fund floor.",
+      "status": "Applicability resolved; execution-copy limit",
+      "source": "https://allentownpa.legistar.com/LegislationDetail.aspx?GUID=0252BB7A-E462-4BDB-9350-02C85E2EAD8E&ID=4590278&Options=&Search="
     },
     {
-      "id": "ALLENTOWN-CCRC",
-      "scope": "Allentown capital cost recovery charges; reference only",
-      "rule": "The posted 2020 amendment changes capital cost recovery treatment. Current project eligibility, City approvals, recoverable balances, and charge calculations remain unverified.",
-      "status": "Applicability unresolved",
-      "treatment": "Disable City capital cost recovery controls. Require the executed CCRC memorandum and amendments, City approval records, and project/debt ledger before projecting charges.",
-      "url": "https://www.lehighcountyauthority.org/wp-content/uploads/2020/07/Amendment-to-the-Lease-Agreement.pdf",
-      "locator": "Posted amendment § 2, physical PDF pages 2–3; document has a blank execution date. Council approval is documented separately in R85."
+      "name": "Municipal / interceptor agreements",
+      "scope": "Suburban Wastewater and City counterparties",
+      "evidence": "Cost allocations, debt, reserved capacity and treatment terms differ by system. WLI / LLRI 2027 rates had preliminary approval in reviewed October minutes.",
+      "implementation": "Keep published customer-receipt profile. Editable residual-receipt uplift assumes contractual approval; do not apply household CPI or tariff increases to the full fund.",
+      "status": "Explicit contract scenario",
+      "source": "https://www.lcawaterworks.org/meetings-minutes/"
     },
     {
-      "id": "ALLENTOWN-RATE-RELIEF",
-      "scope": "Allentown contractual rate relief; not a Suburban Water covenant",
-      "rule": "The posted amendment uses 1.70 debt-service coverage within conditional Allentown rate-relief provisions. This does not establish the general minimum covenant for either Allentown or Suburban Water.",
-      "status": "Applicability unresolved",
-      "treatment": "Keep rate relief unimplemented. Any dashboard debt-coverage floor is a labeled planning assumption until the applicable current indenture, definitions, and tests are verified.",
-      "url": "https://www.lehighcountyauthority.org/wp-content/uploads/2020/07/Amendment-to-the-Lease-Agreement.pdf",
-      "locator": "Posted amendment § 8, physical PDF pages 11–13; debt-payment, reserve, and coverage conditions. Verify the executed provision and effectiveness before production use."
+      "name": "Industrial wastewater strength",
+      "scope": "Applicable permitted dischargers",
+      "evidence": "Flow, BOD, TSS, TKN, reserved capacity, sampling and permits can be separate charge drivers. Applicability depends on the service and permit.",
+      "implementation": "Industrial usage sensitivity remains available. No blanket strength surcharge is added to all industry; detailed fees and source thresholds are in tariff research JSON.",
+      "status": "Resolved conditional scope",
+      "source": "https://www.lcawaterworks.org/wp-content/uploads/2026/09/LCA-SewerRulesRegs.pdf"
     },
     {
-      "id": "MUNICIPAL-WHOLESALE-ALLOCATIONS",
-      "scope": "Wastewater, wholesale water, municipal signatories, and intersystem allocations",
-      "rule": "Municipal and wholesale agreements are a separate source of cost-allocation and billing obligations. Retail escalation assumptions do not establish the amounts due under those agreements.",
-      "status": "Applicability unresolved",
-      "treatment": "Keep wastewater, wholesale, and signatory optimization unavailable. Model no new pass-through allocation without current executed agreements, flow or strength data, allocation formulas, and applicable project approvals.",
-      "url": "https://www.lehighcountyauthority.org/ourwaterourfuture/",
-      "locator": "Official settlement page links the lease, capital cost recovery memorandum, and Suburban Division water supply agreement amendments. The agreement-specific allocation calculations have not been validated."
+      "name": "Capital scope and grants",
+      "scope": "All three divisions",
+      "evidence": "Adopted plans require later annual/project and borrowing approvals; future projected grants are not automatically secured.",
+      "implementation": "Full detailed project schedule retained. Incremental financing is capped after planned debt, grants and existing capital receipts; timing and award sensitivities stay enabled.",
+      "status": "Plan + assumptions",
+      "source": "https://www.lcawaterworks.org/lca-finances/"
     },
     {
-      "id": "RATE-STATUS-2027",
-      "scope": "2027 starting-rate inputs and five-year projection labels",
-      "rule": "At the project evidence cutoff of November 7, 2026, treat the 2027 inputs as proposed. The prospective November 9, 2026 adoption date does not establish adoption or the effective date. Budget adoption and rate adoption are separate events.",
-      "status": "Applicability unresolved",
-      "treatment": "Display PROPOSED on 2027 rate inputs and derived forecasts. Change the status only after verifying the adopted resolution, rate schedule, effective date, and customer/system applicability.",
-      "url": "https://www.lcawaterworks.org/wp-content/uploads/2026/10/LCA-2027-Budget-Final-Review-Approval-102626.pdf",
-      "locator": "PDF p. 20: November 9 rate-adoption schedule; the October 26 budget approval is separate. No later adoption is assumed."
-    },
-    {
-      "id": "FINANCING-AND-PROJECT-APPROVAL",
-      "scope": "Suburban Water financing, capital projects, reserves, and 2027–2031 planning",
-      "rule": "A feasible forecast does not authorize borrowing, approve a capital project, amend an agreement, or establish compliance with debt and reserve covenants. Applicable financing documents and approvals must be reviewed separately.",
-      "status": "Applicability unresolved",
-      "treatment": "Label user-set coverage and reserve floors as planning proxies. Do not show a legal pass. Require current Suburban Water debt documents, covenant definitions, approved capital plan, reserve restrictions, and required approval records for production decisions.",
-      "url": "https://www.lcawaterworks.org/lca-finances/",
-      "locator": "Capital Plans 2027–2031: future budget, project-specific and bond financing approvals. Current indenture definitions remain unresolved."
-    },
-    {
-      "id": "WELSHTOWN-SCOPE",
-      "scope": "Welshtown customer rates and specific allocations",
-      "rule": "The 2027 proposal excludes Welshtown water from the listed increase. Its specific agreements and allocations have not been validated for this prototype.",
-      "status": "Applicability unresolved",
-      "treatment": "Exclude Welshtown customer-rate and allocation optimization. A Suburban Water fund sensitivity must not imply that it calculates an applicable Welshtown tariff.",
-      "url": "https://www.lcawaterworks.org/2027-rates/",
-      "locator": "2027 rate proposal: Welshtown exception. Existence of an exception does not verify its complete tariff and agreement set."
+      "name": "Cash, debt and covenant tests",
+      "scope": "Fund-specific financial structure",
+      "evidence": "Restricted balances are excluded. Reported coverage definitions differ by fund and covenant. Published debt-service schedules do not provide a complete future principal ledger.",
+      "implementation": "180 cash days and 1.20× conservative coverage are editable planning targets. Additional debt amortizes explicitly; remaining baseline debt is disclosed as not estimated.",
+      "status": "Planning tests; no legal certification",
+      "source": "https://www.lcawaterworks.org/wp-content/uploads/2026/10/LCA-ACFR-2025.pdf"
     }
   ]
 }

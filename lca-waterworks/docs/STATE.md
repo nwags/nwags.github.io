@@ -1,60 +1,61 @@
 # Project state
 
-Published and verified November 8, 2026 UTC. Financial/rate evidence cutoff: November 7, 2026.
+## Current intent
 
-## Intent and repository
+- Project: Sample LCA WaterWorks BI.
+- Repository: `nwags/nwags.github.io`, public GitHub Pages, `nwags.com/lca-waterworks/`.
+- Working branch: `work/lca-adversarial-revision-2026-11-07`.
+- Verified starting/main commit: `fbc30d19b127a25ecabc3694670295d576078b1c`.
+- Model: **0.2.0**; scenario schema **2.0**; evidence cutoff **November 7, 2026, America/New_York**; horizon **2027–2031**.
+- Objective: complete the requested adversarial review and improvement pass so a CEO demonstration can compare three reporting divisions, actual tariff components, planned capital, historical context and explicit assumptions.
+- Latest user direction supersedes the original one-fund scope and disabled analytical controls. Missing evidence becomes visible assumptions and sensitivities, not fabricated verified terms.
+- Runtime: static HTML/CSS/JavaScript/JSON. No production ERP, credentials, analytics or AI runtime.
 
-- Repository: `nwags/nwags.github.io`, public static GitHub Pages with custom domain `nwags.com`.
-- Working branch: `work/lca-waterworks-demo-2026-11-07`.
-- Verified starting/main commit before publication: `83fd7cbe047c06de3f1fd057d4f7a9627c712992`.
-- Objective: a CEO demonstration of five-year customer-rate tradeoffs, transparent public evidence, constraints, uncertainty, reproducibility, and a future ERP path.
-- Horizon: 2027–2031. Executable scope: Suburban Water fund sensitivities and common 5/8-inch residential water bills.
-- Website path: `/lca-waterworks/`; existing portfolio receives one project card.
-- Runtime: static HTML/CSS/JavaScript/JSON, no build step, AI dependency, live ERP connection, credentials or analytics tracker.
+## Milestone
 
-## Milestones
+**Revision implementation and verification complete; publication pending in this checkpoint.** Do not read the previous release's deployment as evidence that this revision is live. The controller will record observed publication below after deployment.
 
-M0–M5 are complete for the bounded demonstration. The dashboard and manual were observed working at their public URLs. This is not completion of a production rate study or legal applicability review.
+## Completed
 
-## Completed and verified
+- Three independent executable ledgers: Suburban Water, Suburban Wastewater, City Division.
+- Exact detailed 2027 cash bridges: closing unrestricted cash $7,546,095; $10,447,425; $53,947,019. Grants, capital receipts, other capital payments, lease, debt and operating costs stay separate.
+- Capital uses detailed project schedules plus administration: $361.312m. Original condensed cash total $355.712m remains selectable. The $5.6m City 2029 source difference is disclosed, not silently resolved.
+- Exact proposed 2027 and adopted 2026 tariff components; meter charges, five water blocks, common sewer alternatives and City water/sewer/CCRC/AO lines. Freeze reproduces actual 2026 components.
+- Separate fixed/variable/add-on uplifts, exposed account/volume growth, industrial shock, residual customer receipts, revenue allocation, costs, grants, debt, cash/coverage and City rule assumptions.
+- Central planning defaults use approved budget, proposed tariffs, full capital and published drivers with a judgmental 25% historical cost-trend blend. Published-driver and full-history alternatives remain explicit.
+- Eleven named scenarios; shared account/policy comparisons include bills, cash, coverage, capital, borrowing, remaining incremental debt and next-year payment. Preset labels become Custom after edits; comparison delta names its baseline.
+- Precise City CPI convention researched; other contractual gaps use explicit scenario assumptions. Numerical tests do not certify rate adoption, covenants or eligible cost recovery.
+- Deeper 2016–2025 class units/volume/revenue and cost evidence, with statistical-table scope and classification limitations preserved.
+- Separate `model.html` explanation with diagram, current manual and guides; bounded worker orchestration and synthetic ERP pathway updated.
+- Scenario JSON and CSV carry `dataRevision`, a SHA-256 fingerprint of normalized inputs, years and tariff research data. JSON imports require matching version, cutoff and fingerprint and recalculate results.
 
-- Reconciled the final 2027 budget to exact closing unrestricted cash of $7,546,095 and proposed typical annual bill of $408.40.
-- Preserved the original CIP snapshot and recalculated 2028–2031 from the final-budget anchor; future values are labeled derived scenarios.
-- Extracted and visually checked 2016–2025 Western Lehigh operating history from the 2025 ACFR, retaining service scope and units-served footnotes.
-- Implemented five annual rate indices, cost/growth/capital/financing controls, future investment-income sensitivity, household impact, annual cash/coverage tests, a finite optimizer, eight named stress cases, comparison, JSON import/export and CSV export.
-- Integrated 11 governance rows, separate financial/approval statuses, source/assumption explanations, synthetic ERP validation, a browser user manual and associated guides.
-- Completed independent model and comparator review. The reviewer recalculated the ledger, positive-interest debt case and all 453 default optimizer candidates. Default peak result: 5.4% in each year; bill objective: 6.2%, 5.2%, 4.2%, 3.2%, 2.2%. These are finite-family results, not recommendations.
-- Added the investment-income control in response to review. Its 0% future-income limiting case preserves 2027 and reduces terminal cash by exactly $3,326,880; independent follow-up found no defect.
-- Observed 19 model tests pass, zero failures. Syntax checks pass. Checked 43 local documentation/HTML links with no missing targets and no duplicate HTML IDs. Whitespace check passed.
-- Browser preview: visually inspected dashboard, history and manual; observed successful optimization, explicit infeasibility, eight stress rows, 11 governance rows, synthetic reconciliation, JSON download and re-import. No application-origin errors were found in the inspected console log. The browser extension emitted unrelated metadata errors.
+## Verification observed
 
-## Worker boundaries and outputs
+- **34 tests passed, 0 failed**, independently rerun by the reviewer. Coverage includes cash identities, exact tariff examples/freezes, capital reconciliation, financing caps, grant timing, separate growth channels, industrial shock, demand elasticity, City ceiling assumptions, debt timing, valid optimizer outputs, import identity and synthetic schema rejection.
+- Independent review completed two passes plus targeted fixes. Initial 16 findings and follow-up report are retained under `docs/reviews/`; current summary is `docs/MODEL_REVIEW.md`.
+- Reviewer independently recomputed the baseline SHA-256 and tested mutation sensitivity, all three fund round-trips and wrong/missing fingerprint rejection.
+- Browser preview: dashboard and model/manual visually inspected; all three divisions respond; City tariff components match published example; Common Rate 2 and exact freeze work; optimization produces a feasible result; changing account usage refreshes bills and invalidates the optimized label; capital/customer tables and nine rule rows render; synthetic fixture reconciles; scenario JSON download and re-import succeed.
+- No application-origin error observed in the inspected browser console; unrelated browser-extension metadata errors appeared.
+- Checked 97 local documentation/HTML links and fragments with no missing targets; no duplicate HTML IDs. JSON files parse, JavaScript syntax checks pass and git whitespace checks pass.
+- Separate physical mobile-device verification is not claimed. Responsive styles are implemented.
 
-The controller integrated code and handled browser/source checks. Three separate workers handled (1) governance, (2) data/method comparisons and independent numeric review, and (3) orchestration/ERP guides. They inherited the session execution configuration; no claim of cheaper-model execution is made. Workers did not publish, contact stakeholders, or access production data. Research was narrowed to concrete handoffs when broader retrieval stopped contributing to this release.
+## Workers and resources
 
-- Durable method: `docs/METHODOLOGY.md`, `docs/DATA_GUIDE.md`, `docs/CONSTRAINTS.md`, `docs/MODEL_COMPARISON.md`.
-- Independent checks: `docs/MODEL_REVIEW.md`, including reviewed hashes and follow-up.
-- User and CEO materials: `guide.html`, `docs/CEO_DEMO.md`.
-- Reusable process: `docs/ORCHESTRATION.md`, `workers/`.
-- Integration: `docs/ERP_INTEGRATION.md`, synthetic fixture and validator.
+The controller integrated model/UI and owns browser QA/publication. Financial extraction and documentation used a workhorse model with medium reasoning; tariff/agreement interpretation used a workhorse model with high reasoning; independent adversarial review used a frontier model with high reasoning. Three parallel streams were bounded to separable research/review tasks; workers then received specific disjoint documentation assignments. No worker published, contacted stakeholders or connected production systems. No maximum-effort or open-ended research loop was used.
 
-## Deviations and material limitations
+## Material limitations retained
 
-The executable first release is deliberately one fund, rather than all systems. Complete executed Allentown/municipal agreements, allocations and covenant definitions were not available in a fully validated set, so those optimizations remain unavailable. No global continuous optimum, calibrated probability of success, cost-of-service tariff, or legal pass is claimed. Philadelphia and Wellington were compared at the public-method/process level; their consultant workbooks were not independently reproduced.
+- The cost blend and forward revenue mix are judgmental, not calibrated probabilities or a cost-of-service study.
+- City 2029 capital and some published cash balances conflict internally; both source interpretations remain visible.
+- City 2027 capital reclassification preserves total cash but its project mapping is inferred.
+- Wastewater future debt service retains a published schedule after the budget omits an earlier proposed 2027 draw. Base principal after 2031 is not reconstructed.
+- Future grant receipts, constant fees/investment income, class/contract mapping, City add-on eligibility and future approvals remain assumptions.
+- The finite optimizer searches a declared family, not all feasible policies. The single-fund synthetic connector is isolated from the three-division financial model.
 
-Future investment income, rate-sensitive class shares, demand response, customer growth, capital outturns, and post-2031 liabilities remain model assumptions or production requirements. Historical volume and customer growth are descriptive; they do not automatically calibrate the future fund forecast. The browser implementation includes responsive CSS, but a separate physical mobile-device test has not been observed.
+## Prior release
 
-## Publication evidence
-
-- Implementation commit: `dd7a701564084c2384b3036a493078fb8eb1fdb5`.
-- Reviewed changes merged through [pull request 2](https://github.com/nwags/nwags.github.io/pull/2).
-- Published merge commit: `2ffe00a32111ebf667e26188574b0c50f99d0dd3`.
-- Immutable implementation tree: `2a4c038dc89b7992aece86a51a08b6a90f38d4b5`, matched exactly against the staged local tree before commit.
-- [GitHub Pages build/deployment 42438054306](https://github.com/nwags/nwags.github.io/actions/runs/42438054306) completed successfully for that merge commit.
-- [Dashboard](https://nwags.com/lca-waterworks/) returned HTTP 200 and was checked in the browser. Its live optimizer reproduced the 453-candidate / 287-feasible level 5.4% result.
-- [User manual](https://nwags.com/lca-waterworks/guide.html) loaded at the public URL and its title/content were verified.
-- This state-only follow-up records the observed release. Its own commit can be found in repository history; it does not change the numerical engine or public data.
+Version 0.1 was published through PR 2 and subsequent state commit `fbc30d19b127a25ecabc3694670295d576078b1c`; GitHub Pages run `42438226136` succeeded. Its one-fund numerical results and review are historical, superseded by this revision's scope and equations.
 
 ## Next objective
 
-The next production milestone is one finance-reviewed fund cash bridge, tariff/class mapping, current agreement applicability matrix and reconciled internal aggregate extract in an approved environment.
+Publish this reviewed revision, verify the served dashboard/model/manual and deployment SHA, then record the release. A production successor needs finance-reviewed category mappings, billing determinants, project schedules, executed agreements and a full debt ledger in an approved environment.

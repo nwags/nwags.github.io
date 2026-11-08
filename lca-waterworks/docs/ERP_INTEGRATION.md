@@ -6,9 +6,9 @@ LCA’s [2025 ACFR](https://www.lcawaterworks.org/wp-content/uploads/2026/10/LCA
 
 Tyler publishes an [Enterprise ERP API catalog](https://www.tylertech.com/products/enterprise-erp/api-catalog) and [Data & Insights Gateway plugin documentation](https://support.socrata.com/hc/en-us/articles/360033948453-Data-Insights-Gateway-Available-Plugins). These establish general integration possibilities, not LCA’s licenses, enabled modules, tenant endpoints, access rights, or available fields. No production endpoint is specified or called by this project.
 
-## What the current demonstration accepts
+## Isolated legacy mock contract
 
-[The fixture](../data/mock-erp.json) is entirely fictional. The `validateMock` function in [model.mjs](../model.mjs) implements schema `1.0` with six **metrics**, not six record fields:
+The executable model is version 0.2.0 with three independent divisions. [The fixture](../data/mock-erp.json) is entirely fictional and deliberately remains legacy schema 1.0, restricted to Suburban Water. It is an isolated contract demonstration, not the canonical schema for the new engine. The `validateMock` function in [model.mjs](../model.mjs) implements schema `1.0` with six **metrics**, not six record fields:
 
 | Metric | Synthetic USD control total |
 |---|---:|
@@ -44,14 +44,19 @@ These are future acceptance steps, not completed connector tests. The public rep
 
 ## Excel and Power BI migration
 
-Export annual scenario rows with model version, cutoff, settings, units, and source links. Use Power Query for controlled ingestion; retain year/fund/system/class dimensions. Reproduce these nominal-USD equations before extending the model:
+Export annual scenario rows with engine version, `dataRevision` SHA-256 fingerprint, cutoff, fund, scenario settings, units and source links. Preserve original exported output and terminal debt/grant disclosures. Require exact baseline identity on import and parity checks; engine version and cutoff alone cannot identify the input data. The current JSON import requires an exact `dataRevision` match, engine version and cutoff. Use Power Query for controlled ingestion; retain year/fund/system/class dimensions. Reproduce these nominal-USD equations before extending the model:
 
-| Result | Excel structured-reference formula |
+| Result | Excel structured-reference formula using model 0.2.0 row names |
 |---|---|
-| Revenue | `=[@customer]+[@other]` |
-| Ending cash | `=[@openingCash]+[@revenue]-[@opex]-[@debtService]-[@capex]+[@baseBorrowing]+[@extraBorrowing]+[@grants]` |
-| Cash days | `=[@cash]/[@opex]*365` |
-| Coverage proxy | `=([@revenue]-[@opex])/[@debtService]` |
+| Operating receipts | `=[@customer]+[@otherOperating]+[@investment]` |
+| All receipts | `=[@customer]+[@otherOperating]+[@investment]+[@capitalReceipts]+[@plannedGrants]+[@extraGrants]` |
+| Net cash flow | `=[@receipts]+[@baseBorrowing]+[@extraBorrowing]+[@investmentConversions]-[@operatingExpense]-[@lease]-[@otherCapitalPayments]-[@debtService]-[@capex]` |
+| Ending cash | `=[@openingCash]+[@netFlow]` |
+| Cash days | `=[@cash]/[@operatingExpense]*365` |
+| Coverage numerator | `=[@customer]+[@otherOperating]+[@investment]-[@operatingExpense]-[@lease]` |
+| Coverage proxy | `=IF([@debtService]=0,"",([@customer]+[@otherOperating]+[@investment]-[@operatingExpense]-[@lease])/[@debtService])` |
 | Annual bill | `=[@monthlyBill]*12` |
 
-Use equivalent DAX measures within one year and fund; use `DIVIDE` for ratios and flag zero denominators. Cash is a period-end balance: do not sum it across years. Preserve debt timing, compounded rate ratios, and constraints from model `0.1.0`. Compare every annual result against exported golden scenarios; matching charts alone is insufficient. Coverage remains a demonstration proxy until agreement-specific definitions are verified.
+Capital receipts, grants, borrowing and investment conversions are excluded from the coverage numerator. Other capital cash payments affect cash but remain outside this proxy numerator; lease payments are deducted. Restricted cash and investments are not silently added to opening/ending modeled cash. `receipts` already includes grants: do not add them again in the cash equation. `debtService` already includes additional-loan payments: do not add those twice. Null coverage at zero debt service is distinct from zero coverage.
+
+Use equivalent DAX measures within one year and fund; use `DIVIDE` for ratios and flag zero denominators. Cash is a period-end balance: do not sum it across years. Preserve next-year additional-loan payments, terminal extra debt, cents-rounded tariff lines, separate account/volume growth, component price ratios, grant delays and constraints from model `0.2.0`. Reproduce the actual 2026 freeze separately from zero uplift above the proposed/planning tariff path. Compare every annual result against exported golden scenarios for each of the three funds, using the same engine and baseline fingerprint; matching charts alone is insufficient. Use the same named central comparator and household dimensions. Preserve the project-table versus condensed-capital interpretation and expose the City $5.6 million difference. Coverage remains a demonstration proxy until agreement-specific definitions are verified.

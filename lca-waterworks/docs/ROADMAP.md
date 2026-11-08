@@ -1,5 +1,11 @@
 # Staged delivery plan
 
+## Current revision — model 0.2.0
+
+The original one-fund release is superseded by the user-requested adversarial revision. Research, three-division implementation, component tariffs, capital reconciliation, named comparisons, customer evidence, model diagram, documentation and independent review are complete. Publication verification is the remaining gate in this checkpoint; see [STATE.md](STATE.md) for observed deployment status.
+
+All three divisions remain analytically enabled with explicit assumptions. Missing agreements do not reinstate disabled features. Acceptance criteria and the revision findings are in [the active revision plan](exec-plans/active/adversarial-revision.md).
+
 ## M0 — Define the decision
 
 Establish the horizon, user decisions, source hierarchy, model boundary, and website architecture. Preserve independent operation, transparent assumptions, and fund separation. Gate: a clear answer to what the demonstration can and cannot optimize.

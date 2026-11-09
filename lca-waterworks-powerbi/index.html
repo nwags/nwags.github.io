@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,follow">
+<meta name="description" content="Independent public-data WaterWorks rate planning Power BI companion. Native Power BI report publication is pending.">
+<title>WaterWorks | Power BI companion</title>
+<link rel="stylesheet" href="../lca-waterworks/styles.css?v=030">
+<link rel="stylesheet" href="../lca-waterworks/site-notice.css?v=010">
+<link rel="stylesheet" href="styles.css?v=001">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to Power BI companion</a>
+<aside class="independence-banner" role="note" aria-label="Independence and modeling limitations"><p><strong>Independent educational exercise — not affiliated with or endorsed by Lehigh County Authority (LCA) or LCA WaterWorks.</strong> This public-data model uses assumptions and approximations; results may be incomplete, outdated, inaccurate, or different from actual rates, finances, capital plans and operations. Not an official or definitive assessment. <a href="/lca-waterworks/model.html">Model limitations</a>.</p></aside>
+<header class="topbar"><a class="brand" href="../lca-waterworks/"><span class="monogram">WW</span><span>WaterWorks<span class="brand-sub">Independent analytical exercise</span></span></a><nav aria-label="Project navigation"><a href="../lca-waterworks/">JavaScript dashboard</a><a href="../lca-waterworks/model.html">Model explanation</a><a href="../lca-waterworks/glossary.html">Glossary</a><a href="../">Portfolio</a></nav></header>
+<main id="main" class="pbi-main">
+  <section class="pbi-hero">
+    <div><p class="eyebrow">Parallel implementation · Power BI</p><h1>WaterWorks Power BI companion</h1><p class="intro">An alternative implementation of the 2027–2031 public-data planning exercise. The financial calculations and charts belong in the native Power BI report, rather than a second JavaScript model on this website.</p></div>
+    <div class="pbi-meta"><span>Public evidence cutoff</span><strong>November 7, 2026</strong><span>Three reporting divisions</span><strong>2027–2031</strong></div>
+  </section>
+  <section class="pbi-stage" aria-label="Power BI report">
+    <div class="pbi-stage-head"><h2>Native Power BI report</h2><span class="status">Report connection pending</span></div>
+    <div class="pbi-placeholder" role="status">
+      <div class="pbi-placeholder-inner">
+        <h3>The Power BI report has not been published yet.</h3>
+        <p>This site is ready to host the real Power BI iframe. The separate native project must first pass Power BI Desktop validation, be published with public-only data to Power BI service, and receive an approved Publish-to-web embed URL. No substitute charts or imaginary report are shown here.</p>
+        <div class="pbi-actions"><a class="pbi-button" href="../lca-waterworks/">Open the working dashboard</a><a class="pbi-button secondary" href="../lca-waterworks/model.html">Read model limitations</a></div>
+      </div>
+    </div>
+    <!-- Publish gate: after validating public-only semantic model in Power BI Desktop,
+         use File > Embed report > Publish to web in the Power BI service.
+         Insert the exact Microsoft-generated HTTPS iframe src into this element,
+         remove hidden, and replace the pending section with real report status.
+         Never store access tokens, credentials, or nonpublic data here. -->
+    <iframe id="powerbi-report" class="pbi-frame" title="Interactive WaterWorks Power BI financial report" loading="lazy" allowfullscreen referrerpolicy="strict-origin-when-cross-origin" hidden></iframe>
+  </section>
+  <section class="pbi-footnotes" aria-label="About the report">
+    <article><h2>Independent analysis, not an authority product</h2><p>This is an independently authored educational exercise using public evidence and declared assumptions. It does not represent an adopted rate study, verified financing commitment, or endorsement by Lehigh County Authority or LCA WaterWorks.</p></article>
+    <article><h2>How this differs from the first website</h2><p>The <a href="../lca-waterworks/">existing website</a> computes its scenarios in browser JavaScript. When connected, this companion will display the separate, native Power BI semantic model and report through a Microsoft-hosted iframe. The report may differ until independently validated.</p></article>
+  </section>
+</main>
+<footer class="pbi-footer">WaterWorks Rate Planning Lab · Independent public-data exercise · <a href="../lca-waterworks/guide.html">User manual</a> · <a href="../">nwags.com</a></footer>
+</body></html>

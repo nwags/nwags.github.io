@@ -10,6 +10,14 @@
 - Latest user direction supersedes the original one-fund scope and disabled analytical controls. Missing evidence becomes visible assumptions and sensitivities, not fabricated verified terms.
 - Runtime: static HTML/CSS/JavaScript/JSON. No production ERP, credentials, analytics or AI runtime.
 
+## Parallel Power BI site and visible independence notice — November 9, 2026
+
+- All four public WaterWorks HTML pages now include the same **sticky, nondismissible independence notice**, shared by `site-notice.css`.
+- A separate `/lca-waterworks-powerbi/` static, **JavaScript-free iframe shell** is prepared; it explicitly displays **Power BI report connection pending**. The iframe has no URL and is hidden: it is NOT a functioning embedded report yet.
+- Native PBIP validation, Power BI service publishing, tenant permission, actual public embed code, and live iframe acceptance remain pending. No credential or Power BI report data is added to GitHub Pages.
+- The original JavaScript model, financial data and tests are unchanged by this site-only update.
+- The sticky banner states this is an independent educational exercise, not LCA-affiliated or endorsed, nor a definitive or fully representative financial assessment.
+
 ## Milestone
 
 **Interface 0.3 implementation and local validation are complete.** The existing numerical model and baseline remain version 0.2.0. The GitHub Pages workflow publishes the committed static tree; its run status is the authoritative deployment result.

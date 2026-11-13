@@ -3,22 +3,52 @@
 ## Current intent
 
 - Project: Sample LCA WaterWorks BI.
-- Repository: `nwags/nwags.github.io`, public GitHub Pages, `nwags.com/lca-waterworks/`.
-- Integration branch: `work/waterworks-financial-views`; publication branch: `main`.
-- Interface: **0.3**; model: **0.2.0**; scenario schema **2.0**; evidence cutoff **November 7, 2026, America/New_York**; horizon **2027–2031**.
-- Objective: make financing, expenditures, receipts and remaining reserves understandable alongside the existing three-division rate, capital and scenario model.
-- Latest user direction supersedes the original one-fund scope and disabled analytical controls. Missing evidence becomes visible assumptions and sensitivities, not fabricated verified terms.
-- Runtime: static HTML/CSS/JavaScript/JSON. No production ERP, credentials, analytics or AI runtime.
+- Repository: `nwags/nwags.github.io`, public GitHub Pages.
+- Parallel routes: `nwags.com/lca-waterworks/` retains the JavaScript implementation; `nwags.com/lca-waterworks-powerbi/` is the separate native Power BI embedding shell. Neither replaces the other.
+- Website/tool maintenance branch: `main`. Native Power BI project definitions and loaded data remain outside the public repository.
+- JavaScript interface: **0.3**; model: **0.2.0**; scenario schema **2.0**; evidence cutoff **November 7, 2026, America/New_York**; horizon **2027–2031**.
+- Objective: complete native Power BI acceptance and publish the validated report into the parallel site, preserving both independent-analysis notices and the existing JavaScript model.
+- Missing evidence becomes visible assumptions and sensitivities, not fabricated verified terms.
+- No production ERP connection, credentials or private supporting material belongs in this public repository.
+
+## Power BI publication candidate — November 12, 2026
+
+### Observed native v07 state
+
+User-supplied Desktop output and screenshots confirm that the corrected project opens, its M queries load and all 15 report pages have been visually inspected. The missing report version metadata, rejected Measures table name and invalid M text-type declarations were repaired locally. Sample headline results for all three reporting divisions agree with the reference to displayed precision. Follow-up screenshots confirm City-specific ledgers on pages 01 and 15; the earlier suspected division-filter defect is no longer established.
+
+Remaining verified presentation problems include annual flow measures displaying 2031-only values under ambiguous Total rows and the capital bridge summing year-end balances at its grand total. A review of packaged DAX also identifies a customer-class trend expression whose CALCULATE filter replaces the class filter.
+
+### Prepared v08 repair
+
+`../lca-waterworks-powerbi/tools/Repair-WaterWorks-Publication-v08.ps1` creates a separate local publication candidate from the selected, saved v07 PBIP. It does not overwrite source files or publish a report. It preserves the 15-page structure, original financial-engine measures and original data tables, and adds:
+
+- Presentation measures with explicit annual-flow, opening/closing-balance and minimum-ratio aggregation.
+- Hidden ambiguous table grand totals and a labeled 2027–2031 reconciliation summary on page 15.
+- Cash-identity and capital-funding residual checks, preserving blank results for invalid scenarios.
+- Customer-class trend filtering using KEEPFILTERS, and zero delayed-grant presentation only for valid scenarios.
+- Larger table/selector text, dropdown selectors and shortened planning-status messages.
+- An independence disclosure at the top and bottom of every native report page. These are not sticky canvas elements; the separate website's sticky notice remains necessary.
+
+Only generic repair code is published in this repository, not the native report/model or internal data. No new chart family or financial assumption is introduced.
+
+### Validation boundary
+
+A Python-generated equivalent repair output was checked against the packaged source: 1,085 JSON/schema documents, 1,163 field bindings, 15 page bounds, 20 tables without grand totals, and 95 byte-identical original data-table definitions passed. The existing financial-engine measure definitions were preserved. The JavaScript reference was rerun for 33 presets / 165 annual rows, with cash and capital reconciliation checks passing.
+
+**These checks are not PowerShell runtime execution or Power BI DAX/runtime acceptance of v08.** The repair script and v08 output still need execution on the Windows Desktop host, refresh, visual inspection, and the supplied `V08 period acceptance.dax` plus existing canonical-case and optimizer checks. Full optimizer interaction/performance parity remains unverified.
+
+Publication remains pending. No public Power BI embed URL is configured, and the companion page continues to show its pending state.
 
 ## Parallel Power BI site and visible independence notice — November 9, 2026
 
-- All four public WaterWorks HTML pages now include the same **sticky, nondismissible independence notice**, shared by `site-notice.css`.
+- All four public WaterWorks HTML pages include the same **sticky, nondismissible independence notice**, shared by `site-notice.css`.
 - A separate `/lca-waterworks-powerbi/` static, **JavaScript-free iframe shell** is prepared; it explicitly displays **Power BI report connection pending**. The iframe has no URL and is hidden: it is NOT a functioning embedded report yet.
-- Native PBIP validation, Power BI service publishing, tenant permission, actual public embed code, and live iframe acceptance remain pending. No credential or Power BI report data is added to GitHub Pages.
-- The original JavaScript model, financial data and tests are unchanged by this site-only update.
+- Service publication, tenant permission, actual public embed code and live iframe acceptance remain pending. No credential or Power BI report data is added to GitHub Pages.
+- The original JavaScript model, financial data and tests are unchanged by the site-only and native-repair-tool updates.
 - The sticky banner states this is an independent educational exercise, not LCA-affiliated or endorsed, nor a definitive or fully representative financial assessment.
 
-## Milestone
+## JavaScript milestone
 
 **Interface 0.3 implementation and local validation are complete.** The existing numerical model and baseline remain version 0.2.0. The GitHub Pages workflow publishes the committed static tree; its run status is the authoritative deployment result.
 
@@ -35,14 +65,13 @@
 - Deeper 2016–2025 class units/volume/revenue and cost evidence, with statistical-table scope and classification limitations preserved.
 - Separate `model.html` explanation with diagram, current manual and guides; bounded worker orchestration and synthetic ERP pathway updated.
 - Scenario JSON and CSV carry `dataRevision`, a SHA-256 fingerprint of normalized inputs, years and tariff research data. JSON imports require matching version, cutoff and fingerprint and recalculate results.
-
 - Annual cash-source and cash-use stacks, paired capital/funding columns, exact annual tables and a five-year capital/cash bridge. Planned and additional borrowing remain separate; opening reserves are not annual receipts.
 - A shared chart manifest defines all new financial categories and formulas. The same raw ledger rows drive the charts and exports.
 - A 50-term glossary has stable links from controls, chart keys, the manual and model explanation. Contextual glossary links open separately to preserve the current scenario.
 
-## Verification observed
+## JavaScript verification observed
 
-- **38 tests passed, 0 failed** in the current combined test run. The original 34 engine tests were also independently rerun during model review. Coverage includes cash identities, exact tariff examples/freezes, capital reconciliation, financing caps, grant timing, separate growth channels, industrial shock, demand elasticity, City ceiling assumptions, debt timing, valid optimizer outputs, import identity and synthetic schema rejection.
+- **38 tests passed, 0 failed** in the recorded combined test run. The original 34 engine tests were also independently rerun during model review. Coverage includes cash identities, exact tariff examples/freezes, capital reconciliation, financing caps, grant timing, separate growth channels, industrial shock, demand elasticity, City ceiling assumptions, debt timing, valid optimizer outputs, import identity and synthetic schema rejection.
 - Four additional chart-contract tests cover all 33 division/preset combinations, annual cash and five-year capital identities, grant/debt timing, no duplicate receipt categories, raw precision, funding excess and glossary keys.
 - Browser preview inspected annual sources, uses and capital funding, plus City additional borrowing. The bridge reconciles and the glossary navigation preserves the selected scenario.
 - Independent review completed two passes plus targeted fixes. Initial 16 findings and follow-up report are retained under `docs/reviews/`; current summary is `docs/MODEL_REVIEW.md`.
@@ -67,4 +96,6 @@ The controller integrates changes and owns browser QA/publication. Research, imp
 
 ## Next objective
 
-A production successor needs finance-reviewed category mappings, billing determinants, project schedules, executed agreements and a full debt ledger in an approved environment. The completed revision plan is archived under `docs/exec-plans/completed/`.
+Complete the native v08 acceptance checks, publish only public/synthetic content to Power BI Service, obtain the actual approved Publish-to-web URL, and activate only the separate Power BI companion iframe. Verify both sites and their persistent notices without replacing the JavaScript implementation.
+
+A production successor separately needs finance-reviewed category mappings, billing determinants, project schedules, executed agreements and a full debt ledger in an approved environment. The completed JavaScript revision plan is archived under `docs/exec-plans/completed/`.

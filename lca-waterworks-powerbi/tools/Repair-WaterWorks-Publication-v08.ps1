@@ -171,7 +171,7 @@ IF(ISBLANK([Feasible]),BLANK(),[PUB08 Period Capital spending]-[PUB08 Period Pla
 '@ $money
     $summary = @()
     $summary += ,@('Opening cash - start of 2027','PUB08 Opening 2027')
-    foreach ($name in $flows[0..18]) { $summary += ,@($name+' - 2027-2031 sum','PUB08 Period '+$name) }
+    foreach ($name in $flows[0..18]) { $summary += ,@(($name+' - 2027-2031 sum'),('PUB08 Period '+$name)) }
     $summary += ,@('Closing cash - end of 2031','PUB08 Closing 2031')
     $summary += ,@('Cash reconciliation residual - should be zero','PUB08 Cash residual')
     $summary += ,@('Capital funding residual - should be zero','PUB08 Capital residual')

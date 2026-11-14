@@ -12,6 +12,20 @@
 
 Following the decision to prioritize a bounded public prototype, the user authorized continuing with a separate prepared-scenario edition. The complete v08 development project is preserved; JavaScript controls and existing Excel files are unchanged.
 
+### Native arithmetic acceptance — passed
+
+Evidence is the user's Power BI Desktop screenshot and explicit follow-up, not a remotely executed Desktop session:
+
+- `WaterWorks_ScenarioExplorer_v09` is open with populated model tables and query results.
+- The Explorer acceptance query completed successfully with 10 columns and 33 rows in **307.3 milliseconds** on the observed run.
+- The user confirmed that all 33 entries in the final column read **`PASS arithmetic only`**. The screenshot's rightmost check/residual columns are outside the visible area, so the all-row pass is user-confirmed rather than independently transcribed from that image.
+- The visible City and Suburban Wastewater central-case values agree with the previously recorded reference results to displayed precision.
+- This establishes native arithmetic acceptance for selection/aggregation of the prepared cases. It does not establish live optimization, arbitrary what-if calculation, financial-policy feasibility of every scenario, or independent economic validation.
+- The 307.3 ms is one measured query duration, not a guarantee for every visual, every interaction, or published Service performance. No comparative cold/warm-cache benchmark is claimed.
+- No local builder execution log was supplied in this checkpoint; the successful native query proves the candidate exists and has loaded data, not every individual builder safeguard.
+
+The next step is a bounded visual/interaction check and publication to Power BI Service as staging. Before anonymous public embedding, review the report disclosures and underlying model data for public suitability and verify Service behavior. Do not prolong v08 routing experiments as a release prerequisite for v09.
+
 ### Implemented candidate
 
 The generic local builder and data-free authoring recipe are under `../lca-waterworks-powerbi/tools/`. They create a NEW PBIP from the saved v08 public snapshot without modifying or executing the old financial engine. See the companion README for exact build/acceptance instructions and file checksums.
@@ -26,7 +40,7 @@ The generic local builder and data-free authoring recipe are under `../lca-water
 
 Reference identity: `sha256:3955c58456c7dd31767d96910b8b962dce111a7c4862f9d7d6c78fa9f3f89da3`. The inspected JavaScript engine's Git blob `71a6cc3a0b59589cb288eb073a654bb32551ca56` matches the repository source at the baseline commit.
 
-### Validation actually performed
+### Authoring checks previously performed
 
 An equivalent output was generated locally, using the extracted original package and the frozen reference model:
 
@@ -37,13 +51,13 @@ An equivalent output was generated locally, using the extracted original package
 - 122 JSON/schema documents, 138 field bindings, 10 report-page bounds and layout intersections passed static checks.
 - Structural inspection found no old live-engine/optimizer dependency or external data connection.
 
-**NOT YET EXECUTED:** the Windows PowerShell builder on the target host; the v09 Power BI model refresh, DAX, report rendering, slicer behavior, or performance. Python equivalent-output checks are not native acceptance. No independent worker review or Power BI Service deployment is claimed.
+These equivalent-output checks were not native acceptance at the time they were recorded. The subsequent native query result is recorded above. The complete v09 page-by-page visual review and published Service interaction/performance checks are still pending; no independent worker review or Power BI Service deployment is claimed.
 
-The new acceptance query, `Explorer acceptance`, returns all 33 division/preset combinations with nonblank values and cash/capital residuals. Each residual must be within $0.01 of zero. This validates native filtering/aggregation of prepared outputs, not independent economic forecasts or live solver behavior.
+The acceptance query, `Explorer acceptance`, covers all 33 division/preset combinations with nonblank values and cash/capital residuals. Each residual must be within $0.01 of zero. This validates native filtering/aggregation of prepared outputs, not independent economic forecasts or live solver behavior.
 
 ### Publication state
 
-The existing companion iframe remains hidden and has no report URL. The JavaScript application and both sticky website notices were not changed by this build. No Power BI report has been published during this milestone. Only generic local authoring tools and documentation are committed publicly; no native project or source financial rows are added.
+The existing companion iframe remains hidden and has no report URL. The JavaScript application and both sticky website notices were not changed by this documentation update. No Power BI report has been published during this checkpoint. Only generic local authoring tools and documentation are committed publicly; no native project or source financial rows are added.
 
 ## Earlier native v07/v08 evidence retained
 
@@ -71,6 +85,6 @@ No new chart family or financial assumption is introduced in v09. Source dates a
 
 ## Next objective
 
-Run the local v09 builder on the Windows host, open and refresh the new PBIP, run the 33-row Explorer acceptance, and inspect the ten pages and actual interaction times. Correct bounded compatibility or presentation defects if observed. Then publish the accepted public/synthetic report to Power BI Service, obtain the actual permitted public iframe URL, and activate only `/lca-waterworks-powerbi/`. Verify both site notices and anonymous embedding without replacing `/lca-waterworks/`.
+Save the working v09 checkpoint, perform a brief ten-page visual check and representative division/preset/comparator changes, then publish v09 from Desktop to the authorized Power BI Service workspace. Confirm rendering and interactions in Service, review the public/synthetic data boundary, obtain the permitted Publish-to-web iframe URL, and activate only `/lca-waterworks-powerbi/`. Verify anonymous access and both site notices without replacing `/lca-waterworks/`.
 
 Production work remains a separate milestone: finance-reviewed allocations, billing determinants, executed agreements, full debt schedules and governed internal ERP extracts.

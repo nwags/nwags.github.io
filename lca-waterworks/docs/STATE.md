@@ -8,23 +8,36 @@
 - Immediate objective: publish a useful, honestly scoped scenario-explorer prototype, not a production rate-setting system or a fully equivalent native optimizer.
 - Native projects, loaded data and local execution records remain outside the public repository. Public/synthetic data only; no credentials, internal customer records or private supporting material.
 
-## Current milestone — Scenario Explorer v09, November 13, 2026
+## Latest milestone — Power BI Service publication, November 14, 2026
+
+Evidence is user-reported publication success and screenshots of the report in Power BI Service, not a remotely operated Microsoft account:
+
+- The user published `WaterWorks_ScenarioExplorer_v09` from Desktop and confirmed access to the report in Power BI Service from the Linux host.
+- The Service overview screenshot shows ten page-navigation entries, populated Suburban Water / Central values ($38.30 monthly bill equivalent in 2031, 27.2 minimum cash days, 1.53x minimum coverage, $43.52m five-year capital), and rendered bill/cash charts.
+- The native independence notice and the prepared-scenarios / not-live-optimization scope are visible in the Service report. The snapshot remains tied to the November 7 evidence cutoff; a later Service data-refresh date is not a new evidence cutoff.
+- The attempt to create a public embed code produced: `Contact your admin to enable embed code creation`. The immediate blocker is permission to create new Publish-to-web codes in the Microsoft tenant. No admin rights, policy configuration, or changes to those settings have been verified.
+- This is successful authenticated Service publication, NOT anonymous public embedding. The normal Service report URL is not a substitute for the generated public iframe URL.
+- The screenshot establishes overview rendering, not complete Service interaction, mobile, performance, or all-page acceptance.
+
+Next: an authorized tenant administrator must review the Publish-to-web setting and new-code creation permission, preferably scoped to a security group of approved publishers rather than the entire organization. Group scoping controls who may publish; it does not make the resulting report private. Do not weaken unrelated security settings, purchase capacity solely to address this message, or change the working financial model as a response to this administrative blocker.
+
+No Microsoft tenant setting was changed by this documentation update. The companion iframe remains inactive pending the actual authorized public embed code. The JavaScript site and both website notices remain unchanged.
+
+## Scenario Explorer v09 — native arithmetic acceptance
 
 Following the decision to prioritize a bounded public prototype, the user authorized continuing with a separate prepared-scenario edition. The complete v08 development project is preserved; JavaScript controls and existing Excel files are unchanged.
 
-### Native arithmetic acceptance — passed
-
 Evidence is the user's Power BI Desktop screenshot and explicit follow-up, not a remotely executed Desktop session:
 
-- `WaterWorks_ScenarioExplorer_v09` is open with populated model tables and query results.
+- `WaterWorks_ScenarioExplorer_v09` opened with populated model tables and query results.
 - The Explorer acceptance query completed successfully with 10 columns and 33 rows in **307.3 milliseconds** on the observed run.
-- The user confirmed that all 33 entries in the final column read **`PASS arithmetic only`**. The screenshot's rightmost check/residual columns are outside the visible area, so the all-row pass is user-confirmed rather than independently transcribed from that image.
+- The user confirmed that all 33 entries in the final column read **`PASS arithmetic only`**. The screenshot's rightmost check/residual columns were outside the visible area, so the all-row pass is user-confirmed rather than independently transcribed from that image.
 - The visible City and Suburban Wastewater central-case values agree with the previously recorded reference results to displayed precision.
 - This establishes native arithmetic acceptance for selection/aggregation of the prepared cases. It does not establish live optimization, arbitrary what-if calculation, financial-policy feasibility of every scenario, or independent economic validation.
 - The 307.3 ms is one measured query duration, not a guarantee for every visual, every interaction, or published Service performance. No comparative cold/warm-cache benchmark is claimed.
-- No local builder execution log was supplied in this checkpoint; the successful native query proves the candidate exists and has loaded data, not every individual builder safeguard.
+- No local builder execution log was supplied in that checkpoint; the successful native query proves the candidate exists and has loaded data, not every individual builder safeguard.
 
-The next step is a bounded visual/interaction check and publication to Power BI Service as staging. Before anonymous public embedding, review the report disclosures and underlying model data for public suitability and verify Service behavior. Do not prolong v08 routing experiments as a release prerequisite for v09.
+Do not prolong v08 routing experiments as a release prerequisite for v09. Before anonymous public embedding, review disclosures and underlying model data for public suitability and confirm the exposed Service interactions.
 
 ### Implemented candidate
 
@@ -51,13 +64,13 @@ An equivalent output was generated locally, using the extracted original package
 - 122 JSON/schema documents, 138 field bindings, 10 report-page bounds and layout intersections passed static checks.
 - Structural inspection found no old live-engine/optimizer dependency or external data connection.
 
-These equivalent-output checks were not native acceptance at the time they were recorded. The subsequent native query result is recorded above. The complete v09 page-by-page visual review and published Service interaction/performance checks are still pending; no independent worker review or Power BI Service deployment is claimed.
+These equivalent-output checks were not native acceptance at the time they were recorded. Subsequent native query and Service publication evidence are recorded above. A complete v09 page-by-page Service interaction/performance review remains unverified; no independent worker review is claimed.
 
 The acceptance query, `Explorer acceptance`, covers all 33 division/preset combinations with nonblank values and cash/capital residuals. Each residual must be within $0.01 of zero. This validates native filtering/aggregation of prepared outputs, not independent economic forecasts or live solver behavior.
 
-### Publication state
+### Publication boundary
 
-The existing companion iframe remains hidden and has no report URL. The JavaScript application and both sticky website notices were not changed by this documentation update. No Power BI report has been published during this checkpoint. Only generic local authoring tools and documentation are committed publicly; no native project or source financial rows are added.
+The existing companion iframe remains hidden and has no report URL. Authenticated Power BI Service publication has succeeded, but anonymous public embedding is blocked pending administrator authorization. Only generic local authoring tools and documentation are committed publicly; no native project or source financial rows are added by this checkpoint.
 
 ## Earlier native v07/v08 evidence retained
 
@@ -85,6 +98,6 @@ No new chart family or financial assumption is introduced in v09. Source dates a
 
 ## Next objective
 
-Save the working v09 checkpoint, perform a brief ten-page visual check and representative division/preset/comparator changes, then publish v09 from Desktop to the authorized Power BI Service workspace. Confirm rendering and interactions in Service, review the public/synthetic data boundary, obtain the permitted Publish-to-web iframe URL, and activate only `/lca-waterworks-powerbi/`. Verify anonymous access and both site notices without replacing `/lca-waterworks/`.
+Establish authorized tenant-administrator access and permit new public embed codes for the approved publisher scope. Review the public/synthetic boundary and remaining Service interactions, create the genuine Publish-to-web iframe URL, and activate only `/lca-waterworks-powerbi/`. Verify anonymous access and both site notices without replacing `/lca-waterworks/`. A normal authenticated Service URL or secure-embed URL is not an anonymous public replacement.
 
 Production work remains a separate milestone: finance-reviewed allocations, billing determinants, executed agreements, full debt schedules and governed internal ERP extracts.

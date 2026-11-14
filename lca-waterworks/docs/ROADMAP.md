@@ -1,57 +1,53 @@
 # Staged delivery plan
 
-## Current revision — interface 0.3, model 0.2.0
+## Immediate milestone — bounded public Power BI prototype
 
-The original one-fund release is superseded by the three-division model. Research, component tariffs, capital reconciliation, named comparisons, customer evidence, model diagram, documentation and independent review are complete. The financing extension adds annual sources and uses, paired capital and identified funding, exact annual and five-year cash bridges, and a 50-term glossary. See [STATE.md](STATE.md) for observed validation and remaining limits.
+Publish a credible educational scenario explorer, not a production rate-setting system. The parallel `/lca-waterworks-powerbi/` report does not replace `/lca-waterworks/`.
 
-All three divisions remain analytically enabled with explicit assumptions. Missing agreements do not reinstate disabled features. Acceptance criteria and the revision findings are in [the completed revision plan](exec-plans/completed/adversarial-revision.md).
+The user authorized the separate prepared-scenario edition after the observed v08 calculation performance problems. **Scenario Explorer v09 has been authored as a candidate, not yet accepted in native Desktop.** It retains three divisions, eleven prepared scenarios, customer bills, fixed/usage components, ten chart families, capital and financing analysis, source evidence, assumptions, glossary and synthetic ERP specification. It explicitly does not expose arbitrary recalculation or a live native optimizer. Preserve the full v08 development project and the JavaScript controls.
 
-## Immediate milestone — a bounded public Power BI prototype
+The generic builder reads the saved local snapshot, checks source identity and arithmetic, and writes a separate native project. Native model/data remain outside the public website repository. See [STATE.md](STATE.md) for observed tests and the [companion README](../../lca-waterworks-powerbi/README.md) for build and acceptance details.
 
-Release priority clarified November 13, 2026: publish a credible, useful educational demonstration, not a production rate-setting system. Complete and verify a small end-to-end analytical experience before expanding advanced functionality. The parallel Power BI site does not replace the JavaScript site.
+### Release gates
 
-The initial release should demonstrate all three reporting divisions, customer bills and fixed/usage components, capital spending, financing sources and uses, meaningful scenario comparison, transparent evidence/assumptions, and a synthetic ERP integration specification. Preserve the existing chart families; do not introduce new financial assumptions or claim full functional equivalence without verification.
+1. Reconcile every exposed prepared scenario in all three divisions: opening cash plus sources less uses equals closing cash; period capital funding reconciles; default-account bill components agree. Blank results do not count as passes.
+2. Run native `Explorer acceptance`: 33 populated rows, cash and capital residuals within $0.01 of zero. Structural checks and agreement with the reference engine do not substitute for native execution.
+3. Inspect all ten pages and division/scenario/comparison interactions. Confirm friendly labels, appropriate balance-versus-flow aggregation, explicit prepared-scenario limits and independent-analysis notices. Do not claim full functional equivalence with the JavaScript model.
+4. Measure the actual opening and interaction experience in Desktop and Service. Repeated memory failures or minute-long routine interactions remain blockers. Reduced dependencies are not a measured performance result by themselves.
+5. Review every underlying model table for unrestricted public suitability, obtain the actual permitted Publish-to-web URL, activate only the companion iframe and verify anonymous access and both persistent site notices.
 
-### Acceptance required for the exposed functionality
+### Subsequent work, not first-release blockers
 
-1. Reconcile the published baseline and a bounded representative set of exposed scenarios for every division: opening cash plus inflows less outflows equals closing cash; capital funding reconciles; sampled tariff bills agree with the declared formulas. Missing results cannot count as passing tests.
-2. Remove materially misleading totals, stale labels and claims of unsupported behavior. Distinguish balances from flows, assumptions from verified sources, and numerical feasibility from authority to adopt a policy.
-3. Test the default opening page and exposed controls in Desktop and the published Service report. Core interactions must be usable without repeated memory failures or minute-long routine recalculations. Do not infer deployment performance from one isolated fast query.
-4. Retain the independent-exercise disclosure and evidence cutoff in the report and persistent notices on both websites. Publish public/synthetic data only; review the model's underlying data, not just visible pages.
-5. Obtain and verify the actual Power BI embed URL, activate only `/lca-waterworks-powerbi/`, test anonymous access and navigation, and preserve `/lca-waterworks/` unchanged.
+A live Munis connection, comprehensive executed-agreement verification, calibrated stochastic forecasts, full cost-of-service allocation and native live-optimizer parity are later milestones. Cosmetic perfection is not required, but known misleading figures or unsupported feature claims must be corrected. Do not quietly reinstall diagnostic overrides or portray stored scenarios as new live optimization results.
 
-### Work that need not block this first release
+## Existing JavaScript milestone
 
-A live Munis/ERP connection, complete executed-agreement verification, calibrated stochastic forecasts, comprehensive cost-of-service allocation, full native optimizer parity, and cosmetic perfection belong to later milestones. Known material errors in the exposed functionality remain release blockers; a disclaimer is not a substitute for correcting them.
-
-The native live optimizer remains a development capability until correctness and performance are established. If it cannot meet the initial release's usability bar, recommend an explicitly narrower published experience rather than prolong open-ended routing experiments. Preserve the full development project. Do not silently remove optimization or label precomputed scenarios as live optimization. Merely hiding a page does not isolate an expensive dependency in shared reporting measures.
-
-A possible fallback is a curated set of validated scenario outputs loaded into the native Power BI semantic model, with responsive native filtering and comparisons. This is a proposed fallback, not an implemented change or a claim of arbitrary what-if recalculation. Any reduction in exposed controls must be explained and deliberately selected before implementation. The JavaScript analytical controls remain available independently.
+Interface 0.3 / model 0.2.0 includes the three-fund revision, component tariffs, capital reconciliation, named scenarios, customer history, model explanation, financing charts and 50-term glossary. Earlier acceptance and review are recorded in [STATE.md](STATE.md) and the [completed revision plan](exec-plans/completed/adversarial-revision.md). No JavaScript calculation or chart family changes are part of v09.
 
 ## M0 — Define the decision
 
-Establish the horizon, user decisions, source hierarchy, model boundary, and website architecture. Preserve independent operation, transparent assumptions, and fund separation. Gate: a clear answer to what the demonstration can and cannot optimize.
+Establish the horizon, user decisions, source hierarchy, model boundary and website architecture. Preserve independent operation, transparent assumptions and fund separation. Gate: a clear explanation of what the edition can and cannot analyze.
 
 ## M1 — Collect and reconcile evidence
 
-Research current rate schedules, adopted budgets, audited history, capital plans, governing legislation, concessions, municipal agreements, and peer methods. Follow missing inputs back to additional sources. Gate: every baseline value has a source, units, period, system, status, and transformation; unresolved rules remain explicit.
+Research budgets, audited history, capital schedules, tariffs, agreements and peer methods. Preserve source units, dates, scope and status. Missing evidence remains explicit; do not invent verified terms.
 
 ## M2 — Build and challenge the model
 
-Implement a deterministic financial ledger, bill calculations, scenario assumptions, and a bounded optimizer with explicit objectives and feasibility checks. Compare its structure against public utility planning models. Gate: independently checked arithmetic, source reconciliation, infeasibility handling, and no implicit interfund transfers.
+Check ledger identities, bill formulas, assumptions, constraints and declared optimization limits against independent arithmetic and reference cases. Do not pool funds or silently remove mandatory capital.
 
 ## M3 — Build the demonstration
 
-Create an accessible static dashboard with five-year controls, charts, constraints, source drilldowns, scenario export, and a synthetic ERP contract demonstration. Gate: controls and outputs respond correctly, evidence labels remain visible, and no production integration is implied.
+Create an accessible report with financial views, scenario comparisons, evidence drilldowns and integration explanation. Exposed controls must match the edition's actual behavior.
 
 ## M4 — Explain and review
 
-Produce the user manual, model/assumption guide, user guidance, integration guide, and controller/worker briefs. A worker other than the implementer reviews model semantics and numerical claims. Gate: observed issues resolved or explicitly retained as limitations, documentation matches the shipped behavior.
+Maintain methods, glossary, manual and integration guides. Distinguish static validation, native execution, public-data limitations and actual stakeholder approvals.
 
 ## M5 — Publish and hand off
 
-Publish under the existing portfolio without replacing unrelated content, verify the served result, record the exact commit and validation, and identify the next evidence-driven objective. Gate: a live or explicitly blocked delivery with reproducible local source and no claims of legal approval.
+Publish the accepted report into the existing parallel website, verify the served result, record exact versions and validation, and preserve unrelated portfolio content. A prepared iframe is not a working published Power BI report.
 
-## Subsequent production pathway
+## Production pathway
 
-Reconcile full customer-class and fund-level histories, executed agreements and amendments, official rate approvals, restricted balances, debt covenant definitions and approved capital schedules. Validate calibrated forecasts and controlled ERP extracts with LCA staff. Only then consider policy recommendations or deployment into an authority-operated BI environment.
+Reconcile complete customer-class histories, executed agreements, official rate approvals, restricted balances, debt covenants and project funding with authorized staff. Introduce governed ERP extracts and operational deployment only as separately approved work.

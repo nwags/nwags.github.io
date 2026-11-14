@@ -1,48 +1,69 @@
-# WaterWorks Power BI companion website
+# WaterWorks Power BI companion
 
-Route: `https://nwags.com/lca-waterworks-powerbi/`
+Public route: `https://nwags.com/lca-waterworks-powerbi/`.
 
-This is the **parallel Power BI website**, not a replacement for `https://nwags.com/lca-waterworks/`. The existing JavaScript model continues to run separately. This directory hosts a static, JavaScript-free iframe shell. Its persistent public independence notice is shared from `../lca-waterworks/site-notice.css`.
+The existing JavaScript application remains at `https://nwags.com/lca-waterworks/`. This companion does not replace it. The website is a static iframe host with a persistent independence disclosure. **The iframe is still inactive: no public Power BI report URL has been configured.**
 
-## Publication state
+## Scenario Explorer v09 — publication candidate
 
-**Report connection pending.** The native v07 project has been opened and refreshed in Power BI Desktop and all 15 pages have been visually inspected through user-supplied screenshots. Selected three-division results and ledger interactions have been checked. Total-row semantics, report disclosure and readability require the v08 revision and native acceptance.
+The first publication edition is a separate native Power BI report that filters and compares **prepared scenario outputs**. It does not recompute arbitrary assumptions or perform live optimization. The full v08 development project and JavaScript controls remain unchanged.
 
-A `.pbip` project cannot be rendered directly by GitHub Pages or an iframe. The companion page intentionally shows a pending state. Its iframe has no `src` and remains hidden until the real, approved public report URL is supplied. No public embed is currently configured.
+Scope: three divisions, eleven named presets, 2027–2031; evidence cutoff November 7, 2026. Ten report pages, 106 visuals, 27 model tables and 89 measures replace the large development model. The old `_Engine`, `_Result`, `_BestCandidate`, candidate enumeration and numeric override tables are absent, not merely hidden.
 
-Changing project state and validation boundaries are recorded in [the project state](../lca-waterworks/docs/STATE.md).
+Pages: overview; financing and capital funding; scenario comparison; illustrative customer account; capital-plan reconciliation; customers and historical evidence; scenario settings and evidence; rules and agreements; glossary and sources; audit and integration.
 
-## Local v08 repair
+The ten chart families are retained: bill, cash, annual sources, annual uses, paired capital/funding, comparison bills, comparison cash, capital program, historical customer-class volume, and historical operating expenses. Bill components and financing bridges remain tables. No new financial assumptions or chart families are introduced; existing Excel and JavaScript files are not changed.
 
-[Repair-WaterWorks-Publication-v08.ps1](tools/Repair-WaterWorks-Publication-v08.ps1) is a readable, guarded Windows PowerShell utility. It accepts `-ProjectPath` and `-Destination`; omitting the project path opens a file picker. It requires the corrected, saved v07 `.pbip`, Power BI Desktop closed and no unapplied query changes.
+The illustrative account is fixed to the stored presets: 5,000 billable gallons per month equivalent, a 5/8-inch meter and one EDU where relevant. Suburban wastewater uses common sewer rate 1. This is not full arbitrary tariff-design parity with the JavaScript application.
 
-It creates a separate publication candidate and never overwrites the original. It does not publish, upload report data, install software, change execution policy or replace the financial-engine measures. It adds explicit flow/balance presentation measures, disables ambiguous grand totals, adds a page 15 period reconciliation, preserves class filtering in the historical-volume chart, distinguishes zero delayed grants from invalid results, and improves labels and disclosures. All 15 pages remain.
+## Local builder and data boundary
 
-Report-page disclosures appear at the top and bottom; they are not sticky Power BI canvas elements. The website's sticky notice remains necessary. The repair is a candidate, not a claim of native acceptance.
+`tools/Build-WaterWorks-ScenarioExplorer-v09.ps1` reads an allowlist of public/synthetic literal tables in a saved local v08 PBIP. `tools/ScenarioExplorer-v09.recipe.txt` is GZip/base64 JSON containing generic report templates, DAX, labels and schemas, not source financial records or executable PowerShell.
 
-The generic script is public; the native report and semantic model remain outside this repository. No private source data or supporting materials are included here.
+Only the builder and data-free recipe are stored here. The generated native report, semantic-model data, local project paths and execution logs stay outside this repository. The builder never uploads files, publishes a report, changes execution policy, installs software or overwrites the source. It refuses an existing destination and pending query changes. Use Windows PowerShell 5.1 or later with Desktop closed.
 
-### Checks before publication
+File SHA-256 values:
 
-1. Open the new `WaterWorks_Publication_v08.pbip` and Refresh in Desktop. Its local `.pbi` cache is intentionally not copied.
-2. Inspect pages 01, 02, 10 and 15, the notices on all pages, selector behavior and readable table text. Verify division changes and active override behavior.
-3. Run `V08 period acceptance.dax` in DAX Query view. Both cash and capital reconciliation residuals should be within one cent of zero. A reconciliation PASS alone does not establish policy feasibility or source accuracy.
-4. Run the retained canonical-case and finite-optimizer acceptance queries. Inspect the winning candidate behavior and runtime performance as well as reference counts.
-5. Verify every data source and drilldown is **public or synthetic**. Do not include private customer records, credentials, restricted authority material or internal ERP extracts.
+- Builder: `d3312bf5f6807bb680b64f5ce20e078653320e5fbbfa93217303870b1eaaa05e`
+- Recipe: `e24d7f40f46b6da2ef7f2b95acf032f73e2a0710c39b6a92ac3da1b32c166d97`
 
-PowerShell execution and native v08 DAX/rendering acceptance remain pending on the Windows host. Schema/field checks of an equivalent generated repair output and reference-model arithmetic checks are documented separately in project state; they are not substitutes for those native tests.
+Parameters: `ProjectPath` is the saved local v08 `.pbip`; `RecipePath` is the downloaded recipe; `Destination` must be a new folder outside the source. The normal destination is `C:\WaterWorksLab\WaterWorks_ScenarioExplorer_v09`. It creates `WaterWorks_ScenarioExplorer_v09.pbip`, `README.txt`, and `V09_BUILD_RESULT.json`.
 
-## Finish the integration
+The builder checks the frozen model identity, 33 unique cases, 6,435 stored metrics, annual cash sources/uses and continuity, period cash/capital identities, and independently reconstructed default-account bill components. It confirms source-file hashes are unchanged.
 
-1. After native acceptance, publish from Power BI Desktop to the intended Power BI Service workspace. Desktop publishing includes the loaded model data; a separate PBIX conversion is not required.
-2. Confirm the tenant permits **Publish to web**, the author has the applicable permissions/license and the report meets Microsoft's eligibility requirements.
-3. In Power BI Service select **File > Embed report > Publish to web (public)**. Review the public exposure warning, then obtain the actual generated iframe `src` URL. Do not invent a report URL.
-4. Set that exact URL as `src` on `#powerbi-report` in this directory's `index.html`, remove `hidden`, and replace the pending block/status with the verified report state. Remove `noindex` only after successful public verification.
-5. Test anonymously, check desktop and mobile sizing, interactions and scrolling, and ensure the persistent independence notice remains visible. Preserve navigation to the JavaScript version.
+## Validation already observed
 
-Publish to web exposes the report and its underlying data publicly, not merely to visitors of nwags.com. Secure authenticated embedding is a different architecture and does not provide an anonymous public portfolio experience. No tokens, credentials or backend secrets belong in GitHub Pages.
+An equivalent candidate was generated and inspected locally:
 
-Official Microsoft documentation:
+- 33 scenarios / 165 annual rows were recomputed with the frozen JavaScript reference engine: 6,600 numeric comparisons, maximum difference zero.
+- 6,435 stored metric records agreed with the reference-derived values, maximum difference approximately 9.1e-13.
+- 605 tariff bill-component rows reconciled to the 165 annual bills.
+- Cash and capital-funding residuals were below $0.00001 for every case.
+- 122 JSON/schema documents, 138 field bindings, 10 page bounds and layout intersections passed static checks.
+- Old engine/optimizer dependencies and external data connections are absent.
+
+**Neither the Windows PowerShell builder nor the new report has been executed in Power BI Desktop by the authoring environment.** The equivalent-output checks are not native runtime, visual-rendering or performance acceptance. Faster interaction is the architectural goal, not a measured claim yet.
+
+## Native acceptance
+
+Open the new PBIP, refresh once to load the embedded snapshot tables, then save. No gateway, live website, ERP credentials or local external-data path is required. Set explicit report selections before publishing: Suburban Water, Central planning estimate, comparator Central planning estimate. The measures have disclosed defaults when slicers are clear, but selected values are clearer to visitors.
+
+Run `Explorer acceptance` in DAX Query view. It must return 33 rows, populated results, and `PASS arithmetic only` in every row. `CashResidual` and `CapitalResidual` must each be within $0.01 of zero. This checks native selection and aggregation of prepared results, not a live optimization run or independent confirmation of LCA forecasts. Do not update model definitions from a diagnostic query.
+
+Inspect all ten report pages, division/preset changes, default account bill lines, comparison selections, financial targets and disclosures. Record opening, query and interaction performance. A prepared scenario may fail its financial targets while passing arithmetic reconciliation. Some presets coincide for a given division; identical curves are not necessarily an error.
+
+## Finish publication
+
+1. After native acceptance, review all underlying model tables for public suitability, not just visible pages.
+2. Publish from Desktop to the authorized Power BI Service workspace. Publishing to Service is not itself anonymous public embedding.
+3. In Service, obtain the actual code through **File > Embed report > Publish to web (public)**, if account/tenant permissions allow.
+4. Set the exact generated Microsoft URL on `#powerbi-report` in `index.html`; remove its `hidden` attribute and replace the pending block/status. Do not invent an embed URL or store access tokens here.
+5. Verify anonymous access, report interactions, navigation and the website's persistent banner on desktop/mobile. Remove the pending `noindex` only after successful publication.
+
+Publish to web exposes the report and underlying model data publicly, including outside this site. Only public or synthetic data is eligible. Native report notices are ordinary report elements, not sticky canvas elements; keep the host website's persistent notice.
+
+Official references:
 - https://learn.microsoft.com/en-us/power-bi/developer/projects/projects-overview
 - https://learn.microsoft.com/en-us/power-bi/collaborate-share/service-publish-to-web
-- https://learn.microsoft.com/en-us/power-bi/collaborate-share/service-embed-secure
+
+The full v08 repair tool is retained for development history; it is not the v09 publication path.

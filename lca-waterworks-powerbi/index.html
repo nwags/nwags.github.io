@@ -1,43 +1,42 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="robots" content="noindex,follow">
-<meta name="description" content="Independent public-data WaterWorks rate planning Power BI companion. Native Power BI report publication is pending.">
-<title>WaterWorks | Power BI companion</title>
-<link rel="stylesheet" href="../lca-waterworks/styles.css?v=030">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Explore the native Power BI WaterWorks report: three reporting divisions, eleven prepared scenarios, customer bills, capital and financing for 2027–2031. Independent educational exercise.">
+<title>WaterWorks Scenario Explorer | Power BI</title>
+<link rel="canonical" href="https://nwags.com/lca-waterworks-powerbi/">
+<link rel="stylesheet" href="styles.css?v=20261114">
 <link rel="stylesheet" href="../lca-waterworks/site-notice.css?v=010">
-<link rel="stylesheet" href="styles.css?v=001">
 </head>
 <body>
-<a class="skip-link" href="#main">Skip to Power BI companion</a>
+<a class="skip-link" href="#main">Skip to the Power BI report</a>
 <aside class="independence-banner" role="note" aria-label="Independence and modeling limitations"><p><strong>Independent educational exercise — not affiliated with or endorsed by Lehigh County Authority (LCA) or LCA WaterWorks.</strong> This public-data model uses assumptions and approximations; results may be incomplete, outdated, inaccurate, or different from actual rates, finances, capital plans and operations. Not an official or definitive assessment. <a href="/lca-waterworks/model.html">Model limitations</a>.</p></aside>
-<header class="topbar"><a class="brand" href="../lca-waterworks/"><span class="monogram">WW</span><span>WaterWorks<span class="brand-sub">Independent analytical exercise</span></span></a><nav aria-label="Project navigation"><a href="../lca-waterworks/">JavaScript dashboard</a><a href="../lca-waterworks/model.html">Model explanation</a><a href="../lca-waterworks/glossary.html">Glossary</a><a href="../">Portfolio</a></nav></header>
-<main id="main" class="pbi-main">
-  <section class="pbi-hero">
-    <div><p class="eyebrow">Parallel implementation · Power BI</p><h1>WaterWorks Power BI companion</h1><p class="intro">An alternative implementation of the 2027–2031 public-data planning exercise. The financial calculations and charts belong in the native Power BI report, rather than a second JavaScript model on this website.</p></div>
-    <div class="pbi-meta"><span>Public evidence cutoff</span><strong>November 7, 2026</strong><span>Three reporting divisions</span><strong>2027–2031</strong></div>
+<header class="topbar">
+  <a class="brand" href="../lca-waterworks/"><span class="monogram" aria-hidden="true">WW</span><span>WaterWorks<span class="brand-sub">Independent analytical exercise</span></span></a>
+  <nav aria-label="Project navigation"><a href="../lca-waterworks/">JavaScript dashboard</a><a href="../lca-waterworks/model.html">Model explanation</a><a href="../lca-waterworks/glossary.html">Glossary</a><a href="../">Portfolio</a></nav>
+</header>
+<main id="main" class="pbi-main" tabindex="-1">
+  <section class="pbi-hero" aria-labelledby="page-title">
+    <div><p class="eyebrow">Native Power BI · Scenario Explorer v09</p><h1 id="page-title">Explore the financial tradeoffs.</h1><p class="intro">Compare customer bills, cash reserves, capital investment and financing across three reporting divisions and eleven prepared scenarios for 2027–2031.</p></div>
+    <dl class="pbi-meta"><div><dt>Public evidence cutoff</dt><dd>November 7, 2026</dd></div><div><dt>Calculation scope</dt><dd>Prepared scenarios, not live optimization</dd></div></dl>
   </section>
-  <section class="pbi-stage" aria-label="Power BI report">
-    <div class="pbi-stage-head"><h2>Native Power BI report</h2><span class="status">Report connection pending</span></div>
-    <div class="pbi-placeholder" role="status">
-      <div class="pbi-placeholder-inner">
-        <h3>The Power BI report has not been published yet.</h3>
-        <p>This site is ready to host the real Power BI iframe. The separate native project must first pass Power BI Desktop validation, be published with public-only data to Power BI service, and receive an approved Publish-to-web embed URL. No substitute charts or imaginary report are shown here.</p>
-        <div class="pbi-actions"><a class="pbi-button" href="../lca-waterworks/">Open the working dashboard</a><a class="pbi-button secondary" href="../lca-waterworks/model.html">Read model limitations</a></div>
-      </div>
+  <section class="pbi-stage" aria-labelledby="report-title">
+    <div class="pbi-stage-head">
+      <div><h2 id="report-title">WaterWorks Scenario Explorer</h2><p>Native report hosted by Microsoft Power BI</p></div>
+      <a class="pbi-button" href="https://app.powerbi.com/view?r=eyJrIjoiZjRjZTRhZmQtNzY1NC00ZDZiLWE5ZGItMjM3MjQ4MzRmMjdiIiwidCI6ImNjYWMwOGY0LWYyNDktNDM2Zi1iY2Q0LWFmNDk2NmRjMzAwYyJ9&amp;pageName=Overview" target="_blank" rel="noopener noreferrer">Open report in a new tab <span aria-hidden="true">↗</span></a>
     </div>
-    <!-- Publish gate: after validating public-only semantic model in Power BI Desktop,
-         use File > Embed report > Publish to web in the Power BI service.
-         Insert the exact Microsoft-generated HTTPS iframe src into this element,
-         remove hidden, and replace the pending section with real report status.
-         Never store access tokens, credentials, or nonpublic data here. -->
-    <iframe id="powerbi-report" class="pbi-frame" title="Interactive WaterWorks Power BI financial report" loading="lazy" allowfullscreen referrerpolicy="strict-origin-when-cross-origin" hidden></iframe>
+    <p class="pbi-instructions" id="report-help"><strong>Start here:</strong> select a division, a scenario and a comparison inside the report. Use its page controls to explore financing, bills, assumptions and the audit. For more space, use the report’s full-screen control or open it in a new tab.</p>
+    <iframe id="powerbi-report" class="pbi-frame" title="WaterWorks Scenario Explorer v09 — interactive prepared-scenario report" width="1440" height="900" src="https://app.powerbi.com/view?r=eyJrIjoiZjRjZTRhZmQtNzY1NC00ZDZiLWE5ZGItMjM3MjQ4MzRmMjdiIiwidCI6ImNjYWMwOGY0LWYyNDktNDM2Zi1iY2Q0LWFmNDk2NmRjMzAwYyJ9&amp;pageName=Overview" loading="eager" allowfullscreen referrerpolicy="strict-origin-when-cross-origin" aria-describedby="report-help report-fallback"></iframe>
+    <p id="report-fallback" class="pbi-fallback">Report not loading? <a href="https://app.powerbi.com/view?r=eyJrIjoiZjRjZTRhZmQtNzY1NC00ZDZiLWE5ZGItMjM3MjQ4MzRmMjdiIiwidCI6ImNjYWMwOGY0LWYyNDktNDM2Zi1iY2Q0LWFmNDk2NmRjMzAwYyJ9&amp;pageName=Overview" target="_blank" rel="noopener noreferrer">Open the public Power BI report directly</a>. This embedded content is served by Microsoft; public report access does not require a sign-in. A wider screen or landscape orientation makes detailed tables easier to read.</p>
   </section>
-  <section class="pbi-footnotes" aria-label="About the report">
-    <article><h2>Independent analysis, not an authority product</h2><p>This is an independently authored educational exercise using public evidence and declared assumptions. It does not represent an adopted rate study, verified financing commitment, or endorsement by Lehigh County Authority or LCA WaterWorks.</p></article>
-    <article><h2>How this differs from the first website</h2><p>The <a href="../lca-waterworks/">existing website</a> computes its scenarios in browser JavaScript. When connected, this companion will display the separate, native Power BI semantic model and report through a Microsoft-hosted iframe. The report may differ until independently validated.</p></article>
+  <section class="pbi-footnotes" aria-label="Scope and interpretation">
+    <article><h2>What this edition does</h2><p>This report filters and compares 33 prepared division/scenario cases. It does not recalculate arbitrary new assumptions or run a live optimizer. For adjustable planning inputs and the original calculation engine, use the separate <a href="../lca-waterworks/">JavaScript dashboard</a>.</p></article>
+    <article><h2>Know the illustrated account</h2><p>Bill examples use 5,000 billable gallons per month equivalent, a 5/8-inch meter and one equivalent dwelling unit where applicable. Suburban wastewater uses common rate 1. Actual tariffs and accounts vary; these are model illustrations, not customer quotations.</p></article>
+    <article><h2>Evidence, not an official forecast</h2><p>The evidence cutoff is November 7, 2026. A later report refresh does not change that cutoff. Assumptions and source discrepancies remain visible in the report and <a href="../lca-waterworks/model.html">model explanation</a>. Passing arithmetic checks is not approval to adopt rates or borrow.</p></article>
+    <article><h2>Public and independent</h2><p>This educational report contains public and synthetic information, not a live Munis or LCA system connection. It is independent of LCA and is also accessible directly through Microsoft’s public link. The complete <a href="../lca-waterworks/guide.html">model manual</a> describes the broader JavaScript edition; v09’s prepared-scenario limits apply here.</p></article>
   </section>
 </main>
-<footer class="pbi-footer">WaterWorks Rate Planning Lab · Independent public-data exercise · <a href="../lca-waterworks/guide.html">User manual</a> · <a href="../">nwags.com</a></footer>
-</body></html>
+<footer class="pbi-footer"><span>WaterWorks Rate Planning Lab · Independent public-data exercise</span><nav aria-label="Footer navigation"><a href="../lca-waterworks/">JavaScript version</a><a href="../lca-waterworks/glossary.html">Glossary</a><a href="../">nwags.com</a></nav></footer>
+</body>
+</html>

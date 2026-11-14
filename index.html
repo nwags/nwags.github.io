@@ -9,6 +9,66 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,400;0,500;0,600;1,400&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="personal.css" />
+  <style>
+    /* Homepage-only WaterWorks links; the two dashboards remain independent. */
+    .waterworks-editions {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 0.75rem;
+      margin-top: 1rem;
+    }
+    .waterworks-edition {
+      display: block;
+      padding: 0.85rem 1rem;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      color: var(--accent);
+      background: #f2f8fa;
+      text-decoration: none;
+    }
+    .waterworks-edition:hover,
+    .waterworks-edition:focus-visible {
+      border-color: var(--accent);
+      background: #e8f2f5;
+    }
+    .waterworks-edition-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.35rem 0.75rem;
+      font-weight: 700;
+    }
+    .waterworks-edition-label {
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+    .waterworks-online {
+      padding: 0.15rem 0.5rem;
+      border: 1px solid #a6c6bb;
+      border-radius: 999px;
+      color: #17513c;
+      background: #e7f3ec;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+    .waterworks-edition-description {
+      display: block;
+      margin-top: 0.3rem;
+      color: var(--ink-soft);
+      font-size: 0.88rem;
+      line-height: 1.45;
+    }
+    .project-card .waterworks-docs {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.35rem;
+      margin-top: 0.9rem;
+      color: var(--accent);
+      font-size: 0.9rem;
+    }
+  </style>
 </head>
 <body class="personal-site">
   <a class="skip-link" href="#main">Skip to content</a>
@@ -69,22 +129,30 @@
         </div>
         <div class="project-grid">
 
-          <article class="project-card">
+          <article class="project-card project-card-waterworks">
             <h3>WaterWorks Rate Planning Lab</h3>
             <p>
-              An independent public-data BI demonstration for the Lehigh County Authority context:
-              compare five-year water and wastewater rate scenarios across three divisions, customer bills, capital funding, and financial resilience.
+              Two online versions of an independent public-data BI demonstration in the Lehigh County Authority context:
+              explore five-year water and wastewater rates across three divisions, customer bills, capital funding, and financial resilience.
             </p>
             <ul>
-              <li>Interactive 2027–2031 rate planning and constrained scenario search</li>
+              <li>2027–2031 planning with separate reporting-division ledgers</li>
               <li>Transparent source reconciliation, assumptions, and agreement boundaries</li>
-              <li>Stress tests, synthetic ERP validation, and reusable analyst guides</li>
+              <li>Financing analysis, synthetic ERP examples, and reusable analyst guides</li>
             </ul>
-            <p class="project-links">
-              <a href="lca-waterworks/">Open Dashboard</a>
+            <div class="waterworks-editions" role="group" aria-label="WaterWorks dashboards, both online">
+              <a class="waterworks-edition" href="lca-waterworks/">
+                <span class="waterworks-edition-title"><span class="waterworks-edition-label">JavaScript dashboard</span><span class="waterworks-online">Online</span></span>
+                <span class="waterworks-edition-description">Adjust planning inputs and explore rate scenarios and optimization.</span>
+              </a>
+              <a class="waterworks-edition" href="lca-waterworks-powerbi/">
+                <span class="waterworks-edition-title"><span class="waterworks-edition-label">Embedded Power BI report</span><span class="waterworks-online">Online</span></span>
+                <span class="waterworks-edition-description">Compare 33 prepared scenarios in the native Power BI report; not live optimization.</span>
+              </a>
+            </div>
+            <p class="project-links waterworks-docs">
               <a href="lca-waterworks/guide.html">Read User Manual</a>
               <a href="lca-waterworks/model.html">Explore the Model</a>
-              <a href="lca-waterworks-powerbi/">Power BI Companion (pending embed)</a>
             </p>
           </article>
 

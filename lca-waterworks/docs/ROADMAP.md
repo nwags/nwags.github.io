@@ -1,71 +1,70 @@
 # Staged delivery plan
 
-## Immediate milestone — publish the working Tableau initial edition
+## Current milestone — integrate the initial public Tableau edition
 
-The owner has prioritized hosting Tableau alongside the already published JavaScript and Power BI editions sooner rather than waiting for complete feature parity. T01d has owner-observed native acceptance: all 33 arithmetic checks pass, the financing page and full paired capital/funding chart render, and its disclosure and color keys are readable. See [STATE.md](STATE.md) for exact evidence and remaining limits.
+The owner prioritized getting Tableau online before full parity. T01d passed native all-33 arithmetic checks and was published to Tableau Public as **WaterWorks — Overview and Financing**. The owner supplied its actual generated Share code and a populated hosted Overview screenshot. The companion uses `WaterWorksOverviewandFinancing/01Overview`, enables workbook tabs, retains the sticky independence notice and adds a third stacked homepage link. Verify Pages deployment and signed-out hosted operation separately; see STATE.md.
 
-Publish the current **Overview and Financing** dashboards plus the arithmetic audit as an explicitly limited initial edition. Do not add another workbook-generation or extract-conversion cycle before publication. Remaining chart families, independent comparator, detailed bills, history and evidence views stay on the roadmap as incremental improvements, not release blockers. Known materially misleading figures still block release.
-
-### Tableau release gates
-
-1. Preserve T01c/T01d local native-tested checkpoints and the frozen November 7, 2026 snapshot. No new financial assumptions, formula changes or data-source rewrites are needed for this release.
-2. Save clear opening selections: Suburban Water / Central planning estimate, Overview active. Hide supporting dashboard sheets rather than deleting them; retain the all-case audit worksheet. This is navigation cleanup, not data privacy.
-3. Publish from Desktop Public Edition to the owner's existing Tableau Public profile. All underlying data must remain suitable for unrestricted access; no internal ERP/customer data.
-4. Verify the published Overview and Financing pages, a division/scenario change and the audit. No claim of hosted speed or functionality follows from the Desktop screenshots alone.
-5. Obtain the actual Share embed code/public view URL. The prepared `/lca-waterworks-tableau/` host has no fabricated URL and remains explicitly pending/noindex until connected. Preserve dashboard navigation and a direct fallback in the real embed.
-6. Verify the deployed page signed out, with readable disclosure and usable navigation. Add the third stacked homepage Online link only when the public report is actually connected. Existing JavaScript/Power BI applications and Excel are unchanged.
-
-## Existing public Power BI companion
-
-Publish a credible educational scenario explorer, not a production rate-setting system. `/lca-waterworks-powerbi/` remains parallel to, not a replacement for, `/lca-waterworks/`.
-
-The user authorized a prepared-scenario edition after the v08 calculation-performance problems. v09 passed the owner-run 33-case native arithmetic check, was published to Service, and received an owner-supplied public embed URL. The companion embeds that URL with a persistent notice; Pages build/deploy succeeded. Independent full anonymous rendering and interaction remain separate checks; see STATE.md.
-
-It retains three divisions, eleven prepared scenarios, fixed/usage bill components, ten chart families, financing/capital analysis, assumptions, evidence, glossary and synthetic integration specification. It does not expose arbitrary new recalculation or live optimization. Preserve the full v08 development project and JavaScript controls.
-
-The generic builder reads the local public snapshot, checks identity/arithmetic and creates a separate native project. Native project/model data remain outside this public repository. The [companion README](../../lca-waterworks-powerbi/README.md) records checksums, rebuild instructions, embedding and withdrawal procedures.
+This is an initial **two-dashboard** Tableau edition, not completion of the broader Tableau deliverable. The owner explicitly asked about the remaining tabs. Showing existing workbook tabs does not implement the missing views. Further authoring must preserve the working release and common financial snapshot.
 
 ### Release and maintenance gates
 
-1. Reconcile every exposed prepared scenario: cash continuity, funding identities and default-account bills. Blanks never count as passes.
-2. Native Explorer acceptance requires 33 populated rows and residuals within $0.01. The owner's 307.3 ms query/all-pass confirmation satisfy that gate for the current snapshot only.
-3. Inspect pages and interactions, captions, balance/flow semantics and scope. Do not claim arbitrary what-if parity with JavaScript.
-4. Measure actual hosted behavior. One query duration does not guarantee every visual or interaction.
-5. Keep all model data public-safe. The real supplied Microsoft iframe uses Overview; retain notice and verify anonymous access.
-6. Revoke the provider's public code to withdraw direct public access. Removing an iframe alone is insufficient; never replace a public model with confidential data.
+1. Preserve T01c/T01d and the native seed/extract connections. Retain the November 7, 2026 evidence cutoff. All-33 native arithmetic acceptance is recorded for both checkpoints.
+2. Keep clear opening selections: Suburban Water / Central on Overview. Supporting sheets may be hidden, not deleted; hiding is not data privacy.
+3. Public-suitability applies to the entire model/extract. Never add confidential ERP/customer information to this public workbook.
+4. Use the supplied readable-name workbook/view identity, not the older development-filename publication. The host enables tabs and toolbar; the actual published sheets must still be checked.
+5. Verify the deployed host signed out, sample controls, both dashboards, any published audit sheet, full financing chart and sticky host notice. Direct/full-screen views rely on native disclosures.
+6. Preserve JavaScript/Power BI applications and Excel. No workbook or financial changes are part of host integration. Withdrawal requires deleting/restricting the provider-side public item, not merely removing an embed.
 
-### Subsequent work, not initial-release blockers
+## Tableau completion matrix — Power BI v09 reference
 
-Live Munis integration, comprehensive agreement verification, calibrated stochastic forecasts, full cost-of-service allocation and native optimizer parity remain later milestones. Cosmetic perfection is not required; known misleading figures and unsupported claims must be corrected. Do not install diagnostic overrides or label stored scenarios as live optimization.
+Track analytical content, not pixel-identical layouts. The packaged v09 reference has ten pages; the older v07/v08 development reports had fifteen. JavaScript retains live inputs/optimization that neither prepared-scenario BI edition currently replicates.
+
+| Power BI v09 area | Current Tableau status | Remaining work / acceptance |
+|---|---|---|
+| 01 Overview | Implemented; native and owner-hosted Overview evidence | Independent comparator and explicit planning-status summary; consistent headline definitions. |
+| 02 Financing & capital funding | Core cards/charts implemented; native full-chart evidence | Traceable annual/five-year bridge tables; verify flow sums versus opening/closing balances and hosted navigation. |
+| 03 Compare prepared scenarios | Not built | Selected/comparator controls and multiple-scenario bill/cash views; compare within one division/account without duplicating annual rows. |
+| 04 Illustrative customer account | Bill totals only | Fixed, usage and add-on detail; reconcile 605 components to 165 annual bills; do not imply arbitrary account recalculation. |
+| 05 Capital plan reconciliation | Aggregate capital/funding only | Division/project schedule and detailed-versus-condensed reconciliation; preserve the $5.6m City 2029 difference. |
+| 06 Customers & historical evidence | Not built | Customer-class volume and audited operating-expense histories with correct service-area scope, units and definitions. |
+| 07 Scenario settings & evidence | Short scope/cutoff notes only | Full selected-preset assumptions, input identity, evidence status and source discrepancies. |
+| 08 Rules & agreements | Not built | Native rules register; distinguish assumptions, source evidence and unresolved authority. No claim of legal approval. |
+| 09 Glossary & sources | Host links to shared web documentation only | Native glossary/source views; website links are not a completed native tab. |
+| 10 Audit & integration | All-33 arithmetic worksheet passes in Desktop | Detailed cash checks and synthetic ERP mapping; verify published audit access. No live Munis connection. |
+
+### Bounded implementation tranches
+
+**T02 — comparison and customer detail:** extend a separate copy with an independent comparator, scenario-comparison dashboards and bill components. Reuse the v09 snapshot; keep annual and component-level data separate to prevent double counting. Gate: native controls, all-33 checks and bill sums, then screenshot review.
+
+**T03 — capital and historical evidence:** add capital reconciliation and the historical chart families. Gate: source/reference parity, units, dates and geography; do not silently equate reporting divisions with service areas.
+
+**T04 — explanation and audit:** add scenario/evidence, rules, glossary/sources and audit/integration dashboards, planning-status labels and bridge details. Gate: native readability and content/definition parity against the ten-page reference.
+
+Use one sequential integration stream for the shared workbook. Changes overlap in XML, data definitions and extracts; mechanical mappings/tests do not warrant maximum effort or competing workbook writers. Apply stronger review to aggregation, parameter scope and financial semantics. Preserve a passing checkpoint at each tranche; claim independent review only when actually executed.
+
+Publish increments to the intended Tableau workbook after native checks, preserving or deliberately updating its canonical URL. Do not fork the financial model, introduce untested schemas or label prepared outputs as live optimization. The working initial release need not wait for those additions.
+
+## Existing Power BI companion
+
+`/lca-waterworks-powerbi/` remains parallel to `/lca-waterworks/`. v09 passed the owner's 33-case native query in 307.3 ms, was published to Service and embedded using its real public URL. Earlier Pages build/deploy succeeded. Independent full anonymous page/interaction review remains a separate check.
+
+Contents include three divisions, eleven presets, ten chart families, bill components, bridges, evidence, assumptions, glossary and synthetic integration. No arbitrary new input recalculation or native live solver. Preserve v08 development artifacts and JavaScript controls. Generic builder/data-free recipe: `../lca-waterworks-powerbi/tools/`; native models stay outside the repository.
+
+Future revisions require 33 nonblank native arithmetic rows, residuals within $0.01, default-account bill parity, correct flow/balance summaries, usable hosted behavior, public-safe data and accurate disclosures. One query duration is not a performance guarantee. Revoke provider public codes to withdraw access.
 
 ## Existing JavaScript milestone
 
-Interface 0.3 / model 0.2.0 includes three-fund revision, component tariffs, capital reconciliation, presets, customer history, model explanation, financing charts and glossary. Prior checks: STATE.md and the [completed revision plan](exec-plans/completed/adversarial-revision.md). Hosting another edition changes no financial assumptions or chart families in the existing applications; Excel is unchanged.
+Interface 0.3/model 0.2.0 includes separate ledgers, component tariffs, capital reconciliation, presets, history, model explanation, financing and glossary. Earlier checks are in STATE.md and the completed adversarial-revision plan. Embedding another edition changes none of those calculations, assumptions or the Excel counterpart. JavaScript optimization remains a separate capability.
 
-## M0 — Define the decision
+## Durable stage gates
 
-Establish the horizon, decisions, source hierarchy, model boundary and website architecture. Preserve independent operation, transparent assumptions and fund separation; explain each edition's supported scope.
+- **M0 — Define:** decisions, scope, source hierarchy, independence and fund boundaries; explain each edition's actual capabilities.
+- **M1 — Evidence:** preserve budgets/audits/capital/tariff/agreement units, dates, scope and status; missing evidence stays explicit.
+- **M2 — Model:** check ledgers, bills and constraints against independent arithmetic; no interfund pooling or silent deletion of required capital.
+- **M3 — Interface:** accessible financial views, accurate controls, comparison, evidence drilldowns and integration explanation.
+- **M4 — Review:** methods/manual/glossary; distinguish static, native, live, source and policy validation.
+- **M5 — Publish:** preserve unrelated portfolio content, verify served behavior and record checkpoints. Repository writes, Pages deployment and provider rendering are distinct.
 
-## M1 — Collect and reconcile evidence
+## Separate production pathway
 
-Research budgets, audited history, capital, tariffs, agreements and peer methods. Preserve units, dates, scope and status. Missing evidence stays explicit; do not invent verified terms.
-
-## M2 — Build and challenge the model
-
-Check ledgers, bills, constraints and declared optimization boundaries against independent arithmetic/reference cases. Do not pool funds or silently remove mandatory capital.
-
-## M3 — Build the demonstration
-
-Provide accessible financial views, scenario comparison, evidence drilldowns and integration explanation. Exposed controls must match actual behavior.
-
-## M4 — Explain and review
-
-Maintain methods, glossary, manual and integration guides. Distinguish static checks, native execution, live verification, data limitations and stakeholder authority.
-
-## M5 — Publish and hand off
-
-Deploy parallel editions, verify served results, record versions/validation, and preserve unrelated portfolio content. Repository changes, Pages deployment and third-party report operation are distinct checkpoints.
-
-## Production pathway
-
-Reconcile customer-class history, agreements, approved tariffs, restricted balances, covenants and project funding with authorized staff. Governed ERP extraction and operational deployment require a separate scope and approval.
+Live ERP, cost-of-service allocation, calibrated forecasts, complete debt principal, executed agreements and policy recommendations require governed internal evidence and authorized staff review. They are not prerequisites to an honestly bounded educational example, nor capabilities it should imply.

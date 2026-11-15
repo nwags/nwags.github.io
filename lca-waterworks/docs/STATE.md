@@ -2,100 +2,91 @@
 
 ## Current intent
 
-- Project: Sample LCA WaterWorks BI; repository `nwags/nwags.github.io`, branch `main`.
-- Existing routes: `/lca-waterworks/` is the JavaScript application; `/lca-waterworks-powerbi/` embeds the separate native Power BI report. Neither replaces the other.
-- Third route: `/lca-waterworks-tableau/` now has an explicitly pending host shell. No Tableau Public URL has been supplied; no working Tableau embed or homepage Online label is claimed.
+- Repository: `nwags/nwags.github.io`, branch `main`. Integration baseline: `561c616a70799c6f276b4fe188a58b88743c2f7b`.
+- Parallel routes: `/lca-waterworks/` (JavaScript), `/lca-waterworks-powerbi/` (Power BI), `/lca-waterworks-tableau/` (initial native Tableau edition). No edition replaces another.
 - JavaScript interface 0.3; reference model 0.2.0; scenario schema 2.0; horizon 2027–2031; evidence cutoff November 7, 2026.
-- Current priority: publish the working two-dashboard Tableau initial edition before expanding it. Additional chart families and evidence views remain planned, not first-release prerequisites. This is a staged release, not full cross-platform parity.
-- Native workbook/project files, extracts and private execution records remain outside this public repository. Only public/synthetic information is eligible for public BI publication.
+- Publish useful, accurately scoped educational examples. Tableau currently has Overview and Financing, not Power BI's full ten-page scope. Its remaining views are deferred deliverables, not abandoned or hidden functionality.
+- Native workbooks/projects, extracts and private execution records stay outside the public repository. Public BI models must contain only public/synthetic information.
 
-## Latest milestone — Tableau T01d native acceptance, November 15, 2026
+## Latest milestone — Tableau Public supplied and companion integrated, November 15, 2026
 
-Evidence: the owner's three new Tableau Desktop Public Edition screenshots labeled November 15, 2026. These are owner-supplied native observations, not a remotely executed Desktop session.
+### Observed provider evidence
 
-- The title bar identifies `WaterWorks_Tableau_T01d`.
-- Its acceptance worksheet visibly displays **33 `PASS arithmetic only` entries**, with **33 marks / 33 rows by 1 column** in the status bar. This is native T01d evidence, superseding the earlier unverified candidate state.
-- Suburban Water / Central Financing shows $43,516,250 five-year capital, $17,751,000 borrowing, $0 grants and $10,273,448 reserve draw (display-rounded).
-- The complete paired capital/funding chart is now visible for 2027–2031. Annual sources and uses, the full-text color keys and the explanation of the capital/funding gap render.
-- The two-line independence disclosure is readable in the financing-top screenshot. The bottom note distinguishes reserve draw/build and preserves the November 7 evidence cutoff.
-- The new screenshots do not independently demonstrate T01d Overview rendering, new parameter changes, every case's visual appearance, or measured latency. T01c sampled control behavior remains earlier evidence, not a substitute for an unobserved T01d interaction.
-- Arithmetic acceptance is not financial-policy feasibility, an authoritative LCA forecast, unrestricted what-if calculation or live optimization.
+The owner supplied a screenshot of the Tableau Public view titled **WaterWorks — Overview and Financing**, plus its complete generated Share code. The hosted Overview visibly renders Suburban Water / Central: $38.30 bill, 27.2 cash days, 1.53 coverage proxy and $43,516,250 capital, with the independence disclosure and prepared-scenario description. This is owner-provided browser evidence, not an independent anonymous interaction test.
 
-### Immediate publication path
+The canonical workbook/view identity in that code is `WaterWorksOverviewandFinancing/01Overview`. The earlier development-filename publication is not the integration target. The owner confirmed that the new visualization's Tableau Public thumbnail now looks correct; no thumbnail or provider-account changes are needed or performed.
 
-The owner explicitly prioritized getting Tableau hosted alongside the other two editions sooner. Advance the current T01d workbook to Tableau Public as an **initial Overview and Financing edition**. Preserve T01c/T01d local checkpoints. Do not introduce another XML rebuild or data-source conversion as a release prerequisite.
+### Implementation
 
-Before uploading, set Suburban Water / Central on Overview and save. Supporting sheets used by the dashboards may be hidden, not deleted; retain `Acceptance - all 33 cases` as a visible audit. Publish through Tableau Public, verify Overview/Financing navigation and a representative parameter change in the browser, then obtain the actual Share embed code. Public-suitability applies to all underlying data, not only displayed marks.
+- Replaced the pending host with the supplied Tableau Public object/loader integration. Preserved workbook/view identity, host, static-image paths and Overview default.
+- Changed `tabs=no` to `tabs=yes`; retained the toolbar. This exposes published sheets only, not missing dashboards or sheets excluded from publication.
+- Kept the native 1280-pixel desktop width in a keyboard-focusable horizontal scroll region. Reserved 1420 pixels vertically for Financing (1320 pixels), tabs and toolbar; this is not a native mobile-layout redesign.
+- Retained the unchanged shared sticky notice, parallel navigation, direct-report links, no-script preview labeling and a loader-error fallback.
+- Removed pending/noindex metadata and added a third stacked homepage Online link, explicitly described as the initial Overview and Financing edition.
+- Added the remaining-view matrix to ROADMAP.md. No workbook, extract, assumptions, formulas, JavaScript application, Power BI host, shared stylesheet or Excel file changed.
 
-The new host shell reuses the unchanged sticky independence stylesheet, links to the existing editions and model explanations, and labels the narrower scope. It has no fabricated provider URL, iframe or embed script; it retains noindex and is not advertised as Online. Activate it and add the third stacked homepage link only after receiving the real Tableau Public code and checking the published report. No native file, extract, credentials or source data is added by this host preparation.
+### Verification boundaries
 
-Observed host checks: static checks of pending/noindex state, no invented embed/scripts, scope wording, parallel links, unique IDs and notice inclusion passed. In-memory Chromium checks at 1440x900, 768x1024, 390x844 and 320x568 found no horizontal host overflow, confirmed the notice remains at the top on scrolling, and a visible keyboard skip link. The test inlined the exact shared CSS (Git blob `b83ef465086702e71ce67e9434e1fd9acb8c362e`); it did not test a live Tableau report. Direct external requests were unavailable. Pages deployment must be checked separately for the resulting commit.
+Observed authoring checks: eight HTML/embed/homepage contract tests passed; embed.js passed Node syntax checking. In-memory Chromium host checks passed at 1920x1080, 1440x1000, 768x1024, 390x844, 320x568 and 844x390. No page-level horizontal overflow; narrow-screen scrolling stays within the report region. Sticky notice, visible keyboard skip link, simulated loader failure and no-script fallback passed. The three homepage links stack using existing card-specific inline styles; that isolated test did not load the full external homepage stylesheet.
 
-## Tableau baseline and authoring history
+These host checks substitute a size-only box at the external-loader boundary. They do not render Tableau's remote visuals. External Tableau retrieval and container requests were unavailable; independent anonymous loading, tab switching, parameter changes, full-screen behavior and physical-device rendering remain UNVERIFIED. Pages build/deploy must be checked for this integration commit, separately from repository writes and host tests. Do not describe the fixture screenshot as a live Tableau preview.
 
-### T01c native checkpoint
+Committed static test: `lca-waterworks-tableau/tests/test_embed.py`. It checks provider identity, tabs/toolbar, direct fallbacks, scope labels, notice/navigation/accessibility, loader sizing, no-script labeling and three homepage links.
 
-The owner's November 14 screenshots showed T01c's populated Overview and Financing, plus all 33 arithmetic passes. City / Central: $126.58 bill, 306.9 minimum cash days, 2.33 coverage, $262,634,500 capital. Suburban Water / Additional borrowing: $38.30 bill, 206.1 minimum cash days, 1.33 coverage and $43,516,250 capital; Financing showed $28,546,196 borrowing, $0 grants and $1,559,022 reserve draw. The selected cash path separated from Central while bill paths coincided. Those screenshots established sampled division/scenario behavior, not timing or public publication.
+## Tableau native checkpoints and scope
 
-The two-dashboard foundation contains thirteen supporting worksheets, three divisions, eleven prepared scenarios and five chart families: bill path, cash/target, annual sources, annual uses and paired capital/funding. Comparison is against the same division's Central reference. No arbitrary financial recalculation or live optimizer is implemented.
+### T01d native acceptance
 
-T01c superseded failed T01/T01a/T01b opening attempts: missing workbook/layout metadata, absent extracts and incompatible legacy layout attributes after adopting the owner's native seed format. Both extracts came from that Tableau-generated seed. Preserve its validated format and connection definitions.
+The owner's November 15 Desktop screenshots identify `WaterWorks_Tableau_T01d` and visibly show **33 PASS arithmetic only entries**, with **33 marks / 33 rows by 1 column**.
 
-### T01d authoring checks retained
+Suburban Water / Central Financing shows $43,516,250 capital, $17,751,000 borrowing, $0 grants and $10,273,448 display-rounded reserve draw. The complete paired capital/funding chart, annual sources/uses, full color keys, readable two-line notice and explanatory footer render. This is not a controlled latency benchmark or every-scenario visual test. The later Tableau Public screenshot adds hosted Overview evidence.
 
-Conversation artifact `WaterWorks_Tableau_T01d.twbx`, SHA-256 `599af9bf0edfc12d21a0c68567fa0ea5d29f71e7601618767877ba27c1cc5a55`, was a presentation-only revision, not committed here.
+T01d artifact SHA-256: `599af9bf0edfc12d21a0c68567fa0ea5d29f71e7601618767877ba27c1cc5a55`. The native artifact is not committed. Scope: two dashboards, thirteen supporting worksheets, three divisions, eleven scenarios; five chart families (bills, cash/target, sources, uses, paired capital/funding). Comparison is fixed to the selected division's Central reference. No arbitrary assumptions or live optimizer. Public sheet availability must be checked; Desktop existence does not establish publication.
 
-Changes: two-line disclosure; visitor-facing scope; shorter headings; coverage-proxy wording; Amount (USD) display caption; full-text display-only color keys; Overview 1280x900 and Financing 1280x1320. All 26 key entries used existing chart series and colors. Keys are not interactive highlight controls.
+### T01c and repair history
 
-Both `.hyper` files and CSVs remained byte-identical to T01c. All 72 calculation elements, parameters, filters, worksheet encodings, source/extract definitions, format manifest and worksheet identifiers were preserved. Authoring checks covered ZIP/XML/path integrity, allowed presentation-only differences, zone bounds/separation, color-key mapping and approximate font fit for 35 text objects. Source-CSV arithmetic passed all 33 cases with maximum absolute remainder approximately $0.000000075. Those static checks are separate from the native T01d observations recorded above.
+Owner November 14 screenshots showed all 33 native arithmetic passes and sampled controls. City / Central: $126.58 bill, 306.9 cash days, 2.33 coverage and $262,634,500 capital. Suburban Water / Additional borrowing: $38.30 bill, 206.1 cash days, 1.33 coverage, $43,516,250 capital; Financing: $28,546,196 borrowing, $0 grants, $1,559,022 reserve draw. Selected cash diverged from Central while bill paths coincided.
 
-Remaining Tableau content: independent comparator selection, expanded comparison views, bill-component detail, historical/capital evidence, assumptions, glossary and integration presentation. Retain these as subsequent scope; do not imply the initial edition already contains them or that public release abandons them.
+T01c resolved missing workbook/layout metadata, absent extracts and incompatible legacy layout attributes after adopting the owner's native seed. Both extracts came from that seed. Preserve the working format/connections rather than repeat conversion.
 
-## Existing public Power BI and homepage milestones
+T01d changed presentation only: notice, scope, headings, coverage-proxy wording, Amount (USD), full display-only keys, Overview 1280x900 and Financing 1280x1320. Hyper files/CSVs stayed byte-identical to T01c; all 72 calculation elements, parameters, filters, encodings, connections, format manifest and worksheet IDs were preserved. ZIP/XML/path, presentation-diff, zone, 26-key and approximate font checks passed. CSV arithmetic passed all 33 cases, maximum absolute remainder about $0.000000075. Native observations are separate evidence.
 
-The owner supplied the Microsoft-generated Publish-to-web iframe after the public-publication success dialog. The companion uses that exact URL and `pageName=Overview`. The earlier tenant-administration blocker is superseded. No tenant credentials, DNS challenges or administrator-session details are stored here.
+Arithmetic acceptance is not policy feasibility, source authority or approval to adopt rates/borrow. Missing comparison, customer detail, history, capital reconciliation, evidence, rules, glossary and integration pages remain in the completion matrix.
 
-- Companion integration commit: `a8418fb382cf8ce4b46d8698933dce3a8b929383`. Pages build/deploy jobs for run `43632052719` were observed successful in the earlier session.
-- Homepage commit: `a4b4660f474e262a31fe48f60599ca4ef2ffc96b`. Separate stacked JavaScript/Power BI links are marked Online; stale pending wording removed. Pages build/deploy jobs for run `43642918489` were observed successful.
-- The owner described the result as good; this is not an independent end-to-end anonymous interaction test.
-- Current-turn baseline main was rechecked at `aad9d21b3dd1be21d24b12ec8e503964b2006bcd`. This checkpoint modifies only the new Tableau host and planning/state documentation; existing websites, shared CSS and models stay unchanged.
+## Existing Power BI and homepage milestones
 
-### Companion implementation and host checks
+Companion commit `a8418fb382cf8ce4b46d8698933dce3a8b929383`: actual owner-supplied Publish-to-web URL, Overview default, responsive host, full-screen support, fallbacks, unchanged sticky notice and explicit scope. Pages run `43632052719` build/deploy was observed successful in the earlier session.
 
-Active iframe, responsive sizing, full-screen support, accessible title, usage instructions and direct fallback links; pending placeholder/noindex removed. Shared sticky notice unchanged. Direct/full-screen report views rely on their own disclosures. Prepared-scenario limits, evidence cutoff and illustrative account are explicit. Host integration changed no financial calculations, data, Excel workbook or chart family.
+Homepage commit `a4b4660f474e262a31fe48f60599ca4ef2ffc96b`: stacked JavaScript/Power BI Online links; pending wording removed. Pages run `43642918489` succeeded. Positive owner feedback is not independent comprehensive anonymous testing. Tableau staging commit `561c616a70799c6f276b4fe188a58b88743c2f7b` was explicitly pending until receipt of the actual code.
 
-Earlier six HTML/embed contract tests passed. In-memory Chromium at six desktop/tablet/phone sizes passed overflow, sticky notice and keyboard checks; shared notice matched Git blob `b83ef465086702e71ce67e9434e1fd9acb8c362e`. Those checks used about:blank in the test frame, not Microsoft's visuals. External requests were unavailable. Independent full signed-out report interaction and physical-device tests remain unverified. Deployment, host layout and external-report rendering are separate observations.
+Earlier Power BI host tests: six contracts and six Chromium sizes passed overflow, notice and keyboard checks. Shared notice matched blob `b83ef465086702e71ce67e9434e1fd9acb8c362e`. Fixtures used about:blank, not Microsoft visuals; external requests were unavailable. No new full independent hosted review is claimed.
 
-## Scenario Explorer v09 — arithmetic acceptance and scope
+### Power BI v09
 
-The separate prepared-scenario edition was authorized after v08 performance problems. Preserve v08, JavaScript controls and Excel files.
+Owner Desktop acceptance: ten columns, 33 rows, **307.3 ms**, all checks **PASS arithmetic only** user-confirmed because the last column was off-screen. Service screenshots showed populated Overview, ten-page navigation and disclosures; public-code creation and integration followed. A later refresh date does not change the evidence cutoff.
 
-The owner's Desktop screenshot showed ten columns and 33 rows in **307.3 ms**; the owner confirmed all final checks **PASS arithmetic only** because that column was off-screen. Visible City/Wastewater central results matched reference values. Service screenshots subsequently showed a populated overview, ten page-navigation entries, charts and disclosures; public-code creation and website integration followed. A refresh date is not a revised evidence cutoff.
+Scope: 33 cases / 165 annual rows; ten pages, 106 visuals, 27 tables and 89 measures. Ten chart families: bill, cash, sources, uses, paired capital/funding, comparison bill/cash, capital program, historical customer-class volume and operating expense. Also bills, bridges, evidence, assumptions, glossary and synthetic ERP specification. Earlier live engine/search/override tables are absent, not hidden. Fixed account: 5,000 monthly gallons equivalent, 5/8-inch meter, one EDU where applicable, common wastewater rate 1.
 
-These establish native prepared-result arithmetic and publication, not independent economic validity, live optimization, every scenario's feasibility, or a controlled performance benchmark. Complete page-by-page Service review and independent v09 worker review are not claimed. No complete local builder execution log was supplied at acceptance.
+Generic builder/recipe: `../lca-waterworks-powerbi/tools/`; README includes checksums. Reference identity `sha256:3955c58456c7dd31767d96910b8b962dce111a7c4862f9d7d6c78fa9f3f89da3`; engine blob `71a6cc3a0b59589cb288eb073a654bb32551ca56`.
 
-Scope: 33 cases / 165 annual rows; ten report pages, 106 visuals, 27 tables and 89 measures. Ten chart families: bill, cash, sources, uses, paired capital/funding, comparison bills/cash, capital program, historical customer-class volume and operating expense. Also bill components, financial bridges, evidence, assumptions, glossary and synthetic ERP specification. Old `_Engine`, `_Result`, `_BestCandidate`, candidate search and arbitrary overrides are absent, not hidden. The fixed account is 5,000 monthly gallons equivalent, 5/8-inch meter and one EDU where applicable; common wastewater rate 1. Balance/flow distinctions and suppressed misleading totals are retained.
+Prior authoring checks: 6,600 comparisons matched frozen reference exactly; 6,435 prepared metrics differed by at most about 9.1e-13; cash/capital identities below $0.00001; 605 bill components matched 165 annual bills; static checks of 122 schema documents, 138 bindings and ten layouts. These are not independent economic validation, live optimization or every-interaction timing. Complete local builder logs, independent v09 worker review and full hosted page-by-page review were not claimed.
 
-Generic builder and data-free recipe: `../lca-waterworks-powerbi/tools/`; companion README contains rebuild checksums. Reference identity: `sha256:3955c58456c7dd31767d96910b8b962dce111a7c4862f9d7d6c78fa9f3f89da3`. JavaScript engine blob: `71a6cc3a0b59589cb288eb073a654bb32551ca56`.
+### Earlier v07/v08
 
-Authoring checks: 6,600 comparisons matched fresh frozen-reference simulation exactly; 6,435 stored metrics differed by at most approximately 9.1e-13; cash/capital bridges reconciled below $0.00001; 605 bill components matched 165 annual bills. Static checks covered 122 schema documents, 138 bindings and ten page layouts, with no old engine/optimizer or external data dependency. These checks are separate from native/live validation.
+Owner observations confirmed loading/refresh after version.json, Measures naming and bare-text type repairs. Fifteen v07 pages inspected; City follow-up cleared apparent stale-division issue. v08 repair updated fifteen pages/nineteen tables, preserved 95 data tables, inspected 1,018 visuals and 1,085 JSON documents. Populated rows/suppressed misleading totals rendered; PUB08 captions remained.
 
-## Earlier v07/v08 evidence retained
+Combined v08 acceptance exhausted memory after about 226 seconds. Correct City capital $262,634,500 took 69.525 seconds original, 0.4416 direct-engine, 59.479 candidate-first, 62.8355 query-scoped constant optimizer. Not controlled benchmarks; neither rewrite accepted. Sole attribution to optimizer enumeration unsupported. Full v08 reconciliation/solver parity remain unverified, not repaired by v09. Preserve development checkpoints.
 
-Owner observations established loading/M refresh after repairs to version.json, rejected Measures table naming and bare text types. All fifteen v07 pages were visually inspected; City follow-up cleared the apparent stale-division issue. v08 repair: fifteen pages, nineteen tables updated, 95 data tables preserved, 1,018 visuals and 1,085 JSON documents inspected. Populated rows and suppressed totals were visible; PUB08 captions remained.
+## JavaScript baseline and limitations
 
-Combined v08 acceptance exhausted memory after about 226 seconds. Correct City/Central/Manual capital $262,634,500 took 69.525 seconds on the original path, 0.4416 direct-engine, 59.479 candidate-first and 62.8355 with a query-scoped constant optimizer. Not controlled cache tests; neither rewrite accepted. Sole attribution to optimizer enumeration unsupported. Full v08 reconciliation and native solver parity remain unverified, not repaired by v09.
+Interface 0.3 has separate ledgers, detailed 2027 bridges, component tariffs, detailed/condensed capital, eleven presets, live assumptions/finite optimization, JSON/CSV, financing, glossary and synthetic validation. Recorded 2027 closing cash: $7,546,095 / $10,447,425 / $53,947,019. Detailed capital $361.312m versus condensed $355.712m; City 2029 $5.6m discrepancy disclosed. Debt/grants/capital receipts remain separate from recurring receipts; no interfund pooling.
 
-## JavaScript baseline and earlier checks
+Historical tests: 38 numerical/chart tests, 33 presets, 286 links, fingerprints/import rejection, cash, tariff, financing-cap, grant/debt timing and optimizer checks. Independent reviews remain in review documents. These are not new native/live tests.
 
-Separate fund ledgers, detailed 2027 bridges, component tariffs, detailed/condensed capital, eleven presets, live assumptions/finite optimization, JSON/CSV export, financing charts, glossary and synthetic validation. Recorded 2027 closing cash: $7,546,095 / $10,447,425 / $53,947,019. Detailed capital $361.312m versus condensed $355.712m; City 2029 $5.6m difference disclosed. Debt/grants/capital receipts remain separate from recurring receipts; no interfund pooling.
+Cost blends, revenue exposure, grants, investment income, class allocation, agreements, City add-on eligibility and financing approvals include judgments/assumptions, not calibrated probabilities or approvals. Baseline debt principal beyond 2031 is not reconstructed; schedules conflict. No live Munis connection. Public-data scope and evidence cutoff stay unchanged.
 
-Historical checks: 38 numerical/chart tests, 33 presets, 286 local links, fingerprints/import rejection, cash identities, tariffs, funding caps, grant/debt timing and optimizer feasibility. Prior independent reviews remain in the review documents. These are not new live-site/native-Tableau checks; physical mobile verification was not claimed.
+## Next objective
 
-## Limitations and next objective
+Check Pages deployment and the new companion signed out: Overview/Financing navigation, scenario/division changes, direct fallback and sticky host notice. Check public audit availability if published. Then implement the next bounded Tableau tranche in ROADMAP.md: independent scenario comparison and customer detail using the same snapshot. No model fork or parity claim before acceptance. Other pages are explicit deliverables, not hidden tabs.
 
-Cost blends and revenue exposure are judgments, not calibrated probabilities. Future grants, investment income, class allocation, executed agreements, City add-on eligibility and financing approvals remain assumptions. Baseline debt principal beyond 2031 is not reconstructed; source schedules conflict. Arithmetic/planning feasibility is not authority to adopt rates or borrow. Synthetic ERP documentation is not a live Munis connection.
-
-Next: publish T01d as the initial two-dashboard Tableau edition; check hosted navigation and representative controls; obtain the actual public embed; activate `/lca-waterworks-tableau/` and add the third stacked homepage link. Do not require completion of the later views first. Preserve existing editions and the evidence cutoff; distinguish staged host availability from a working embedded workbook.
-
-Independent signed-out checks remain separate maintenance work. Provider-side deletion/revocation is required to withdraw direct public access; removing the host alone is insufficient. Production scope remains separate: finance-reviewed allocations, billing determinants, complete debt schedules, executed agreements and governed ERP extracts.
+Provider-side removal/revocation is required to withdraw direct public access. Production governance, ERP extracts, full debt schedules, agreements and finance-reviewed allocations remain separate work.

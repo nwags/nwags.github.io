@@ -10,7 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,400;0,500;0,600;1,400&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="personal.css" />
   <style>
-    /* Homepage-only WaterWorks links; the two dashboards remain independent. */
+    /* Homepage-only WaterWorks links; the three editions remain independent. */
     .waterworks-editions {
       display: grid;
       grid-template-columns: minmax(0, 1fr);
@@ -132,7 +132,7 @@
           <article class="project-card project-card-waterworks">
             <h3>WaterWorks Rate Planning Lab</h3>
             <p>
-              Two online versions of an independent public-data BI demonstration in the Lehigh County Authority context:
+              Three online versions of an independent public-data BI demonstration in the Lehigh County Authority context:
               explore five-year water and wastewater rates across three divisions, customer bills, capital funding, and financial resilience.
             </p>
             <ul>
@@ -140,7 +140,7 @@
               <li>Transparent source reconciliation, assumptions, and agreement boundaries</li>
               <li>Financing analysis, synthetic ERP examples, and reusable analyst guides</li>
             </ul>
-            <div class="waterworks-editions" role="group" aria-label="WaterWorks dashboards, both online">
+            <div class="waterworks-editions" role="group" aria-label="WaterWorks dashboards, all three online">
               <a class="waterworks-edition" href="lca-waterworks/">
                 <span class="waterworks-edition-title"><span class="waterworks-edition-label">JavaScript dashboard</span><span class="waterworks-online">Online</span></span>
                 <span class="waterworks-edition-description">Adjust planning inputs and explore rate scenarios and optimization.</span>
@@ -148,6 +148,10 @@
               <a class="waterworks-edition" href="lca-waterworks-powerbi/">
                 <span class="waterworks-edition-title"><span class="waterworks-edition-label">Embedded Power BI report</span><span class="waterworks-online">Online</span></span>
                 <span class="waterworks-edition-description">Compare 33 prepared scenarios in the native Power BI report; not live optimization.</span>
+              </a>
+              <a class="waterworks-edition" href="lca-waterworks-tableau/">
+                <span class="waterworks-edition-title"><span class="waterworks-edition-label">Embedded Tableau dashboards</span><span class="waterworks-online">Online</span></span>
+                <span class="waterworks-edition-description">Initial Overview and Financing edition: 33 prepared cases, compared with the Central reference; not live optimization.</span>
               </a>
             </div>
             <p class="project-links waterworks-docs">

@@ -1,61 +1,58 @@
 # Staged delivery plan
 
-## Current milestone — T02 scenario comparison and customer-bill detail
+## Immediate milestone — publish the expanded Tableau tabs
 
-The initial public Tableau navigation milestone is complete on owner-provided evidence. The November 15, 2026 companion screenshot visibly shows **01 Overview**, **02 Financing** and **Acceptance - all 33 cases**, with Financing selected and populated. The owner confirms the three tabs now appear. Earlier screenshots established hosted Overview and signed-out direct Public access. The hosted audit's individual results and every parameter combination have not been newly inspected; native all-33 arithmetic checks passed in T01c and T01d. See STATE.md for the exact verification boundary.
+The owner explicitly prioritizes getting the remaining report tabs online over verifying every presentation detail first. This supersedes the earlier plan to deliver comparison/customer detail, then capital/history, then documentation in separate publication tranches.
 
-Preserve the working public **WaterWorks — Overview and Financing** edition at `WaterWorksOverviewandFinancing/01Overview`, the companion host and reciprocal links. No additional sheet-toggle instructions, extract conversion or workbook-format repair is needed to repeat the resolved navigation checkpoint. The owner did not specify every provider setting changed; record the result rather than inventing that sequence.
+A broad **T02 FullTabs** workbook is now a conversation deliverable: ten populated dashboards plus the original audit worksheet. The current live Tableau item is still the working T01d two-dashboard edition. Candidate creation, native opening and provider publication are distinct milestones; do not claim ten dashboards are online until the owner replaces the public workbook.
 
-This remains an initial **two-dashboard** edition, not completion of the broader Tableau deliverable. Additional analytical views are development work, not hidden functionality. Proceed with T02 in a separate working copy while keeping the current public release intact.
+### Minimal publication gate
 
-### Release and maintenance gates
+1. Preserve T01d and the native seed as fallback; open the new packaged workbook without modifying the current public item first.
+2. Confirm successful native opening, the new tabs, and a populated new chart/table. An opening failure, calculation error replacing real results, confidentiality violation or material misleading figure blocks publication. Cosmetic table widths, label wrapping and advanced interaction refinements do not.
+3. Do not require another exhaustive screenshot collection, model audit, seed creation or extract-conversion workflow before publication. All nineteen extracts are included; original financial extracts are byte-identical to the tested baseline.
+4. Save to the intended existing Tableau Public publication **WaterWorks — Overview and Financing**, accepting the explicit overwrite of that item. Preserve `01 Overview` and `02 Financing`; do not publish under the local technical filename or delete the existing item first. Keep Show Sheets as Tabs enabled and include the ten dashboards plus audit.
+5. Verify the actual public identity and new tabs in the companion. Then update host scope copy. Preserve the working JavaScript/Power BI applications, Excel, disclosures, reference snapshot and financial definitions.
 
-1. Preserve T01c/T01d, the native seed/extract connections and November 7, 2026 cutoff. Native all-33 arithmetic acceptance is recorded for both checkpoints.
-2. Keep clear defaults: Suburban Water / Central on Overview. Supporting sheets may be hidden, not deleted; hiding is not privacy.
-3. All model data must be suitable for public access. No confidential ERP/customer information.
-4. Use the readable-name workbook identity, not the older development-filename publication. Host tab/toolbar requests, provider tab settings and actual published sheet inventory are separate controls; the current three-tab result is owner-observed.
-5. Regression-check hosted navigation, representative controls, full financing chart and notices when replacing the publication. Direct/full-screen views rely on native disclosures. Do not turn maintenance checks into a requirement to repeat already established evidence before starting T02.
-6. Preserve other editions and Excel. Withdrawal requires provider-side removal/restriction, not just deleting the embed.
+Native T02 rendering/calculation compilation and public publication remain unverified. Source arithmetic, actual extract readback, bill reconciliation, package paths and field/layout checks passed; details are in STATE.md. These checks support a short opening-and-publishing check, not a claim of completed native acceptance.
 
-## Tableau completion matrix — Power BI v09 reference
+## Expanded candidate coverage
 
-Track analytical content, not pixel-identical layouts. Published Power BI v09 has ten pages; the earlier v07/v08 development reports had fifteen. JavaScript retains live inputs/optimization that neither prepared-scenario BI edition replicates.
-
-| Power BI v09 area | Current Tableau status | Remaining work / acceptance |
+| Area | T02 implementation | Deferred refinement |
 |---|---|---|
-| 01 Overview | Implemented; native and owner-hosted evidence | Independent comparator and explicit planning-status summary; consistent headline definitions. |
-| 02 Financing & capital funding | Native cards/charts and hosted full-page rendering verified; navigation resolved | Annual/five-year bridge tables; flow sums versus opening/closing balances. |
-| 03 Compare prepared scenarios | Not built | Independent selected/comparator controls and multiple-scenario bill/cash views; no duplicated annual rows. |
-| 04 Illustrative customer account | Bill totals only | Fixed, usage and add-on detail; reconcile 605 components to 165 annual bills; no arbitrary account-recalculation claim. |
-| 05 Capital plan reconciliation | Aggregate capital/funding only | Division/project schedule and detailed/condensed reconciliation; preserve City 2029 $5.6m difference. |
-| 06 Customers & historical evidence | Not built | Customer-class volume and audited operating-expense histories; correct scope, units and definitions. |
-| 07 Scenario settings & evidence | Short scope/cutoff notes only | Selected-preset assumptions, source identity, evidence status and discrepancies. |
-| 08 Rules & agreements | Not built | Native rules register; separate assumptions, evidence and unresolved authority. |
-| 09 Glossary & sources | Shared web links only | Native glossary/source views; web links do not count as completed native tabs. |
-| 10 Audit & integration | All-33 worksheet passes in Desktop; audit tab visible on hosted companion | Detailed cash checks and synthetic ERP mapping; hosted row results remain uninspected; no live Munis connection. |
+| 01 Overview | Original headline measures and Central-reference charts retained | Further planning-status presentation; do not imply its comparison selector changed. |
+| 02 Financing | Original sources/uses and paired funding retained | Additional period-bridge presentation where useful. |
+| 03 Scenario comparison | Independent comparator, bill/cash paths, difference cards, all-preset summaries | Extra comparison modes and styling. |
+| 04 Customer bill detail | Quarterly fixed/usage/add-on chart, exact component amounts, annual/monthly equivalents | Broader account selection is a separate calculation scope, not implemented. |
+| 05 Capital reconciliation | All-division program, detailed/condensed amounts, administration bridge | Project-level drilldowns; preserve City 2029 $5.6m discrepancy. |
+| 06 Customers/history | Service-area volume index/units, division expense history, published revenue categories | Layout/readability; keep geography and cash/accrual denominators distinct. |
+| 07 Settings/evidence | Selected prepared values, shared/division assumptions, descriptions, identity | Human-friendly labels for every raw input key. |
+| 08 Rules/agreements | Frozen register of scope, evidence, implementation, status and sources | Long-text layout; no new legal certification. |
+| 09 Glossary/sources | Fifty glossary records and twenty-one source references | Table widths and source navigation. |
+| 10 Audit/integration | Original all-33 audit, annual cash ledger and synthetic ERP mapping | Additional period details; no live ERP connection. |
 
-### Bounded implementation tranches
+The standalone **Acceptance - all 33 cases** worksheet remains an eleventh intended visible tab. Supporting worksheets are retained but hidden from ordinary tab navigation. These are native populated views, not a set of placeholder pages. The first release across these areas need not be pixel-identical to Power BI or contain every advanced interaction.
 
-**T02 — comparison and customer detail:** separate working copy; independent comparator, scenario-comparison dashboards and bill components. Reuse v09 snapshot; keep annual/component grains separate. Gate: native controls, all-33 checks, bill sums and screenshot review. This is the next implementation objective, not an implementation completed by the navigation checkpoint.
+## Follow-up after publication
 
-**T03 — capital and historical evidence:** capital reconciliation and historical chart families. Gate: source/reference parity, dates, units and geography; do not equate reporting divisions with service areas.
+Resolve reported material discrepancies immediately; collect typography, table-width, navigation and performance improvements into a bounded follow-up rather than repeatedly withholding the broader release. Preserve compatible view identities and the canonical embed when practical; use actual new code if a replacement changes it.
 
-**T04 — explanation and audit:** scenario/evidence, rules, glossary/sources, audit/integration, planning status and bridge details. Gate: native readability and semantic parity against the ten-page reference.
+The exact saved Power BI v09 snapshot and T01d annual/chart extracts remain the shared basis. Keep annual financial rows separate from bill-component and historical grains to avoid double counting. Negative cash and cash days represent scenario shortfalls and remain visible. Cash/debt/funding must not be pooled between reporting divisions.
 
-Use one sequential workbook integration stream because definitions/extracts overlap. Routine mappings/tests do not require maximum effort or parallel competing writers; apply stronger review to aggregation, parameter scope and financial semantics. Preserve passing checkpoints and claim independent review only if executed.
+Prepared scenarios are not arbitrary live what-if calculations or optimization. Historical service areas are not interchangeable with reporting divisions. Cash balances are stocks, annual flows are summed only where appropriate, and published revenue subtotals must not be added to their components.
 
-Publish increments after native checks, preserving or deliberately updating the canonical URL. Do not fork the model, introduce untested formats or describe stored outputs as live optimization. The initial release remains available during additions.
+## Existing public-release evidence
 
-## Existing editions and durable gates
+Owner screenshots establish hosted Overview, hosted complete Financing and three-tab visibility in T01d. Native all-33 arithmetic passes were visible for T01c/T01d. The earlier public-navigation issue is resolved; do not restart its settings instructions as a development prerequisite. Preserve the working Tableau format and extract definitions from the owner's native seed.
 
-Power BI v09 is separately published/embedded and passed the owner's 33-case native query in 307.3 ms. Scope: ten chart families, bill components, bridges, evidence, assumptions, glossary and synthetic integration; no arbitrary-input recalculation or native live solver. Preserve v08. Generic builder/recipe are under `../lca-waterworks-powerbi/tools/`; native models stay outside this repository.
+JavaScript and Power BI are separately online with reciprocal edition links, persistent website notices and accurate scope distinctions. Power BI v09 has ten pages and prepared outputs; JavaScript retains editable assumptions and finite optimization. The older v08 native live calculation project remains a development artifact, not a required dependency of either prepared-scenario edition.
 
-JavaScript interface 0.3/model 0.2.0 retains separate ledgers, tariffs, capital reconciliation, presets, history, live controls/finite optimization, financing and glossary. Other embeds change none of its calculations, assumptions or the Excel counterpart. Validation history is in STATE.md and the completed revision plan.
+## Execution and durable boundaries
 
-Future changes require nonblank native arithmetic results, residuals within $0.01, bill parity, correct flow/balance summaries, accessible controls, honest capability labels and public-safe data. One query duration is not a performance guarantee. Repository writes, Pages deployment and provider interaction are distinct checkpoints.
+Use one sequential workbook implementation stream because XML, data and extract definitions overlap. Routine mapping/presentation work does not need maximum-effort parallel agents. Apply stronger scrutiny to aggregation, financial semantics, schema changes and material deviations. Do not claim independent review or native execution unless performed. A single isolated tooling retrieval job is recorded in STATE.md; native workbook/data artifacts are not committed publicly.
 
-M0 defines decisions, boundaries, source hierarchy and independence. M1 preserves evidence units/dates/status. M2 checks ledger/bill/constraint invariants without fund pooling or silent capital removal. M3 exposes accurate, accessible controls and financial views. M4 maintains methods/manual/glossary and distinguishes static, native, live and policy review. M5 verifies served behavior and preserves unrelated portfolio content.
+Keep the November 7, 2026 evidence cutoff, 2027–2031 horizon, fixed illustrative account, source status and independence disclosures. The owner authorizes a broad first-pass publication, not invention of source data, hidden omission of known material errors, or presentation of private information. Website scope descriptions must match what has actually been published.
 
 ## Separate production pathway
 
-Live ERP, cost-of-service allocation, calibrated forecasts, complete debt principal, executed agreements and policy recommendations require governed internal evidence and authorized staff review. They are not prerequisites to an honestly bounded educational example, nor capabilities it should imply.
+Governed ERP extracts, complete debt principal schedules, executed agreements, finance-reviewed allocations, calibrated forecasts and operational policy advice remain separate work requiring authorized internal evidence. They are not prerequisites to the educational portfolio, nor capabilities it should imply. Removing an embed does not revoke the provider's direct public access; provider-side removal/restriction is required.

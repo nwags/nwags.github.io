@@ -1,4 +1,4 @@
-name: Prepare Tableau T02 tooling
+name: Prepare Tableau T02 schema
 on:
   push:
     branches: [build/tableau-t02-20261115]
@@ -6,26 +6,30 @@ on:
 permissions:
   contents: read
 jobs:
-  tooling:
+  schema:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
-      - name: Retrieve and verify official Hyper API wheel
+      - name: Retrieve pinned official Tableau workbook schema
         shell: python
         run: |
-          import hashlib, pathlib, urllib.request
-          name = 'tableauhyperapi-0.0.26963-py3-none-manylinux2014_x86_64.whl'
-          url = 'https://files.pythonhosted.org/packages/13/0f/a60fdcfbf8f9745333d611c5eacf483ba513d5dccb51bfc1a50420820dfe/' + name
-          expected = '35376f598c6fdfa52fe25769778f756e2daec1c124ff8f471b5e098cb9cf7863'
-          data = urllib.request.urlopen(url, timeout=90).read()
-          assert hashlib.sha256(data).hexdigest() == expected, 'Checksum mismatch'
-          pathlib.Path(name).write_bytes(data)
-          print('Verified official Tableau Hyper API package; no workbook or user data accessed.')
-      - name: Retain verified tooling for local extract generation
+          import base64, hashlib, json, pathlib, urllib.request
+          sha = '11640d5a9d1a80fba661fd3011471e36c804a85a'
+          url = 'https://api.github.com/repos/tableau/tableau-document-schemas/git/blobs/' + sha
+          req = urllib.request.Request(url, headers={'Accept': 'application/vnd.github+json', 'User-Agent': 'WaterWorks-schema-validation'})
+          obj = json.load(urllib.request.urlopen(req, timeout=60))
+          assert obj['encoding'] == 'base64'
+          data = base64.b64decode(obj['content'])
+          actual = hashlib.sha1(b'blob ' + str(len(data)).encode() + b'\0' + data).hexdigest()
+          assert actual == sha, 'Git blob verification failed'
+          folder = pathlib.Path('tableau-schema'); folder.mkdir()
+          (folder / 'twb_2026.3.0.xsd').write_bytes(data)
+          (folder / 'provenance.json').write_text(json.dumps({'repository': 'tableau/tableau-document-schemas', 'git_blob_sha': sha, 'sha256': hashlib.sha256(data).hexdigest(), 'bytes': len(data)}, indent=2))
+          print('Verified official 2026.3 schema; no workbook or financial records accessed.')
+      - name: Retain schema for local validation
         uses: actions/upload-artifact@v4
         with:
-          name: tableau-t02-hyper-tooling
-          path: tableauhyperapi-*.whl
+          name: tableau-t02a-schema
+          path: tableau-schema/
           retention-days: 1
-          compression-level: 0
           if-no-files-found: error

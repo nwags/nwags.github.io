@@ -1,0 +1,31 @@
+name: Prepare Tableau T02 tooling
+on:
+  push:
+    branches: [build/tableau-t02-20261115]
+    paths: [.github/workflows/tableau-t02-tooling.yml]
+permissions:
+  contents: read
+jobs:
+  tooling:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Retrieve and verify official Hyper API wheel
+        shell: python
+        run: |
+          import hashlib, pathlib, urllib.request
+          name = 'tableauhyperapi-0.0.26963-py3-none-manylinux2014_x86_64.whl'
+          url = 'https://files.pythonhosted.org/packages/13/0f/a60fdcfbf8f9745333d611c5eacf483ba513d5dccb51bfc1a50420820dfe/' + name
+          expected = '35376f598c6fdfa52fe25769778f756e2daec1c124ff8f471b5e098cb9cf7863'
+          data = urllib.request.urlopen(url, timeout=90).read()
+          assert hashlib.sha256(data).hexdigest() == expected, 'Checksum mismatch'
+          pathlib.Path(name).write_bytes(data)
+          print('Verified official Tableau Hyper API package; no workbook or user data accessed.')
+      - name: Retain verified tooling for local extract generation
+        uses: actions/upload-artifact@v4
+        with:
+          name: tableau-t02-hyper-tooling
+          path: tableauhyperapi-*.whl
+          retention-days: 1
+          compression-level: 0
+          if-no-files-found: error

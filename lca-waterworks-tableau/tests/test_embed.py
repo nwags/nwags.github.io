@@ -43,8 +43,12 @@ class EmbedContracts(unittest.TestCase):
         self.assertNotIn('noindex', self.html)
         self.assertNotIn('connection pending', self.html.lower())
         self.assertIn('data-publication-state="embedded"', self.html)
-        self.assertIn('Two dashboards', self.html)
-        self.assertIn('not hidden features', self.html)
+        self.assertIn('10 dashboards + arithmetic audit', self.html)
+        self.assertIn('eleventh tab', self.html)
+        self.assertIn('independently selectable comparator', self.html)
+        self.assertIn('Overview retains', self.html)
+        self.assertNotIn('Additional views are still planned', self.html)
+        self.assertNotIn('Two dashboards', self.html)
         self.assertIn('does not recalculate arbitrary', self.html)
         self.assertIn('November 7, 2026', self.html)
     def test_notice_navigation_and_accessible_ids(self):
@@ -71,7 +75,8 @@ class EmbedContracts(unittest.TestCase):
         links = [a['href'] for t, a in Elements(text).items if t == 'a' and a.get('class') == 'waterworks-edition']
         self.assertEqual(links, ['lca-waterworks/','lca-waterworks-powerbi/','lca-waterworks-tableau/'])
         self.assertIn('Three online versions', text)
-        self.assertIn('Initial Overview and Financing edition', text)
+        self.assertIn('Ten dashboards plus an arithmetic audit', text)
+        self.assertNotIn('Initial Overview and Financing edition', text)
         self.assertIn('grid-template-columns: minmax(0, 1fr)', text)
 
 if __name__ == '__main__':

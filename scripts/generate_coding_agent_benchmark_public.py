@@ -47,6 +47,7 @@ PROVIDER_LABELS = {
     "openai": "OpenAI",
     "xai": "xAI",
     "moonshot-kimi": "Moonshot / Kimi",
+    "moonshot": "Moonshot / Kimi",
     "dashscope-qwen": "Alibaba / Qwen",
 }
 
@@ -157,8 +158,10 @@ def build_public_data(authority: dict) -> dict:
     }
 
 
-def relation_symbol(relation: str) -> str:
-    return {"exact": "circle", "estimate": "diamond", "lower_bound": "triangle"}.get(relation, "circle")
+def relation_symbol(relation: str, basis: str) -> str:
+    if relation == "exact":
+        return "circle" if basis == "provider_billed" else "square"
+    return {"estimate": "diamond", "lower_bound": "triangle"}[relation]
 
 
 def svg_preview(data: dict) -> str:
@@ -182,11 +185,11 @@ def svg_preview(data: dict) -> str:
 
     provider_colors = {
         "anthropic":"#7c3aed","deepseek":"#0f766e","google-gemini":"#2563eb","zai-glm":"#ca8a04",
-        "openai":"#111827","xai":"#64748b","moonshot-kimi":"#c2410c","dashscope-qwen":"#be123c"
+        "openai":"#111827","xai":"#64748b","moonshot-kimi":"#c2410c","moonshot":"#c2410c","dashscope-qwen":"#be123c"
     }
     out=[f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}" role="img" aria-labelledby="title desc">',
          '<title id="title">Selected provider-aware cost versus pass rate</title>',
-         '<desc id="desc">Extended reviewed Phase 3 scope. Marker shape shows exact, estimate, or lower-bound cost relation.</desc>',
+         '<desc id="desc">Extended reviewed Phase 3 scope. Marker shape distinguishes exact provider bills, exact retained-usage reconstructions, estimates, and lower bounds.</desc>',
          '<rect width="100%" height="100%" rx="18" fill="#fff"/>']
     for pct in (0.2,0.3,0.4,0.5,0.6,0.7,0.8):
         if lo_y <= pct <= hi_y:
@@ -195,16 +198,18 @@ def svg_preview(data: dict) -> str:
     for tick in (1,2,5,10,20,50):
         if min(costs)*0.75 <= tick <= max(costs)*1.25:
             xx=x(tick); out.append(f'<line x1="{xx:.1f}" y1="{top}" x2="{xx:.1f}" y2="{H-bottom}" stroke="#eef2f7"/>')
-            out.append(f'<text x="{xx:.1f}" y="{H-bottom+28}" text-anchor="middle" font-family="system-ui" font-size="12" fill="#64748b">${tick}</text>')
+            out.append(f'<text x="{xx:.1f}" y="{H-bottom+28}" text-anchor="middle" font-family="system-ui" font-size="12" fill="#64748b">${tick:.2f}</text>')
     if len(frontier)>1:
         points=' '.join(f'{x(float(r["selectedCostUsd"])):.1f},{y(r["passRate"]):.1f}' for r in frontier)
         out.append(f'<polyline points="{points}" fill="none" stroke="#dc2626" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>')
     for row in rows:
         cx,cy=x(float(row["selectedCostUsd"])),y(row["passRate"]); color=provider_colors.get(row["provider"],"#475569")
-        shape=relation_symbol(row["selectedCostRelation"])
+        shape=relation_symbol(row["selectedCostRelation"], row["selectedCostBasis"])
         title=f'{row["displayLabel"]}: {row["passRate"]:.1%}, ${float(row["selectedCostUsd"]):.2f} {row["selectedCostRelation"].replace("_"," ")}'
         if shape=="circle":
             marker=f'<circle cx="{cx:.1f}" cy="{cy:.1f}" r="7" fill="{color}" stroke="#fff" stroke-width="2"/>'
+        elif shape=="square":
+            marker=f'<rect x="{cx-6:.1f}" y="{cy-6:.1f}" width="12" height="12" fill="{color}" stroke="#fff" stroke-width="2"/>'
         elif shape=="diamond":
             marker=f'<rect x="{cx-6:.1f}" y="{cy-6:.1f}" width="12" height="12" rx="1" transform="rotate(45 {cx:.1f} {cy:.1f})" fill="{color}" stroke="#fff" stroke-width="2"/>'
         else:
@@ -219,10 +224,11 @@ def svg_preview(data: dict) -> str:
         f'<line x1="{left}" y1="{top}" x2="{left}" y2="{H-bottom}" stroke="#94a3b8"/>',
         f'<text x="{left+pw/2:.1f}" y="{H-16}" text-anchor="middle" font-family="system-ui" font-size="14" font-weight="600" fill="#172033">Selected cost for 60 attempts (USD, log scale)</text>',
         f'<text x="18" y="{top+ph/2:.1f}" transform="rotate(-90 18 {top+ph/2:.1f})" text-anchor="middle" font-family="system-ui" font-size="14" font-weight="600" fill="#172033">Pass rate</text>',
-        '<g transform="translate(610 22)" font-family="system-ui" font-size="11" fill="#475569">',
-        '<circle cx="0" cy="0" r="5" fill="#334155"/><text x="10" y="4">Exact</text>',
-        '<rect x="60" y="-5" width="10" height="10" transform="rotate(45 65 0)" fill="#334155"/><text x="76" y="4">Estimate</text>',
-        '<path d="M 145 -6 L 151 5 L 139 5 Z" fill="#334155"/><text x="158" y="4">Lower bound</text>',
+        '<g transform="translate(380 22)" font-family="system-ui" font-size="11" fill="#475569">',
+        '<circle cx="0" cy="0" r="5" fill="#334155"/><text x="10" y="4">Provider bill</text>',
+        '<rect x="100" y="-5" width="10" height="10" fill="#334155"/><text x="116" y="4">Reconstruction</text>',
+        '<rect x="230" y="-5" width="10" height="10" transform="rotate(45 235 0)" fill="#334155"/><text x="246" y="4">Estimate</text>',
+        '<path d="M 330 -6 L 336 5 L 324 5 Z" fill="#334155"/><text x="343" y="4">Lower bound</text>',
         '</g>',
         '</svg>'
     ]

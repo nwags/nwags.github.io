@@ -1,0 +1,81 @@
+{
+  "schema": "integrated-benchmark-website-release-v1",
+  "report_status": "retrospective_research_edition",
+  "report_date": "2026-11-24",
+  "date_semantics": "edition date; deployment date is recorded separately",
+  "benchmark_commit": "79f790fdd9067e33a29e0409c15f8890068ff22d",
+  "authority_path": "results/phase3/reporting/phase3_current_reviewed_comparison_20260825.json",
+  "authority_review_date": "2026-08-25",
+  "source_report_sha256": "26a0cbf48da2bdfed7c8b7620aba3438d2a6d6b73a58f4eb62a799abe5e3aeb5",
+  "source_pdf_sha256": "0fc35f413ddc16a36615837210715eb96629570362924bda3ff70267fe5d3d69",
+  "pdf_pages": 26,
+  "original_review_manuscript_sha256": "f2666d148222872835652e43f8c7b66e560971be7148d249ea9dc6bb3dc1630e",
+  "original_review_pdf_sha256": "6b16e3ce4f1ad741fd06930dc884f3b2604efc9b5b00f4036c1d3c2cb5cc1442",
+  "prior_candidate_manuscript_sha256": "0cfdeb0d45ebae265f30e26046d2b68d71f88facad5f94e5eb4b530a50298a6d",
+  "prior_candidate_pdf_sha256": "fd284aec3104fddfb9d0ba71feaf14f00753ca8f683171c585663b9524fdda12",
+  "raw_successes": 562,
+  "clean_successes": 543,
+  "trials": 960,
+  "arms": 16,
+  "selected_cost_usd_source_precision": "343.4494304572",
+  "displayed_selected_cost_usd": "$343.45",
+  "selected_cost_qualification": "mixed bills/reconstructions/estimates/lower bounds; not an exact invoice total or global lower bound",
+  "files": [
+    {
+      "path": "CLAUDE_CODE_BACKEND_BENCHMARK_FINAL_20261124.pdf",
+      "bytes": 1901158,
+      "sha256": "0fc35f413ddc16a36615837210715eb96629570362924bda3ff70267fe5d3d69"
+    },
+    {
+      "path": "INTEGRATED_FINAL_REPORT_20261124.md",
+      "bytes": 80252,
+      "sha256": "26a0cbf48da2bdfed7c8b7620aba3438d2a6d6b73a58f4eb62a799abe5e3aeb5"
+    },
+    {
+      "path": "analysis-data.zip",
+      "bytes": 124142,
+      "sha256": "8076a0879a17067bead21911b955995ce0ab157cdbf922998c370f6279810ced"
+    },
+    {
+      "path": "figures/figure_01_architecture.png",
+      "bytes": 229267,
+      "sha256": "2e565adce3ce399f0b94844ff392ecfa9d68332f873262204a1f824af938f122"
+    },
+    {
+      "path": "figures/figure_02_quality_runtime.png",
+      "bytes": 221448,
+      "sha256": "cc1006bb943089a3d488ada183108556316f9f39119c9c5af01823d9a4939b73"
+    },
+    {
+      "path": "figures/figure_03_failure_composition.png",
+      "bytes": 256557,
+      "sha256": "980efd56328754199237a266d60bc8b3157ab6095bbe8d2bd2bc2406f0ccd93d"
+    },
+    {
+      "path": "figures/figure_04_quality_cost.png",
+      "bytes": 236586,
+      "sha256": "8860bb51d0a53486c2ad404cc6f32542d461619e702ff530c3b37c836f76a1b4"
+    },
+    {
+      "path": "figures/figure_05_task_families.png",
+      "bytes": 394799,
+      "sha256": "7a37d7516c2c547ffde67d6ead48417d1def34c1d2107434954a357502c5d173"
+    },
+    {
+      "path": "figures/figure_06_cache_evidence.png",
+      "bytes": 181708,
+      "sha256": "4b2f75dbd7a8a624d87013ed8923abd6a288df59b5092ec563e1f026245764b0"
+    },
+    {
+      "path": "figures/figure_07_historical_token_spend.png",
+      "bytes": 163219,
+      "sha256": "8d513f367bf16661cc94887013cc76a24a51a8d1fff224d8bcbe6e0744d7b63a"
+    },
+    {
+      "path": "index.html",
+      "bytes": 126999,
+      "sha256": "dc2b21807f3a967bf6ddf27b09db776f8980a31be06011c084b25573ed8162cf"
+    }
+  ],
+  "evidence_limits": "No new trials or fresh live dashboard, DB, R2, private provider-export or full raw-artifact verification."
+}

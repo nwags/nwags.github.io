@@ -28,7 +28,7 @@
       "displayLabel": "Kimi K3",
       "backendModel": "kimi-k3",
       "provider": "moonshot",
-      "providerLabel": "moonshot",
+      "providerLabel": "Moonshot / Kimi",
       "trialCount": 60,
       "successCount": 47,
       "cleanSuccessCount": 44,
